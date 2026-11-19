@@ -1,0 +1,753 @@
+{
+  "A_390_noInsets_top": {
+    "viewport": {
+      "w": 390,
+      "h": 844,
+      "dpr": 2
+    },
+    "visualViewport": {
+      "w": 390,
+      "h": 844,
+      "scale": 1,
+      "offsetTop": 0
+    },
+    "safeVars": {
+      "top": "0px",
+      "bottom": "0px",
+      "left": "0px",
+      "right": "0px",
+      "ime": "0px"
+    },
+    "envInsets": {
+      "top": "0px",
+      "bottom": "0px",
+      "left": "0px",
+      "right": "0px"
+    },
+    "header": {
+      "top": 12,
+      "bottom": 68,
+      "left": 0,
+      "right": 390,
+      "w": 390,
+      "h": 56
+    },
+    "headerStickyTop": "12px",
+    "shellRoot": {
+      "rect": {
+        "top": 0,
+        "bottom": 1720,
+        "left": 0,
+        "right": 390,
+        "w": 390,
+        "h": 1720
+      },
+      "paddingTop": "12px",
+      "minHeight": "844px"
+    },
+    "main": {
+      "rect": {
+        "top": 68,
+        "bottom": 1720,
+        "left": 0,
+        "right": 390,
+        "w": 390,
+        "h": 1652
+      }
+    },
+    "nav": {
+      "rect": {
+        "top": 768,
+        "bottom": 832,
+        "left": 12,
+        "right": 378,
+        "w": 366,
+        "h": 64
+      },
+      "display": "block"
+    },
+    "lastCard": {
+      "rect": {
+        "top": 359,
+        "bottom": 1624,
+        "left": 16,
+        "right": 374,
+        "w": 358,
+        "h": 1266
+      }
+    },
+    "docScroll": {
+      "scrollHeight": 1720,
+      "clientHeight": 844,
+      "scrollY": 0
+    },
+    "overflowX": {
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    "bodyScroll": {
+      "overflow": "visible"
+    }
+  },
+  "A_390_noInsets_scrolled": {
+    "viewport": {
+      "w": 390,
+      "h": 844,
+      "dpr": 2
+    },
+    "visualViewport": {
+      "w": 390,
+      "h": 844,
+      "scale": 1,
+      "offsetTop": 0
+    },
+    "safeVars": {
+      "top": "0px",
+      "bottom": "0px",
+      "left": "0px",
+      "right": "0px",
+      "ime": "0px"
+    },
+    "envInsets": {
+      "top": "0px",
+      "bottom": "0px",
+      "left": "0px",
+      "right": "0px"
+    },
+    "header": {
+      "top": 12,
+      "bottom": 68,
+      "left": 0,
+      "right": 390,
+      "w": 390,
+      "h": 56
+    },
+    "headerStickyTop": "12px",
+    "shellRoot": {
+      "rect": {
+        "top": -876,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "w": 390,
+        "h": 1720
+      },
+      "paddingTop": "12px",
+      "minHeight": "844px"
+    },
+    "main": {
+      "rect": {
+        "top": -808,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "w": 390,
+        "h": 1652
+      }
+    },
+    "nav": {
+      "rect": {
+        "top": 768,
+        "bottom": 832,
+        "left": 12,
+        "right": 378,
+        "w": 366,
+        "h": 64
+      },
+      "display": "block"
+    },
+    "lastCard": {
+      "rect": {
+        "top": -517,
+        "bottom": 748,
+        "left": 16,
+        "right": 374,
+        "w": 358,
+        "h": 1266
+      }
+    },
+    "docScroll": {
+      "scrollHeight": 1720,
+      "clientHeight": 844,
+      "scrollY": 876
+    },
+    "overflowX": {
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    "bodyScroll": {
+      "overflow": "visible"
+    }
+  },
+  "B_390_3button_top": {
+    "viewport": {
+      "w": 390,
+      "h": 844,
+      "dpr": 2
+    },
+    "visualViewport": {
+      "w": 390,
+      "h": 844,
+      "scale": 1,
+      "offsetTop": 0
+    },
+    "safeVars": {
+      "top": "24px",
+      "bottom": "48px",
+      "left": "0px",
+      "right": "0px",
+      "ime": "0px"
+    },
+    "envInsets": {
+      "top": "0px",
+      "bottom": "0px",
+      "left": "0px",
+      "right": "0px"
+    },
+    "header": {
+      "top": 36,
+      "bottom": 92,
+      "left": 0,
+      "right": 390,
+      "w": 390,
+      "h": 56
+    },
+    "headerStickyTop": "36px",
+    "shellRoot": {
+      "rect": {
+        "top": 0,
+        "bottom": 1792,
+        "left": 0,
+        "right": 390,
+        "w": 390,
+        "h": 1792
+      },
+      "paddingTop": "36px",
+      "minHeight": "844px"
+    },
+    "main": {
+      "rect": {
+        "top": 92,
+        "bottom": 1792,
+        "left": 0,
+        "right": 390,
+        "w": 390,
+        "h": 1700
+      }
+    },
+    "nav": {
+      "rect": {
+        "top": 672,
+        "bottom": 784,
+        "left": 12,
+        "right": 378,
+        "w": 366,
+        "h": 112
+      },
+      "display": "block"
+    },
+    "lastCard": {
+      "rect": {
+        "top": 383,
+        "bottom": 1648,
+        "left": 16,
+        "right": 374,
+        "w": 358,
+        "h": 1266
+      }
+    },
+    "docScroll": {
+      "scrollHeight": 1792,
+      "clientHeight": 844,
+      "scrollY": 0
+    },
+    "overflowX": {
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    "bodyScroll": {
+      "overflow": "visible"
+    }
+  },
+  "B_390_3button_scrolled": {
+    "viewport": {
+      "w": 390,
+      "h": 844,
+      "dpr": 2
+    },
+    "visualViewport": {
+      "w": 390,
+      "h": 844,
+      "scale": 1,
+      "offsetTop": 0
+    },
+    "safeVars": {
+      "top": "24px",
+      "bottom": "48px",
+      "left": "0px",
+      "right": "0px",
+      "ime": "0px"
+    },
+    "envInsets": {
+      "top": "0px",
+      "bottom": "0px",
+      "left": "0px",
+      "right": "0px"
+    },
+    "header": {
+      "top": 36,
+      "bottom": 92,
+      "left": 0,
+      "right": 390,
+      "w": 390,
+      "h": 56
+    },
+    "headerStickyTop": "36px",
+    "shellRoot": {
+      "rect": {
+        "top": -948,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "w": 390,
+        "h": 1792
+      },
+      "paddingTop": "36px",
+      "minHeight": "844px"
+    },
+    "main": {
+      "rect": {
+        "top": -856,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "w": 390,
+        "h": 1700
+      }
+    },
+    "nav": {
+      "rect": {
+        "top": 672,
+        "bottom": 784,
+        "left": 12,
+        "right": 378,
+        "w": 366,
+        "h": 112
+      },
+      "display": "block"
+    },
+    "lastCard": {
+      "rect": {
+        "top": -565,
+        "bottom": 700,
+        "left": 16,
+        "right": 374,
+        "w": 358,
+        "h": 1266
+      }
+    },
+    "docScroll": {
+      "scrollHeight": 1792,
+      "clientHeight": 844,
+      "scrollY": 948
+    },
+    "overflowX": {
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    "bodyScroll": {
+      "overflow": "visible"
+    }
+  },
+  "C_390_gesture_top": {
+    "viewport": {
+      "w": 390,
+      "h": 844,
+      "dpr": 2
+    },
+    "visualViewport": {
+      "w": 390,
+      "h": 844,
+      "scale": 1,
+      "offsetTop": 0
+    },
+    "safeVars": {
+      "top": "24px",
+      "bottom": "0px",
+      "left": "0px",
+      "right": "0px",
+      "ime": "0px"
+    },
+    "envInsets": {
+      "top": "0px",
+      "bottom": "0px",
+      "left": "0px",
+      "right": "0px"
+    },
+    "header": {
+      "top": 36,
+      "bottom": 92,
+      "left": 0,
+      "right": 390,
+      "w": 390,
+      "h": 56
+    },
+    "headerStickyTop": "36px",
+    "shellRoot": {
+      "rect": {
+        "top": 0,
+        "bottom": 1744,
+        "left": 0,
+        "right": 390,
+        "w": 390,
+        "h": 1744
+      },
+      "paddingTop": "36px",
+      "minHeight": "844px"
+    },
+    "main": {
+      "rect": {
+        "top": 92,
+        "bottom": 1744,
+        "left": 0,
+        "right": 390,
+        "w": 390,
+        "h": 1652
+      }
+    },
+    "nav": {
+      "rect": {
+        "top": 768,
+        "bottom": 832,
+        "left": 12,
+        "right": 378,
+        "w": 366,
+        "h": 64
+      },
+      "display": "block"
+    },
+    "lastCard": {
+      "rect": {
+        "top": 383,
+        "bottom": 1648,
+        "left": 16,
+        "right": 374,
+        "w": 358,
+        "h": 1266
+      }
+    },
+    "docScroll": {
+      "scrollHeight": 1744,
+      "clientHeight": 844,
+      "scrollY": 0
+    },
+    "overflowX": {
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    "bodyScroll": {
+      "overflow": "visible"
+    }
+  },
+  "C_390_gesture_scrolled": {
+    "viewport": {
+      "w": 390,
+      "h": 844,
+      "dpr": 2
+    },
+    "visualViewport": {
+      "w": 390,
+      "h": 844,
+      "scale": 1,
+      "offsetTop": 0
+    },
+    "safeVars": {
+      "top": "24px",
+      "bottom": "0px",
+      "left": "0px",
+      "right": "0px",
+      "ime": "0px"
+    },
+    "envInsets": {
+      "top": "0px",
+      "bottom": "0px",
+      "left": "0px",
+      "right": "0px"
+    },
+    "header": {
+      "top": 36,
+      "bottom": 92,
+      "left": 0,
+      "right": 390,
+      "w": 390,
+      "h": 56
+    },
+    "headerStickyTop": "36px",
+    "shellRoot": {
+      "rect": {
+        "top": -900,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "w": 390,
+        "h": 1744
+      },
+      "paddingTop": "36px",
+      "minHeight": "844px"
+    },
+    "main": {
+      "rect": {
+        "top": -808,
+        "bottom": 844,
+        "left": 0,
+        "right": 390,
+        "w": 390,
+        "h": 1652
+      }
+    },
+    "nav": {
+      "rect": {
+        "top": 768,
+        "bottom": 832,
+        "left": 12,
+        "right": 378,
+        "w": 366,
+        "h": 64
+      },
+      "display": "block"
+    },
+    "lastCard": {
+      "rect": {
+        "top": -517,
+        "bottom": 748,
+        "left": 16,
+        "right": 374,
+        "w": 358,
+        "h": 1266
+      }
+    },
+    "docScroll": {
+      "scrollHeight": 1744,
+      "clientHeight": 844,
+      "scrollY": 900
+    },
+    "overflowX": {
+      "scrollWidth": 390,
+      "clientWidth": 390
+    },
+    "bodyScroll": {
+      "overflow": "visible"
+    }
+  },
+  "D_844x390_landscape": {
+    "viewport": {
+      "w": 844,
+      "h": 390,
+      "dpr": 2
+    },
+    "visualViewport": {
+      "w": 844,
+      "h": 390,
+      "scale": 1,
+      "offsetTop": 0
+    },
+    "safeVars": {
+      "top": "0px",
+      "bottom": "0px",
+      "left": "0px",
+      "right": "0px",
+      "ime": "0px"
+    },
+    "envInsets": {
+      "top": "0px",
+      "bottom": "0px",
+      "left": "0px",
+      "right": "0px"
+    },
+    "header": {
+      "top": 12,
+      "bottom": 68,
+      "left": 0,
+      "right": 844,
+      "w": 844,
+      "h": 56
+    },
+    "headerStickyTop": "12px",
+    "shellRoot": {
+      "rect": {
+        "top": 0,
+        "bottom": 1428,
+        "left": 0,
+        "right": 844,
+        "w": 844,
+        "h": 1428
+      },
+      "paddingTop": "12px",
+      "minHeight": "390px"
+    },
+    "main": {
+      "rect": {
+        "top": 68,
+        "bottom": 1428,
+        "left": 0,
+        "right": 844,
+        "w": 844,
+        "h": 1360
+      }
+    },
+    "nav": {
+      "rect": {
+        "top": 314,
+        "bottom": 378,
+        "left": 12,
+        "right": 832,
+        "w": 820,
+        "h": 64
+      },
+      "display": "block"
+    },
+    "lastCard": {
+      "rect": {
+        "top": 1226,
+        "bottom": 1332,
+        "left": 24,
+        "right": 820,
+        "w": 796,
+        "h": 106
+      }
+    },
+    "docScroll": {
+      "scrollHeight": 1428,
+      "clientHeight": 390,
+      "scrollY": 0
+    },
+    "overflowX": {
+      "scrollWidth": 844,
+      "clientWidth": 844
+    },
+    "bodyScroll": {
+      "overflow": "visible"
+    }
+  },
+  "E_keyboard_before": {
+    "vh": 844,
+    "panel": {
+      "top": 201,
+      "bottom": 844,
+      "h": 643
+    },
+    "saveBtn": {
+      "top": 787,
+      "bottom": 823
+    }
+  },
+  "E_keyboard_after": {
+    "vh": 544,
+    "panel": {
+      "top": 44,
+      "bottom": 544,
+      "h": 500
+    },
+    "saveBtn": {
+      "top": 629,
+      "bottom": 665,
+      "visible": false
+    },
+    "navTop": 72
+  },
+  "F_font130": {
+    "scrollWidth": 390,
+    "clientWidth": 390,
+    "horizontalOverflow": false,
+    "clippedRows": 0,
+    "rows": 18,
+    "navH": 81,
+    "mainPadBottom": "96px"
+  },
+  "G_overflow": [
+    {
+      "width": 320,
+      "page": "/today",
+      "sw": 320,
+      "cw": 320,
+      "wide": []
+    },
+    {
+      "width": 320,
+      "page": "/tasks",
+      "sw": 320,
+      "cw": 320,
+      "wide": []
+    },
+    {
+      "width": 320,
+      "page": "/settings",
+      "sw": 320,
+      "cw": 320,
+      "wide": []
+    },
+    {
+      "width": 360,
+      "page": "/today",
+      "sw": 360,
+      "cw": 360,
+      "wide": []
+    },
+    {
+      "width": 360,
+      "page": "/tasks",
+      "sw": 360,
+      "cw": 360,
+      "wide": []
+    },
+    {
+      "width": 360,
+      "page": "/settings",
+      "sw": 360,
+      "cw": 360,
+      "wide": []
+    },
+    {
+      "width": 390,
+      "page": "/today",
+      "sw": 390,
+      "cw": 390,
+      "wide": []
+    },
+    {
+      "width": 390,
+      "page": "/tasks",
+      "sw": 390,
+      "cw": 390,
+      "wide": []
+    },
+    {
+      "width": 390,
+      "page": "/settings",
+      "sw": 390,
+      "cw": 390,
+      "wide": []
+    },
+    {
+      "width": 412,
+      "page": "/today",
+      "sw": 412,
+      "cw": 412,
+      "wide": []
+    },
+    {
+      "width": 412,
+      "page": "/tasks",
+      "sw": 412,
+      "cw": 412,
+      "wide": []
+    },
+    {
+      "width": 412,
+      "page": "/settings",
+      "sw": 412,
+      "cw": 412,
+      "wide": []
+    }
+  ]
+}

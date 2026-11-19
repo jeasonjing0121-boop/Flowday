@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="FlowDay 图标">
+  <defs>
+    <linearGradient id="fd-g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#F2A45C" />
+      <stop offset="0.52" stop-color="#C9668F" />
+      <stop offset="1" stop-color="#5B5CBF" />
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#fd-g)" />
+  <text x="256" y="330" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="230" font-weight="700" fill="#FFFFFF" opacity="0.96">F</text>
+</svg>

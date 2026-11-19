@@ -1,0 +1,404 @@
+{
+  "meta": {
+    "idleCadenceMedian": 16.7,
+    "jankThresholdMs": 50,
+    "phase": "4.2-r1r2",
+    "tag": "before-prod",
+    "mode": "prod",
+    "base": "http://127.0.0.1:4173",
+    "generatedAt": "2026-11-14T11:54:31.333Z",
+    "repeats": 5,
+    "browserVersion": "Edg/157.0.4341.60",
+    "environment": {
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+      "cores": 8,
+      "timezone": "Asia/Shanghai",
+      "dpr": 1
+    },
+    "method": {
+      "firstListRender": "导航到 /tasks 起，页面内 rAF 轮询检测首行出现（__BENCH_FIRST_ROW_AT__）与列表稳定（行数 120ms 无变化，__BENCH_LIST_STABLE_AT__）",
+      "searchFilter": "输入/选择事件派发 → 2 次 rAF + 一次宏任务后测量（与 Phase 4.1 相同口径）",
+      "toggle": "页面加载前 HOOK IDBObjectStore.put 与 transaction complete；点击首行复选框 → 事务完成",
+      "scroll": "从顶部按 80px/帧滚动 2 秒，收集帧间隔，统计中位/p95/掉帧（>50ms）",
+      "dom": "加载完成后统计 document 元素总数、[data-task-id] 行数、虚拟容器/虚拟行数",
+      "renderCounts": "开发态计数器 __FD_ROW_RENDERS__ / __FD_PAGE_RENDERS__（生产构建被移除）"
+    }
+  },
+  "bySize": {
+    "1000": {
+      "firstListRender": {
+        "repeats": [
+          402.5,
+          408.9,
+          286.5,
+          262.2,
+          272.1
+        ],
+        "median": 286.5,
+        "max": 408.9,
+        "min": 262.2
+      },
+      "listStable": {
+        "repeats": [
+          1027.3,
+          956.2,
+          797.2,
+          598.6,
+          645.7
+        ],
+        "median": 797.2,
+        "max": 1027.3,
+        "min": 598.6
+      },
+      "search": {
+        "repeats": [
+          305.9,
+          218.4,
+          252.7,
+          199.1,
+          176.9
+        ],
+        "median": 218.4,
+        "max": 305.9,
+        "min": 176.9
+      },
+      "priorityFilter": {
+        "repeats": [
+          450.2,
+          362.4,
+          286.7,
+          279.4,
+          379.3
+        ],
+        "median": 362.4,
+        "max": 450.2,
+        "min": 279.4
+      },
+      "statusFilter": {
+        "repeats": [
+          413,
+          447.1,
+          349.8,
+          363.6,
+          302.8
+        ],
+        "median": 363.6,
+        "max": 447.1,
+        "min": 302.8
+      },
+      "toggleEndToEnd": {
+        "repeats": [
+          279.4,
+          256.3,
+          247.2,
+          254.3,
+          292.5
+        ],
+        "median": 256.3,
+        "max": 292.5,
+        "min": 247.2
+      },
+      "toggleClickToPutStart": {
+        "repeats": [
+          247,
+          255.5,
+          246.1,
+          253.1,
+          262.8
+        ],
+        "median": 253.1,
+        "max": 262.8,
+        "min": 246.1
+      },
+      "togglePutDuration": {
+        "repeats": [
+          32.4,
+          0.8,
+          1.1,
+          1.2,
+          29.7
+        ],
+        "median": 1.2,
+        "max": 32.4,
+        "min": 0.8
+      },
+      "dom": {
+        "totalNodes": 16094,
+        "rowNodes": 820,
+        "virtualContainers": 0,
+        "virtualRows": 0
+      },
+      "domNodeCounts": {
+        "repeats": [
+          16094,
+          16094,
+          16094,
+          16094,
+          16094
+        ],
+        "median": 16094,
+        "max": 16094,
+        "min": 16094
+      },
+      "reactRenderCounts": null,
+      "scroll": {
+        "frameCount": 223,
+        "median": 50,
+        "p95": 66.6,
+        "max": 83.4,
+        "jankFrames": 43,
+        "jankRatio": 19.3
+      }
+    },
+    "5000": {
+      "firstListRender": {
+        "repeats": [
+          856.4,
+          1017.3,
+          793.4,
+          841.7,
+          798.8
+        ],
+        "median": 841.7,
+        "max": 1017.3,
+        "min": 793.4
+      },
+      "listStable": {
+        "repeats": [
+          3121.9,
+          2981,
+          2422.5,
+          2707.2,
+          2755.1
+        ],
+        "median": 2755.1,
+        "max": 3121.9,
+        "min": 2422.5
+      },
+      "search": {
+        "repeats": [
+          778.2,
+          843.7,
+          745.2,
+          827.7,
+          889.5
+        ],
+        "median": 827.7,
+        "max": 889.5,
+        "min": 745.2
+      },
+      "priorityFilter": {
+        "repeats": [
+          1666.9,
+          1701.6,
+          1178.2,
+          1468.1,
+          1518
+        ],
+        "median": 1518,
+        "max": 1701.6,
+        "min": 1178.2
+      },
+      "statusFilter": {
+        "repeats": [
+          1568.8,
+          1332,
+          1739.4,
+          1900.6,
+          3027.9
+        ],
+        "median": 1739.4,
+        "max": 3027.9,
+        "min": 1332
+      },
+      "toggleEndToEnd": {
+        "repeats": [
+          556.4,
+          512,
+          624.6,
+          488.5,
+          612.7
+        ],
+        "median": 556.4,
+        "max": 624.6,
+        "min": 488.5
+      },
+      "toggleClickToPutStart": {
+        "repeats": [
+          547.4,
+          481.5,
+          608.5,
+          470.2,
+          594.7
+        ],
+        "median": 547.4,
+        "max": 608.5,
+        "min": 470.2
+      },
+      "togglePutDuration": {
+        "repeats": [
+          9,
+          30.5,
+          16.1,
+          18.3,
+          18
+        ],
+        "median": 18,
+        "max": 30.5,
+        "min": 9
+      },
+      "dom": {
+        "totalNodes": 77960,
+        "rowNodes": 4020,
+        "virtualContainers": 0,
+        "virtualRows": 0
+      },
+      "domNodeCounts": {
+        "repeats": [
+          77960,
+          77960,
+          77960,
+          77960,
+          77960
+        ],
+        "median": 77960,
+        "max": 77960,
+        "min": 77960
+      },
+      "reactRenderCounts": null,
+      "scroll": {
+        "frameCount": 159,
+        "median": 50,
+        "p95": 249.9,
+        "max": 383.2,
+        "jankFrames": 73,
+        "jankRatio": 45.9
+      }
+    },
+    "10000": {
+      "firstListRender": {
+        "repeats": [
+          1606.7,
+          2252.1,
+          2905.4,
+          2357.6,
+          1640.1
+        ],
+        "median": 2252.1,
+        "max": 2905.4,
+        "min": 1606.7
+      },
+      "listStable": {
+        "repeats": [
+          5042.9,
+          7387.3,
+          8573.5,
+          8120.2,
+          5788.9
+        ],
+        "median": 7387.3,
+        "max": 8573.5,
+        "min": 5042.9
+      },
+      "search": {
+        "repeats": [
+          1644.7,
+          1389.6,
+          1744.3,
+          2030.6,
+          22998.2
+        ],
+        "median": 1744.3,
+        "max": 22998.2,
+        "min": 1389.6
+      },
+      "priorityFilter": {
+        "repeats": [
+          5189.5,
+          7679.9,
+          4507.6,
+          3207.4,
+          4589.3
+        ],
+        "median": 4589.3,
+        "max": 7679.9,
+        "min": 3207.4
+      },
+      "statusFilter": {
+        "repeats": [
+          2382.7,
+          5181,
+          5439.3,
+          4183.7,
+          5127.6
+        ],
+        "median": 5127.6,
+        "max": 5439.3,
+        "min": 2382.7
+      },
+      "toggleEndToEnd": {
+        "repeats": [
+          1587.1,
+          1294.6,
+          3943.3,
+          1271,
+          3815.6
+        ],
+        "median": 1587.1,
+        "max": 3943.3,
+        "min": 1271
+      },
+      "toggleClickToPutStart": {
+        "repeats": [
+          1325.3,
+          1096,
+          2532.6,
+          1051.4,
+          2664.4
+        ],
+        "median": 1325.3,
+        "max": 2664.4,
+        "min": 1051.4
+      },
+      "togglePutDuration": {
+        "repeats": [
+          261.8,
+          198.6,
+          1410.7,
+          219.6,
+          1151.2
+        ],
+        "median": 261.8,
+        "max": 1410.7,
+        "min": 198.6
+      },
+      "dom": {
+        "totalNodes": 155294,
+        "rowNodes": 8020,
+        "virtualContainers": 0,
+        "virtualRows": 0
+      },
+      "domNodeCounts": {
+        "repeats": [
+          155294,
+          155275,
+          155252,
+          155233,
+          155210
+        ],
+        "median": 155252,
+        "max": 155294,
+        "min": 155210
+      },
+      "reactRenderCounts": null,
+      "scroll": {
+        "frameCount": 82,
+        "median": 100,
+        "p95": 533.3,
+        "max": 733.3,
+        "jankFrames": 79,
+        "jankRatio": 96.3
+      }
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "generatedAt": "2026-11-15T05:31:08.158Z",
+  "base": "http://127.0.0.1:5173",
+  "results": [
+    {
+      "name": "标签 1 观察到的 revision 单调（80 次采样）",
+      "pass": true,
+      "detail": "1 → 1"
+    },
+    {
+      "name": "标签 2 观察到的 revision 单调（80 次采样）",
+      "pass": true,
+      "detail": "1 → 1"
+    },
+    {
+      "name": "标签 3 观察到的 revision 单调（80 次采样）",
+      "pass": true,
+      "detail": "1 → 12"
+    },
+    {
+      "name": "3 标签并发写后：revision == metaRevision（CAS 原子）",
+      "pass": true,
+      "detail": "{\"revision\":12,\"metaRevision\":12,\"tasks\":500,\"unique\":500,\"completed\":30}"
+    },
+    {
+      "name": "3 标签并发写后：任务数量不变且 id 唯一（无静默丢失/重复）",
+      "pass": true,
+      "detail": "{\"revision\":12,\"metaRevision\":12,\"tasks\":500,\"unique\":500,\"completed\":30}"
+    },
+    {
+      "name": "3 标签并发写后：确有写入落库（revision 前进）",
+      "pass": true,
+      "detail": "rev=12"
+    },
+    {
+      "name": "标签 1 最终收敛（无横幅或数据一致）",
+      "pass": true,
+      "detail": "{\"ok\":true,\"banner\":true}"
+    },
+    {
+      "name": "标签 2 最终收敛（无横幅或数据一致）",
+      "pass": true,
+      "detail": "{\"ok\":true,\"banner\":true}"
+    },
+    {
+      "name": "标签 3 最终收敛（无横幅或数据一致）",
+      "pass": true,
+      "detail": "{\"ok\":true,\"banner\":false}"
+    },
+    {
+      "name": "dirty 标签在外部写入后出现冲突横幅/提示",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "冲突发生时草稿立即写入 localStorage",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "重新加载后冲突横幅清除且 revision 不回退",
+      "pass": true,
+      "detail": "{\"cleared\":true,\"revAfter\":12,\"revBeforeReload\":12}"
+    },
+    {
+      "name": "5 标签主题/页面 churn 后：revision 一致且数据未损坏",
+      "pass": true,
+      "detail": "{\"revision\":12,\"metaRevision\":12,\"tasks\":500,\"unique\":500,\"completed\":30}"
+    },
+    {
+      "name": "5 标签 churn 期间无错误 Toast 连续刷屏",
+      "pass": true,
+      "detail": "[0,0,0,0,0]"
+    },
+    {
+      "name": "5 标签 churn 后主题状态存在且一致（主题为全局设置）",
+      "pass": true,
+      "detail": "[\"light\",\"light\",\"light\",\"light\",\"light\"]"
+    }
+  ],
+  "passed": 15,
+  "failed": 0
+}

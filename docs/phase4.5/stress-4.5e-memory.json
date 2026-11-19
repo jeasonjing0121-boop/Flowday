@@ -1,0 +1,127 @@
+{
+  "generatedAt": "2026-11-15T04:51:48.794Z",
+  "base": "http://127.0.0.1:5173",
+  "opsTarget": 500,
+  "samples": [
+    {
+      "op": 41,
+      "heapMB": 12.38,
+      "nodes": 1685,
+      "listeners": 550,
+      "docs": 4,
+      "elapsedSec": 50
+    },
+    {
+      "op": 81,
+      "heapMB": 15.95,
+      "nodes": 2086,
+      "listeners": 766,
+      "docs": 5,
+      "elapsedSec": 88
+    },
+    {
+      "op": 121,
+      "heapMB": 13.2,
+      "nodes": 1679,
+      "listeners": 555,
+      "docs": 4,
+      "elapsedSec": 119
+    },
+    {
+      "op": 161,
+      "heapMB": 18.69,
+      "nodes": 2518,
+      "listeners": 983,
+      "docs": 6,
+      "elapsedSec": 149
+    },
+    {
+      "op": 201,
+      "heapMB": 13.23,
+      "nodes": 1681,
+      "listeners": 555,
+      "docs": 4,
+      "elapsedSec": 178
+    },
+    {
+      "op": 241,
+      "heapMB": 13.25,
+      "nodes": 1677,
+      "listeners": 555,
+      "docs": 4,
+      "elapsedSec": 211
+    },
+    {
+      "op": 281,
+      "heapMB": 13.22,
+      "nodes": 1669,
+      "listeners": 555,
+      "docs": 4,
+      "elapsedSec": 245
+    },
+    {
+      "op": 321,
+      "heapMB": 13.22,
+      "nodes": 1657,
+      "listeners": 555,
+      "docs": 4,
+      "elapsedSec": 274
+    },
+    {
+      "op": 361,
+      "heapMB": 13.22,
+      "nodes": 1645,
+      "listeners": 555,
+      "docs": 4,
+      "elapsedSec": 305
+    },
+    {
+      "op": 401,
+      "heapMB": 15.96,
+      "nodes": 2043,
+      "listeners": 768,
+      "docs": 5,
+      "elapsedSec": 335
+    },
+    {
+      "op": 441,
+      "heapMB": 12.48,
+      "nodes": 850,
+      "listeners": 423,
+      "docs": 4,
+      "elapsedSec": 364
+    },
+    {
+      "op": 481,
+      "heapMB": 15.17,
+      "nodes": 1258,
+      "listeners": 636,
+      "docs": 5,
+      "elapsedSec": 393
+    },
+    {
+      "op": 501,
+      "heapMB": 12.98,
+      "nodes": 1648,
+      "listeners": 563,
+      "docs": 4,
+      "elapsedSec": 407,
+      "final": true
+    }
+  ],
+  "heapStartMB": 7.97,
+  "heapEndMB": 12.98,
+  "gcStartMB": null,
+  "gcEndMB": null,
+  "domStart": 434,
+  "domEnd": 1648,
+  "listeners": {
+    "window": null,
+    "document": 3
+  },
+  "notes": [],
+  "elapsedSec": 407,
+  "opsDone": 501,
+  "heapGrowthMB": 0.6,
+  "heapGrowthPct": 4.8
+}

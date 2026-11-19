@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-11-18T13:11:08.599Z",
+  "title": "b4-visual",
+  "passed": 3,
+  "failed": 0,
+  "total": 3,
+  "results": [
+    {
+      "name": "材质截图采集完成",
+      "pass": true,
+      "detail": "18 张"
+    },
+    {
+      "name": "滚动连续帧采集完成",
+      "pass": true,
+      "detail": "12 帧"
+    },
+    {
+      "name": "移动端二次采样层受控（≤3）",
+      "pass": true,
+      "detail": "{\"elements\":6,\"elementBefore\":2,\"names\":[\"fd-glass.fd-glass-nav\",\"fd-nav-item.fd-nav-item-active\",\"fd-glass.fd-glass-nav\",\"lg-l1.lg-l1-heavy\",\"lg-l1.lg-l1-clear\",\"fd-glass.fd-glass-nav\"]}"
+    }
+  ],
+  "base": "http://127.0.0.1:5173",
+  "shots": 18,
+  "frames": 12
+}

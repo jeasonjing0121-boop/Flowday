@@ -1,0 +1,202 @@
+{
+  "$schemaVersion": "0.2.0",
+  "meta": {
+    "name": "FlowDay Design Tokens",
+    "theme": "Dawn Paper (light default) + Night Flight (dark)",
+    "sourceOfTruth": "flowday/docs/plan/02-design-system.md",
+    "updatedAt": "2026-11-13",
+    "note": "Components MUST reference semantic tokens only. Primitive values are for the semantic layer."
+  },
+
+  "primitive": {
+    "paper": { "50": "#FAF7F2", "0": "#FFFEFC", "100": "#F3EFE8", "200": "#F2EDE4", "300": "#EDE7DC", "400": "#E2DACD", "500": "#CFC5B4", "white": "#FFFFFF" },
+    "ink": { "900": "#1C1A17", "800": "#2E2A25", "700": "#5A544C", "500": "#6E665A", "300": "#B3AA9C", "100": "#FAF7F2" },
+    "indigo": { "600": "#46508F", "700": "#3A437F", "50": "#EDEEF7", "300": "#8B93E8", "950": "#232438" },
+    "night": { "950": "#0E0F13", "900": "#121318", "850": "#1A1B22", "800": "#23242C", "700": "#2C2D37", "600": "#2F3038", "500": "#41424C", "400": "#5C5852" },
+    "warmWhite": "#F2EFE9",
+    "amber": { "400": "#FFB877", "500": "#F2A45C" },
+    "rose": { "500": "#E07FA6", "600": "#C9668F", "700": "#8A4E73" },
+    "violet": { "500": "#7C7DE0", "600": "#5B5CBF" }
+  },
+
+  "semantic": {
+    "light": {
+      "bg": { "canvas": "#FAF7F2", "surface": "#FFFEFC", "sunken": "#F2EDE4", "raised": "#FFFFFF", "hover": "#F3EFE8", "selected": "#EDE8E0", "inverse": "#1C1A17", "scrim": "rgba(28,26,23,0.32)" },
+      "border": { "subtle": "#EDE7DC", "default": "#E2DACD", "strong": "#CFC5B4", "focus": "#46508F" },
+      "text": { "primary": "#1C1A17", "secondary": "#5A544C", "tertiary": "#6E665A", "disabled": "#B3AA9C", "inverse": "#FAF7F2" },
+      "accent": { "default": "#46508F", "hover": "#3A437F", "subtle": "#EDEEF7" },
+      "action": { "primaryBg": "#1C1A17", "primaryHover": "#2E2A25", "primaryText": "#FAF7F2" },
+      "status": {
+        "success": { "fg": "#2C6E4F", "bg": "#E9F1EA" },
+        "warning": { "fg": "#8A5A0B", "bg": "#FBF0DC" },
+        "danger": { "fg": "#A93327", "bg": "#F9E7E4" },
+        "info": { "fg": "#2D5E80", "bg": "#E7F0F5" }
+      }
+    },
+    "dark": {
+      "bg": { "canvas": "#121318", "surface": "#1A1B22", "sunken": "#0E0F13", "raised": "#23242C", "hover": "#24252D", "selected": "#2C2D37", "inverse": "#F2EFE9", "scrim": "rgba(0,0,0,0.56)" },
+      "border": { "subtle": "#24252D", "default": "#2F3038", "strong": "#41424C", "focus": "#8B93E8" },
+      "text": { "primary": "#F2EFE9", "secondary": "#B9B4AC", "tertiary": "#8D887F", "disabled": "#5C5852", "inverse": "#121318" },
+      "accent": { "default": "#8B93E8", "hover": "#A6ACF0", "subtle": "#232438" },
+      "action": { "primaryBg": "#F2EFE9", "primaryHover": "#FFFFFF", "primaryText": "#121318" },
+      "status": {
+        "success": { "fg": "#6FBF95", "bg": "#1B2A22" },
+        "warning": { "fg": "#E0B15C", "bg": "#2A2317" },
+        "danger": { "fg": "#F08070", "bg": "#2C1D1B" },
+        "info": { "fg": "#7FB3D0", "bg": "#182630" }
+      }
+    }
+  },
+
+  "ai": {
+    "gradient": {
+      "light": "linear-gradient(135deg, #F2A45C 0%, #C9668F 52%, #5B5CBF 100%)",
+      "dark": "linear-gradient(135deg, #FFB877 0%, #E07FA6 52%, #7C7DE0 100%)",
+      "softLight": "linear-gradient(135deg, rgba(242,164,92,0.10) 0%, rgba(201,102,143,0.10) 52%, rgba(91,92,191,0.10) 100%)",
+      "softDark": "linear-gradient(135deg, rgba(255,184,119,0.12) 0%, rgba(224,127,166,0.12) 52%, rgba(124,125,224,0.12) 100%)",
+      "angle": "135deg"
+    },
+    "ink": { "light": "#8A4E73", "dark": "#E07FA6" },
+    "glow": "0 0 0 1px rgba(201,102,143,0.18), 0 8px 24px -12px rgba(91,92,191,0.25)",
+    "maxScreenArea": "8%"
+  },
+
+  "priority": {
+    "P1": { "label": "紧急", "light": "#B93C2E", "dark": "#FF7A6B" },
+    "P2": { "label": "高", "light": "#965C0A", "dark": "#E0A44A" },
+    "P3": { "label": "普通", "light": "#2F6C8C", "dark": "#6FA8CC" },
+    "P4": { "label": "低", "light": "#6F675C", "dark": "#9A948B" }
+  },
+
+  "category": {
+    "work": { "label": "工作", "light": "#4A5B8C", "dark": "#8798C9" },
+    "study": { "label": "学习", "light": "#2F7477", "dark": "#6BA9A9" },
+    "life": { "label": "生活", "light": "#B0724A", "dark": "#D19A76" },
+    "health": { "label": "健康", "light": "#5F7F3F", "dark": "#9DB77A" },
+    "finance": { "label": "财务", "light": "#8C6A2F", "dark": "#C6A45E" },
+    "create": { "label": "创作", "light": "#A8597A", "dark": "#C98BA6" },
+    "family": { "label": "家庭", "light": "#7A5E8C", "dark": "#A48BC0" },
+    "other": { "label": "其他", "light": "#6E6A64", "dark": "#A09A92" },
+    "tintRule": "color-mix(in srgb, {color} 12%, var(--fd-bg-surface)) for light; 16% for dark"
+  },
+
+  "heatmap": {
+    "light": ["#EFECE4", "#DDE8D2", "#B7D0A9", "#7FA678", "#46724F"],
+    "dark": ["#1C1D23", "#233226", "#33503A", "#4E7C55", "#7AAC7D"]
+  },
+
+  "typography": {
+    "family": {
+      "sans": "-apple-system, BlinkMacSystemFont, 'PingFang SC', 'HarmonyOS Sans SC', 'Noto Sans SC', 'Microsoft YaHei', sans-serif",
+      "latin": "'Inter', -apple-system, BlinkMacSystemFont, sans-serif",
+      "serif": "'Instrument Serif', Georgia, serif",
+      "mono": "'JetBrains Mono', ui-monospace, monospace"
+    },
+    "weight": { "regular": 400, "medium": 500, "semibold": 600 },
+    "feature": { "numeric": "tabular-nums", "letterSpacingTight": "-0.02em" },
+    "scale": {
+      "display-xl": { "desktop": 40, "mobile": 30, "lineHeight": 1.1, "weight": 600, "letterSpacing": "-0.02em" },
+      "display-lg": { "desktop": 32, "mobile": 26, "lineHeight": 1.15, "weight": 600, "letterSpacing": "-0.02em" },
+      "h1": { "desktop": 24, "mobile": 22, "lineHeight": 1.3, "weight": 600, "letterSpacing": "-0.01em" },
+      "h2": { "desktop": 20, "mobile": 18, "lineHeight": 1.4, "weight": 600, "letterSpacing": "0" },
+      "h3": { "desktop": 17, "mobile": 17, "lineHeight": 1.4, "weight": 600, "letterSpacing": "0" },
+      "body-lg": { "desktop": 16, "mobile": 16, "lineHeight": 1.6, "weight": 400, "letterSpacing": "0" },
+      "body": { "desktop": 14, "mobile": 15, "lineHeight": 1.65, "weight": 400, "letterSpacing": "0" },
+      "body-sm": { "desktop": 13, "mobile": 14, "lineHeight": 1.55, "weight": 400, "letterSpacing": "0" },
+      "caption": { "desktop": 12, "mobile": 12, "lineHeight": 1.5, "weight": 400, "letterSpacing": "0.01em" },
+      "overline": { "desktop": 11, "mobile": 11, "lineHeight": 1.45, "weight": 500, "letterSpacing": "0.06em" },
+      "num-xl": { "desktop": 32, "mobile": 28, "lineHeight": 1.1, "weight": 600, "letterSpacing": "0" },
+      "num-md": { "desktop": 20, "mobile": 20, "lineHeight": 1.2, "weight": 600, "letterSpacing": "0" },
+      "serif-quote": { "desktop": 24, "mobile": 20, "lineHeight": 1.3, "weight": 400, "letterSpacing": "0" }
+    }
+  },
+
+  "space": { "0": 0, "0.5": 2, "1": 4, "1.5": 6, "2": 8, "2.5": 10, "3": 12, "4": 16, "5": 20, "6": 24, "8": 32, "10": 40, "12": 48, "16": 64, "20": 80 },
+
+  "radius": { "xs": 4, "sm": 6, "md": 8, "lg": 10, "xl": 12, "2xl": 16, "full": 999 },
+
+  "border": { "width": 1, "widthFocus": 2, "widthAiAccent": 1.5 },
+
+  "shadow": {
+    "light": {
+      "card": "0 1px 2px rgba(28,26,23,0.04)",
+      "popover": "0 8px 24px -8px rgba(28,26,23,0.16), 0 1px 2px rgba(28,26,23,0.06)",
+      "modal": "0 24px 64px -16px rgba(28,26,23,0.24)",
+      "lift": "0 12px 28px -10px rgba(28,26,23,0.22)"
+    },
+    "dark": {
+      "card": "inset 0 1px 0 rgba(255,255,255,0.04)",
+      "popover": "0 8px 24px -12px rgba(0,0,0,0.8)",
+      "modal": "0 24px 64px -16px rgba(0,0,0,0.9)",
+      "lift": "0 12px 28px -10px rgba(0,0,0,0.85)"
+    }
+  },
+
+  "breakpoint": { "xs": 360, "sm": 480, "md": 768, "lg": 1024, "xl": 1280, "2xl": 1440 },
+
+  "zIndex": { "base": 0, "sticky": 10, "chrome": 20, "float": 30, "popover": 40, "tooltip": 50, "command": 60, "modal": 70, "toast": 80, "drag": 90 },
+
+  "motion": {
+    "duration": { "instant": 80, "fast": 120, "base": 180, "moderate": 240, "slow": 320, "chart": 600 },
+    "easing": {
+      "standard": "cubic-bezier(0.2, 0, 0, 1)",
+      "out": "cubic-bezier(0.16, 1, 0.3, 1)",
+      "in": "cubic-bezier(0.4, 0, 1, 1)",
+      "spring": "cubic-bezier(0.34, 1.36, 0.64, 1)"
+    },
+    "reducedMotion": { "duration": "0.01ms", "keep": ["opacity"] }
+  },
+
+  "size": {
+    "controlSm": 32,
+    "controlMd": 36,
+    "controlLg": 44,
+    "hitTarget": 44,
+    "rowTaskDesktop": 52,
+    "rowTaskMobile": 56,
+    "rowSetting": 64,
+    "sidebarExpanded": 240,
+    "sidebarCollapsed": 64,
+    "topbarDesktop": 56,
+    "topbarMobile": 52,
+    "bottomTab": 56,
+    "taskDetailDesktop": 400,
+    "taskDetailSmallDesktop": 360,
+    "mobileSheetDetail": "92vh",
+    "contentMax": 1120,
+    "settingsMax": 760,
+    "aiChatMax": 720,
+    "aiHistory": 260,
+    "proseMax": 640
+  },
+
+  "contrastChecks": [
+    { "fg": "#1C1A17", "bg": "#FAF7F2", "ratio": 16.25, "level": "AAA" },
+    { "fg": "#5A544C", "bg": "#FAF7F2", "ratio": 7.0, "level": "AAA" },
+    { "fg": "#6E665A", "bg": "#FAF7F2", "ratio": 5.3, "level": "AA" },
+    { "fg": "#46508F", "bg": "#FAF7F2", "ratio": 7.01, "level": "AAA" },
+    { "fg": "#FAF7F2", "bg": "#1C1A17", "ratio": 16.25, "level": "AAA" },
+    { "fg": "#B93C2E", "bg": "#FAF7F2", "ratio": 5.24, "level": "AA" },
+    { "fg": "#965C0A", "bg": "#FAF7F2", "ratio": 5.13, "level": "AA" },
+    { "fg": "#2F6C8C", "bg": "#FAF7F2", "ratio": 5.39, "level": "AA" },
+    { "fg": "#6F675C", "bg": "#FAF7F2", "ratio": 5.21, "level": "AA" },
+    { "fg": "#2C6E4F", "bg": "#E9F1EA", "ratio": 5.28, "level": "AA" },
+    { "fg": "#8A5A0B", "bg": "#FBF0DC", "ratio": 5.24, "level": "AA" },
+    { "fg": "#A93327", "bg": "#F9E7E4", "ratio": 5.51, "level": "AA" },
+    { "fg": "#2D5E80", "bg": "#E7F0F5", "ratio": 6.01, "level": "AA" },
+    { "fg": "#8A4E73", "bg": "#FAF7F2", "ratio": 5.75, "level": "AA" },
+    { "fg": "#F2EFE9", "bg": "#121318", "ratio": 16.16, "level": "AAA" },
+    { "fg": "#B9B4AC", "bg": "#121318", "ratio": 9.0, "level": "AAA" },
+    { "fg": "#8D887F", "bg": "#121318", "ratio": 5.27, "level": "AA" },
+    { "fg": "#8B93E8", "bg": "#121318", "ratio": 6.57, "level": "AAA" },
+    { "fg": "#FF7A6B", "bg": "#121318", "ratio": 7.29, "level": "AA" },
+    { "fg": "#E0A44A", "bg": "#121318", "ratio": 8.46, "level": "AA" },
+    { "fg": "#6FA8CC", "bg": "#121318", "ratio": 7.2, "level": "AA" },
+    { "fg": "#9A948B", "bg": "#121318", "ratio": 6.17, "level": "AA" },
+    { "fg": "#6FBF95", "bg": "#1B2A22", "ratio": 6.83, "level": "AA" },
+    { "fg": "#E0B15C", "bg": "#2A2317", "ratio": 7.85, "level": "AA" },
+    { "fg": "#F08070", "bg": "#2C1D1B", "ratio": 6.18, "level": "AA" },
+    { "fg": "#7FB3D0", "bg": "#182630", "ratio": 6.82, "level": "AA" },
+    { "fg": "#121318", "bg": "#F2EFE9", "ratio": 16.16, "level": "AAA" }
+  ]
+}

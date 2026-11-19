@@ -1,0 +1,43 @@
+FlowDay 5.0-a Beta.2（Android）— 校验值清单
+生成时间：2026-11-18 (Asia/Shanghai) · 分支 phase5.0-a
+
+[APK · Beta.2（本次交付）]
+file      : release/android/FlowDay-5.0-a-Beta.2.apk
+bytes     : 3619517
+size      : 3.45 MB
+sha256    : 1f5f22614398668258481ff645a4981befa49b59471cf46ab9fe2fbc904eb6b3
+version   : 5.0-a-beta.2 (versionCode 2)
+web commit: 26d059e (phase5.0-a)
+
+[APK · Beta.1（保留，供对照/回滚）]
+file      : release/android/FlowDay-5.0-a-Beta.1.apk
+bytes     : 3613161
+sha256    : 5553767a34586dd7697254e0c243d7a9c6d423c0caceb2266697f239afeda095
+version   : 5.0-a-beta.1 (versionCode 1)
+
+[签名证书 — 两个版本完全一致，可覆盖升级]
+scheme        : APK Signature Scheme v2
+subject       : CN=FlowDay Beta, OU=FlowDay, O=FlowDay, L=Local, ST=Local, C=CN
+key           : RSA 2048
+cert sha256(fp): B5:6B:30:48:18:B9:29:1C:5F:C7:62:63:B4:7C:90:93:15:B0:7A:39:F7:F7:D3:1A:81:69:C8:A3:82:56:BA:77
+cert sha1(fp) : AB:90:3A:E9:9F:11:E1:00:95:B5:0C:93:DB:6E:08:88:E3:D1:4C:F0
+
+[包身份（未变）]
+applicationId : app.flowday.beta
+minSdkVersion : 24 (Android 7.0)
+targetSdk     : 36
+
+[构建环境]
+capacitor 8.6.2 / gradle 8.14.3 / AGP 8.13.0 / JDK Temurin 21.0.13+9
+compileSdk 36 / build-tools 36.0.0 (+35.0.0 for :capacitor-android)
+
+[Liquid Glass 视觉证据（docs/phase5.0/lg-evidence）]
+before/ : 52 张修复前截图（9 个视口 × 深浅 × 页面）
+after/  : 76 张修复后截图（含 320/360/375/390/412/432 六档移动宽度）
+anim/   : 5 个交互动画 GIF（底部胶囊位移/菜单/弹窗/分段控件）
+contrast/: 42 个文字对比度探针，全部 ≥ 5.03:1（WCAG AA）
+perf    : 滚动 avg 16.52ms / p95 16.7ms / 长帧 0
+
+[密钥保管]
+keystore 与密码保存在仓库外（本机受 ACL 保护目录），.secrets/ 与 signing.properties 均已 gitignore；
+本文件只包含可公开的指纹与哈希。

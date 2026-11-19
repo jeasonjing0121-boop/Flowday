@@ -1,0 +1,465 @@
+{
+  "generatedAt": "2026-11-14T12:26:45.630Z",
+  "browser": "Edg/157.0.4341.60",
+  "baseUrl": "http://127.0.0.1:5173",
+  "viewportTested": [
+    "1440x900",
+    "390x844"
+  ],
+  "total": 90,
+  "passed": 90,
+  "failed": 0,
+  "consoleErrors": [],
+  "results": [
+    {
+      "name": "首页渲染出今日工作台",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "示例数据提示可见",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "首页无横向溢出",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "无 JS 运行时错误",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "打开新建任务弹窗并填写标题",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "点击「添加任务」成功",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "任务写入 IndexedDB",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "新任务出现在列表中",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "点击复选框标记完成",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可撤销完成",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "刷新页面后任务仍在（IndexedDB 持久化）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "删除任务需二次确认（玻璃确认框）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "删除任务并从存储移除",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "搜索关键词过滤列表",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "优先级筛选结果与数据一致",
+      "pass": true,
+      "detail": "shown=2 expected=2"
+    },
+    {
+      "name": "状态筛选「已完成」只显示已完成任务",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "日期筛选无结果时给出空状态提示",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "编辑名称/时间/优先级并保存",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "操作成功出现 Toast 提示",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "标记完成后完成数 +1",
+      "pass": true,
+      "detail": "1 -> 2"
+    },
+    {
+      "name": "首页完成率与本地数据一致",
+      "pass": true,
+      "detail": "{\"total\":7,\"done\":3,\"open\":4,\"percent\":43}"
+    },
+    {
+      "name": "已完成任务不计入待办数量",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "点击「打卡今天」写入打卡记录",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "刷新后打卡记录仍在",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可撤销打卡",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "默认月视图显示月份标题",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可切换到周视图",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可切换到日视图",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可翻到下一月并刷新标题",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可一键回到今天",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "无时间任务进入「未安排」列表",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "「排时间」写入 time=15:00",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "时间线渲染 15:00–16:00 时间块",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "重叠排程触发冲突提示",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "点击时间线空白处快速创建（预填时间）",
+      "pass": true,
+      "detail": "00:15"
+    },
+    {
+      "name": "排程结果刷新后保留",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "助手页面显示演示模式说明",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "发送消息后生成提案卡",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "确认执行后真实写入任务",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "对话区显示已执行状态",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "侧边栏导航到「习惯」",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "页面标题随路由更新",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "移动端无横向溢出",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "移动端底部导航存在 5 个入口",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "底部导航固定在视口底部（悬浮玻璃胶囊）",
+      "pass": true,
+      "detail": "{\"found\":true,\"position\":\"fixed\",\"bottom\":895,\"innerH\":907}"
+    },
+    {
+      "name": "移动端底栏为玻璃材质（backdrop blur + 半透明）",
+      "pass": true,
+      "detail": "{\"bf\":\"blur(16px) saturate(1.5)\",\"bg\":\"rgba(255, 255, 255, 0.45)\"}"
+    },
+    {
+      "name": "移动端选中 Tab 为玻璃高光胶囊（与桌面侧栏同效）",
+      "pass": true,
+      "detail": "blur(10px) saturate(1.4)"
+    },
+    {
+      "name": "移动端玻璃模糊与桌面接近（16px）",
+      "pass": true,
+      "detail": "blur(16px) saturate(1.5)"
+    },
+    {
+      "name": "移动端周视图为横向 7 列滑动条（与桌面同效）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "侧边栏玻璃：backdrop-filter 含 blur",
+      "pass": true,
+      "detail": "blur(20px) saturate(1.5)"
+    },
+    {
+      "name": "侧边栏玻璃：半透明暖色背景",
+      "pass": true,
+      "detail": "rgba(255, 255, 255, 0.45)"
+    },
+    {
+      "name": "侧边栏玻璃：柔和阴影 + 内高光(inset)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "顶栏玻璃：backdrop-filter 含 blur",
+      "pass": true,
+      "detail": "blur(20px) saturate(1.5)"
+    },
+    {
+      "name": "顶栏玻璃：细边框存在",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "导航选中态为玻璃高光胶囊",
+      "pass": true,
+      "detail": "blur(10px) saturate(1.4)"
+    },
+    {
+      "name": "头像玻璃下拉菜单可打开",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "下拉菜单为玻璃材质",
+      "pass": true,
+      "detail": "blur(20px) saturate(1.5)"
+    },
+    {
+      "name": "浏览器控制台/运行时无错误",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "玻璃面板带堆叠薄片层（::after 有可见高度）",
+      "pass": true,
+      "detail": "{\"h\":\"11px\",\"bg\":\"rgba(245, 245, 247, 0.72)\"}"
+    },
+    {
+      "name": "Dashboard 卡片为 sticky 堆叠（≥6 张）",
+      "pass": true,
+      "detail": "[\"sticky\",\"sticky\",\"sticky\",\"sticky\",\"sticky\",\"sticky\"]"
+    },
+    {
+      "name": "滚动时卡片依次吸顶形成堆叠",
+      "pass": true,
+      "detail": "[221,533,707,221,363,601]"
+    },
+    {
+      "name": "操作后 Toast 出现",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Toast 自动消失（含离场动画）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "快速连点两次状态与数据保持一致",
+      "pass": true,
+      "detail": "{\"ok\":true,\"before\":true,\"after\":true}"
+    },
+    {
+      "name": "360/768/1024/1440 均无横向溢出",
+      "pass": true,
+      "detail": "[{\"w\":360,\"ok\":true},{\"w\":768,\"ok\":true},{\"w\":1024,\"ok\":true},{\"w\":1440,\"ok\":true}]"
+    },
+    {
+      "name": "平板(768)使用底部导航、隐藏侧栏",
+      "pass": true,
+      "detail": "{\"aside\":false,\"nav\":true}"
+    },
+    {
+      "name": "桌面(1024)使用侧边栏、隐藏底栏",
+      "pass": true,
+      "detail": "{\"aside\":true,\"nav\":false}"
+    },
+    {
+      "name": "清空数据后 6 个页面均正常渲染且无异常",
+      "pass": true,
+      "detail": "[{\"route\":\"/today\",\"len\":480,\"errors\":0},{\"route\":\"/tasks\",\"len\":385,\"errors\":0},{\"route\":\"/calendar\",\"len\":540,\"errors\":0},{\"route\":\"/habits\",\"len\":305,\"errors\":0},{\"route\":\"/assistant\",\"len\":376,\"errors\":0},{\"route\":\"/settings\",\"len\":775,\"errors\":0}]"
+    },
+    {
+      "name": "损坏的 IndexedDB 数据可恢复（示例数据 + 错误提示）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "全流程控制台无未处理错误",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "首次启动创建 IndexedDB 并写入 schema v2",
+      "pass": true,
+      "detail": "{\"schemaVersion\":2,\"tasks\":9}"
+    },
+    {
+      "name": "localStorage 旧数据自动迁移到 IndexedDB（优先级 4→3）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "迁移后保留旧数据与回滚副本（不立即清空）",
+      "pass": true,
+      "detail": "{\"legacy\":true,\"backup\":true}"
+    },
+    {
+      "name": "重复启动不重复迁移旧数据",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "迁移失败时提示错误且旧数据原样保留",
+      "pass": true,
+      "detail": "旧数据迁移失败：旧数据不是合法 JSON（原始数据已保留，未做任何修改）"
+    },
+    {
+      "name": "IndexedDB 读写：新建任务刷新后仍在",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "IndexedDB 删除：删除后刷新不再出现",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "导出 JSON 备份（含 schemaVersion 与数据）",
+      "pass": true,
+      "detail": "files=1 version=2"
+    },
+    {
+      "name": "导入 JSON 备份（先确认再覆盖）写入数据",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "非法 JSON 被拒绝且原数据不变",
+      "pass": true,
+      "detail": "toast=true 1->1"
+    },
+    {
+      "name": "高版本备份被拒绝（提示版本并保持原数据）",
+      "pass": true,
+      "detail": "导入失败：备份版本 v99 高于当前应用支持的 v2，请升级应用后再导入"
+    },
+    {
+      "name": "恢复示例数据用于最终截图",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "连续 5 次输入只触发 1 次实际查询（120ms 防抖）",
+      "pass": true,
+      "detail": "{\"filterCount\":1,\"len\":1,\"delay\":130.90000000223517,\"showsTarget\":true}"
+    },
+    {
+      "name": "防抖后搜索结果正确",
+      "pass": true,
+      "detail": "{\"len\":1}"
+    },
+    {
+      "name": "中文输入法组合期间不触发搜索",
+      "pass": true,
+      "detail": "0"
+    },
+    {
+      "name": "compositionend 后合并为一次查询并显示结果",
+      "pass": true,
+      "detail": "{\"count\":1,\"len\":1,\"showsTarget\":true}"
+    },
+    {
+      "name": "Enter 立即执行搜索（不等防抖窗口）",
+      "pass": true,
+      "detail": "{\"len\":1,\"count\":1}"
+    },
+    {
+      "name": "清空搜索立即恢复完整列表",
+      "pass": true,
+      "detail": "{\"len\":9,\"total\":9,\"count\":1}"
+    },
+    {
+      "name": "新建今日任务后 Dashboard 统计即时更新",
+      "pass": true,
+      "detail": "{\"before\":{\"total\":6,\"done\":2,\"open\":4,\"percent\":33},\"after\":{\"total\":7,\"done\":2,\"open\":5,\"percent\":29}}"
+    },
+    {
+      "name": "删除任务后 Dashboard 统计同步回落",
+      "pass": true,
+      "detail": "{\"total\":6,\"done\":2,\"open\":4,\"percent\":33}"
+    }
+  ]
+}

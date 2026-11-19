@@ -1,0 +1,314 @@
+{
+  "meta": {
+    "phase": "4.1-supplement",
+    "generatedAt": "2026-11-14T11:12:30.880Z",
+    "repeats": 5,
+    "browserVersion": "Edg/157.0.4341.60",
+    "environment": {
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+      "cores": 8,
+      "timezone": "Asia/Shanghai"
+    },
+    "methodology": {
+      "persistence": "在页面加载前 HOOK IDBObjectStore.put 与 transaction complete，记录 点击→写入开始（含 React 渲染与 180ms 防抖）与 写入开始→事务完成 两段耗时，不使用轮询读库",
+      "compute": "直接对 window.__FD_STATE__ 内存数据执行与页面相同的 filter/sort/统计逻辑，隔离 React 渲染成本",
+      "consistency": "仅统计\"确认已进入内存状态\"的创建操作，避免输入失败造成的假阴性"
+    }
+  },
+  "appDetail": {
+    "1000": {
+      "taskCount": 1000,
+      "compute": {
+        "filterToday": {
+          "ms": 0.29999999701976776,
+          "n": 17
+        },
+        "filterOpen": {
+          "ms": 0.19999999925494194,
+          "n": 800
+        },
+        "searchTitle": {
+          "ms": 0.6000000014901161,
+          "n": 143
+        },
+        "priorityFilter": {
+          "ms": 0.19999999925494194,
+          "n": 334
+        },
+        "combinedFilter": {
+          "ms": 0.19999999925494194,
+          "n": 347
+        },
+        "sortAll": {
+          "ms": 3.699999999254942,
+          "n": 1000
+        },
+        "todayStats": {
+          "ms": 0.3999999985098839,
+          "n": 442
+        },
+        "last7Day": {
+          "ms": 0.8000000007450581,
+          "n": 0
+        },
+        "groupedRenderPrep": {
+          "ms": 4.5,
+          "n": 820
+        },
+        "habitLogsFilter": {
+          "ms": 0.10000000149011612,
+          "n": 4
+        }
+      },
+      "toggleEndToEnd": {
+        "repeats": [
+          801.8,
+          874.4,
+          1001.8,
+          949.1,
+          921.3
+        ],
+        "median": 921.3,
+        "max": 1001.8,
+        "min": 801.8
+      },
+      "toggleClickToPutStart": {
+        "repeats": [
+          801.1,
+          847.3,
+          987.5,
+          922.1,
+          920.3
+        ],
+        "median": 920.3,
+        "max": 987.5,
+        "min": 801.1
+      },
+      "togglePutDuration": {
+        "repeats": [
+          0.7,
+          27.1,
+          14.3,
+          27,
+          1
+        ],
+        "median": 14.3,
+        "max": 27.1,
+        "min": 0.7
+      }
+    },
+    "5000": {
+      "taskCount": 5000,
+      "compute": {
+        "filterToday": {
+          "ms": 1,
+          "n": 83
+        },
+        "filterOpen": {
+          "ms": 0.4000000022351742,
+          "n": 4000
+        },
+        "searchTitle": {
+          "ms": 1.8999999985098839,
+          "n": 715
+        },
+        "priorityFilter": {
+          "ms": 0.5,
+          "n": 1667
+        },
+        "combinedFilter": {
+          "ms": 0.6000000014901161,
+          "n": 1743
+        },
+        "sortAll": {
+          "ms": 14.599999997764826,
+          "n": 5000
+        },
+        "todayStats": {
+          "ms": 1.800000000745058,
+          "n": 2182
+        },
+        "last7Day": {
+          "ms": 1.5,
+          "n": 0
+        },
+        "groupedRenderPrep": {
+          "ms": 20.800000000745058,
+          "n": 4020
+        },
+        "habitLogsFilter": {
+          "ms": 0.09999999776482582,
+          "n": 17
+        }
+      },
+      "toggleEndToEnd": {
+        "repeats": [
+          2063.2,
+          2327.6,
+          4155.3,
+          2322.8,
+          4195.9
+        ],
+        "median": 2327.6,
+        "max": 4195.9,
+        "min": 2063.2
+      },
+      "toggleClickToPutStart": {
+        "repeats": [
+          2013,
+          2155.9,
+          2356.6,
+          2266,
+          2399.2
+        ],
+        "median": 2266,
+        "max": 2399.2,
+        "min": 2013
+      },
+      "togglePutDuration": {
+        "repeats": [
+          50.2,
+          171.7,
+          1798.7,
+          56.8,
+          1796.7
+        ],
+        "median": 171.7,
+        "max": 1798.7,
+        "min": 50.2
+      }
+    },
+    "10000": {
+      "taskCount": 10000,
+      "compute": {
+        "filterToday": {
+          "ms": 1.7999999970197678,
+          "n": 167
+        },
+        "filterOpen": {
+          "ms": 1.2000000029802322,
+          "n": 8000
+        },
+        "searchTitle": {
+          "ms": 3.7999999970197678,
+          "n": 1429
+        },
+        "priorityFilter": {
+          "ms": 0.7000000029802322,
+          "n": 3334
+        },
+        "combinedFilter": {
+          "ms": 1.199999999254942,
+          "n": 3497
+        },
+        "sortAll": {
+          "ms": 43.80000000074506,
+          "n": 10000
+        },
+        "todayStats": {
+          "ms": 3.899999998509884,
+          "n": 4342
+        },
+        "last7Day": {
+          "ms": 15.100000001490116,
+          "n": 0
+        },
+        "groupedRenderPrep": {
+          "ms": 45.600000001490116,
+          "n": 8020
+        },
+        "habitLogsFilter": {
+          "ms": 0.19999999925494194,
+          "n": 34
+        }
+      },
+      "toggleEndToEnd": {
+        "repeats": [
+          7759.4,
+          11566.8,
+          7413.1,
+          8202,
+          9724.1
+        ],
+        "median": 8202,
+        "max": 11566.8,
+        "min": 7413.1
+      },
+      "toggleClickToPutStart": {
+        "repeats": [
+          4532.5,
+          7708.7,
+          4408.6,
+          4777.4,
+          5895.6
+        ],
+        "median": 4777.4,
+        "max": 7708.7,
+        "min": 4408.6
+      },
+      "togglePutDuration": {
+        "repeats": [
+          3226.9,
+          3858.1,
+          3004.5,
+          3424.6,
+          3828.5
+        ],
+        "median": 3424.6,
+        "max": 3858.1,
+        "min": 3004.5
+      }
+    }
+  },
+  "consistency": {
+    "scale": 5000,
+    "repeats": 5,
+    "createFailures": 0,
+    "scenarios": {
+      "createThenLeaveWithinDebounce": {
+        "passes": 5,
+        "total": 5,
+        "raw": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "createThenLeaveAfterDebounce": {
+        "passes": 5,
+        "total": 5,
+        "raw": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "modifyThenLeaveImmediately": {
+        "passes": 5,
+        "total": 5,
+        "raw": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "tabSwitchAndReturn": {
+        "passes": 5,
+        "total": 5,
+        "raw": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    }
+  }
+}

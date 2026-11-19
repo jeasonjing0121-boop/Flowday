@@ -1,0 +1,17 @@
+﻿FlowDay 5.0-a B5test.1（Android 测试包，非发布包）— 校验值清单
+生成时间：2026-11-19 19:18:59 (Asia/Shanghai) · 分支 phase5.0-b5
+
+[APK]
+file      : release/android/b5test/FlowDay-5.0-a-B5test.1.apk
+bytes     : 4853194
+size      : 4.63 MB
+sha256    : 61645357097356541026dbe67a3dc1966166fecab5d3208ac308ad15ed9c6de4
+package   : app.flowday.beta.b5test
+version   : 5.0-a-b5test.1 (versionCode 101)
+buildBase : 01587bc75401ea49043fd411d29867fb67b5d36d (phase5.0-b5)
+signing   : Debug 测试证书 CN=Android Debug（非 Beta / 非发布密钥）
+cert fp   : 69:0C:A0:B2:7D:36:8F:12:F9:35:22:90:ED:8B:B3:C4:04:58:04:64:E2:47:8D:57:B0:BE:3B:69:6C:1F:D0:92
+
+[隔离说明]
+- 与 app.flowday.beta (Beta.2, versionCode 2) 包名不同，可并存安装，数据目录独立
+- 未使用 F:\AndroidSdk-keystore 下的 Beta/发布密钥（构建时 FLOWDAY_SIGNING_PROPS 已移除）

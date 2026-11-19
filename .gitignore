@@ -1,0 +1,50 @@
+# 依赖与构建产物
+node_modules
+dist
+build-report
+
+# 本地缓存与临时文件
+.tmp
+.npm-cache
+*.log
+*.tsbuildinfo
+coverage
+
+# 环境变量与凭证（只允许示例文件入库）
+.env
+.env.*
+!.env.example
+*.local
+*.pem
+*.key
+
+# 编辑器/系统
+.DS_Store
+.vscode
+.idea
+
+# Android（Capacitor）构建产物与本地签名配置（keystore/密码绝不入库）
+.secrets/
+android/.gradle/
+android/build/
+android/app/build/
+android/capacitor-cordova-android-plugins/build/
+android/local.properties
+signing.properties
+
+# 一次性补丁脚本（已应用完毕，仅本地留痕，不入库）
+scripts/_*.py
+tools/_*.py
+
+# Android Beta 构建产物（APK 为可复现工件，不入库；分发以 release/android 下文件为准）
+release/android/*.apk
+
+# Beta.2 视觉证据：原始全量截图体积大，不入库；提交 docs/phase5.0/lg-evidence/curated 精选版
+docs/phase5.0/lg-evidence/before/*.png
+docs/phase5.0/lg-evidence/after/*.png
+docs/phase5.0/lg-evidence/before/anim/
+docs/phase5.0/lg-evidence/after/anim/
+docs/phase5.0/lg-evidence/contrast/*.png
+
+# B5.1 测试 APK（二进制不入库，仅保留 SHA256.txt 与报告）
+release/android/b5test/*.apk

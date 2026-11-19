@@ -1,0 +1,183 @@
+{
+  "generatedAt": "2026-11-15T05:30:20.761Z",
+  "browser": "Edge headless via CDP",
+  "passed": 35,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Modal 打开后初始焦点在第一个表单控件（任务标题）",
+      "pass": true,
+      "detail": "{\"tag\":\"input\",\"id\":\"task-title\",\"label\":\"\",\"text\":\"\",\"isMain\":false,\"inDialog\":true,\"dialogKind\":\"modal\"}"
+    },
+    {
+      "name": "Tab 在弹窗内循环（12 次均未逃逸）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Shift+Tab 反向循环（12 次均未逃逸）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Escape 关闭弹窗",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "关闭后焦点恢复到原触发按钮（新建任务）",
+      "pass": true,
+      "detail": "{\"tag\":\"button\",\"id\":\"\",\"label\":\"\",\"text\":\"新建任务\",\"isMain\":false,\"inDialog\":false,\"dialogKind\":null}"
+    },
+    {
+      "name": "确认框（alertdialog）打开后焦点在取消按钮",
+      "pass": true,
+      "detail": "{\"tag\":\"button\",\"id\":\"\",\"label\":\"\",\"text\":\"取消\",\"isMain\":false,\"inDialog\":true,\"dialogKind\":\"confirm\"}"
+    },
+    {
+      "name": "触发元素卸载后焦点回退到 main（不丢失）",
+      "pass": true,
+      "detail": "{\"tag\":\"main\",\"id\":\"fd-main\",\"label\":\"\",\"text\":\"全部任务共 2 · 待办 2 · 已完成 0新建全部待办已完成全部优先级P1 紧\",\"isMain\":true,\"inDialog\":false,\"dialogKind\":null}"
+    },
+    {
+      "name": "导入预览弹窗：初始焦点在弹窗内",
+      "pass": true,
+      "detail": "{\"tag\":\"button\",\"id\":\"\",\"label\":\"关闭\",\"text\":\"\",\"isMain\":false,\"inDialog\":true,\"dialogKind\":\"modal\"}"
+    },
+    {
+      "name": "多层浮层：确认框叠加在预览弹窗之上且焦点位于最顶层",
+      "pass": true,
+      "detail": "{\"count\":2,\"kind\":\"confirm\",\"focusInsideTop\":true}"
+    },
+    {
+      "name": "顶层弹窗内 Tab 循环不落入下层弹窗/背景",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "关闭叠加层后焦点回到下层弹窗",
+      "pass": true,
+      "detail": "{\"tag\":\"button\",\"id\":\"\",\"label\":\"关闭\",\"text\":\"\",\"isMain\":false,\"inDialog\":true,\"dialogKind\":\"modal\"}"
+    },
+    {
+      "name": "账户菜单：Enter 打开后焦点在首个 menuitem",
+      "pass": true,
+      "detail": "{\"open\":true,\"firstIsMenuItem\":true,\"focusedText\":\"设置\"}"
+    },
+    {
+      "name": "菜单：ArrowDown 移动焦点",
+      "pass": true,
+      "detail": "切换到深色"
+    },
+    {
+      "name": "菜单：Escape 关闭并把焦点还给触发按钮",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "所有按钮均有可访问名称",
+      "pass": true,
+      "detail": "unnamed=0"
+    },
+    {
+      "name": "关键图标按钮具备中文可访问名称（含弹窗关闭）",
+      "pass": true,
+      "detail": "{\"want\":4,\"found\":4,\"labels\":[\"关闭\",\"编辑任务\",\"删除任务\",\"账户菜单\"]}"
+    },
+    {
+      "name": "校验失败：aria-invalid + aria-describedby + role=alert + 焦点回到输入",
+      "pass": true,
+      "detail": "{\"invalid\":true,\"describedby\":true,\"errRole\":\"alert\",\"errText\":\"请先写一个任务标题\",\"focused\":true}"
+    },
+    {
+      "name": "Toast：polite live region + role=status 播报",
+      "pass": true,
+      "detail": "{\"found\":true,\"live\":\"polite\",\"itemRole\":\"status\",\"text\":\"已导出备份文件（含 SHA-256 校验\"}"
+    },
+    {
+      "name": "首个 Tab 焦点为「跳到主要内容」跳转链接",
+      "pass": true,
+      "detail": "{\"tag\":\"a\",\"id\":\"\",\"label\":\"\",\"text\":\"跳到主要内容\",\"isMain\":false,\"inDialog\":false,\"dialogKind\":null}"
+    },
+    {
+      "name": "跳转链接把焦点送到 main",
+      "pass": true,
+      "detail": "{\"tag\":\"main\",\"id\":\"fd-main\",\"label\":\"\",\"text\":\"下午好，无障碍脏状态5今天共 2 件事，已完成 0 件，还有 2 件待处理周日 \",\"isMain\":true,\"inDialog\":false,\"dialogKind\":null}"
+    },
+    {
+      "name": "Tab 可到达主导航（任务入口）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "Enter 激活导航后路由切换到 /tasks",
+      "pass": true,
+      "detail": "/tasks"
+    },
+    {
+      "name": "reduced-motion：弹窗动画时长为 0（≤0.02s）",
+      "pass": true,
+      "detail": "{\"duration\":\"1e-05s\",\"transition\":\"1e-05s\"}"
+    },
+    {
+      "name": "320px：6 个页面无横向溢出（Reflow）",
+      "pass": true,
+      "detail": "0,0,0,0,0,0"
+    },
+    {
+      "name": "200% 缩放等价视口（640px）：无内容丢失/横向溢出",
+      "pass": true,
+      "detail": "0,0,0"
+    },
+    {
+      "name": "触控目标均 ≥24×24",
+      "pass": true,
+      "detail": "{\"smallTargets\":[],\"draftDiag\":{\"draft\":false,\"banner\":false,\"status\":\"idle\",\"rev\":3}}"
+    },
+    {
+      "name": "浅/深色主题关键文本对比度满足 AA",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "K1 纯键盘创建任务",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "K2 纯键盘完成任务",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "K3 纯键盘编辑任务标题",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "K4 纯键盘切换状态筛选",
+      "pass": true,
+      "detail": "[{\"t\":\"全部\",\"p\":\"false\"},{\"t\":\"待办\",\"p\":\"false\"},{\"t\":\"已完成\",\"p\":\"true\"}]"
+    },
+    {
+      "name": "K5 纯键盘完成习惯打卡",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "K6 纯键盘切换主题",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "AX 树：弹窗暴露 dialog 角色且可访问名称为标题",
+      "pass": true,
+      "detail": "{\"role\":\"dialog\",\"name\":\"新建任务\"}"
+    },
+    {
+      "name": "AX 树：导航 landmark 有名称且存在标题层级",
+      "pass": true,
+      "detail": "{\"nav\":\"主导航\",\"headings\":5}"
+    }
+  ]
+}

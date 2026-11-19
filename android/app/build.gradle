@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+
+// Phase 5.0-a Android Beta：签名配置从本地受保护文件读取（不入库、不进日志）。
+// 通过环境变量 FLOWDAY_SIGNING_PROPS 指定 properties 文件路径；缺失时 release 不配置签名，
+// 构建脚本会拒绝产出未签名的 release 包。
+def flowdaySigningProps = System.getenv('FLOWDAY_SIGNING_PROPS')
+def flowdaySigning = null
+if (flowdaySigningProps) {
+    def propsFile = file(flowdaySigningProps)
+    if (propsFile.exists()) {
+        flowdaySigning = new Properties()
+        propsFile.withInputStream { flowdaySigning.load(it) }
+    }
+}
+
+// Phase 5.0-B5.1：B5 测试包隔离开关（仅当 FLOWDAY_B5TEST=1 时生效）。
+// 默认（未设置）时所有值保持正式 Beta 配置，release 签名配置不受影响。
+def flowdayB5Test = System.getenv('FLOWDAY_B5TEST') == '1'
+
+android {
+    namespace = "app.flowday.beta"
+    compileSdk = rootProject.ext.compileSdkVersion
+    // 固定使用本地已部署的 build-tools，避免 AGP 自动下载其他版本
+    buildToolsVersion = "36.0.0"
+    defaultConfig {
+        applicationId "app.flowday.beta"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 2
+        versionName "5.0-a-beta.2"
+        if (flowdayB5Test) {
+            // B5.1 隔离：独立包名（与 Beta.2 并存安装）+ 独立版本号（不触碰正式发布值）
+            applicationIdSuffix ".b5test"
+            versionCode 101
+            versionName "5.0-a-b5test.1"
+        }
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        aaptOptions {
+             // Files and dirs to omit from the packaged assets dir, modified to accommodate modern web apps.
+             // Default: https://android.googlesource.com/platform/frameworks/base/+/282e181b58cf72b6ca770dc7ca5f91f135444502/tools/aapt/AaptAssets.cpp#61
+            ignoreAssetsPattern = '!.svn:!.git:!.ds_store:!*.scc:.*:!CVS:!thumbs.db:!picasa.ini:!*~'
+        }
+    }
+    if (flowdaySigning != null) {
+        signingConfigs {
+            release {
+                storeFile file(flowdaySigning['storeFile'])
+                storePassword flowdaySigning['storePassword']
+                keyAlias flowdaySigning['keyAlias']
+                keyPassword flowdaySigning['keyPassword']
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            if (flowdaySigning != null) {
+                signingConfig signingConfigs.release
+            }
+        }
+    }
+}
+
+repositories {
+    flatDir{
+        dirs '../capacitor-cordova-android-plugins/src/main/libs', 'libs'
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "androidx.appcompat:appcompat:$androidxAppCompatVersion"
+    implementation "androidx.coordinatorlayout:coordinatorlayout:$androidxCoordinatorLayoutVersion"
+    implementation "androidx.core:core-splashscreen:$coreSplashScreenVersion"
+    implementation project(':capacitor-android')
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test.ext:junit:$androidxJunitVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$androidxEspressoCoreVersion"
+    implementation project(':capacitor-cordova-android-plugins')
+}
+
+apply from: 'capacitor.build.gradle'
+
+try {
+    def servicesJSON = file('google-services.json')
+    if (servicesJSON.text) {
+        apply plugin: 'com.google.gms.google-services'
+    }
+} catch(Exception e) {
+    logger.info("google-services.json not found, google-services plugin not applied. Push Notifications won't work")
+}

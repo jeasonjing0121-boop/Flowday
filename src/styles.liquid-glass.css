@@ -1,0 +1,868 @@
+/* ============================================================================
+   FlowDay Liquid Glass System v2（Phase 5.0-a Beta.2）
+   ----------------------------------------------------------------------------
+   与 v1（Glassmorphism）的本质区别：
+     1) 三层材质分离：L1 动态液态玻璃（导航/浮层/关键控件）/ L2 标准内容材质 / L3 环境光层
+     2) 边缘折射：conic 渐变折射环 + 顶部透镜光带 + 底部厚度阴影（GPU 合成，无 SVG/Canvas 滤镜）
+     3) 环境响应：--lg-ambient 由运行时采样内容色驱动，玻璃材质随之染色与提亮
+     4) 流体交互：底部导航/分段控件使用真实形态位移（FLIP 胶囊），按压产生体积变化
+     5) 可读性优先：L2 不使用 backdrop-filter；L1 也保持 tint 下限，深浅主题分别校准
+   约束：不替换既有 Token 与类名（保留测试契约），仅在本层覆盖与增强。
+   ========================================================================== */
+
+/* ---------------------------------------------------------------- Token ---- */
+:root {
+  /* 环境色（RGB 三元组，由 src/lib/liquidGlass.ts 运行时写入） */
+  --lg-ambient: 92 112 160;
+  --lg-ambient-soft: 190 196 210;
+  --lg-ambient-strength: 8%;
+  --lg-ambient-glow: 12%;
+  /* 亮度标尺：1 = 浅色环境，0 = 深色环境（JS 写入） */
+  --lg-lum: 1;
+  --lg-scroll: 0;
+
+  /* 材质底色（regular / clear 两套变体） */
+  --lg-tint-regular: rgba(255, 255, 255, 0.58);
+  --lg-tint-clear: rgba(255, 255, 255, 0.42);
+  --lg-tint-heavy: rgba(252, 252, 254, 0.78);
+  --lg-tint-paper: #fbfbfd;
+
+  /* 模糊与饱和（L1 才允许 backdrop-filter） */
+  --lg-blur-l1: 22px;
+  --lg-blur-l1-sm: 16px;
+  --lg-blur-l3: 34px;
+  --lg-sat-l1: 185%;
+  --lg-bright-l1: 1.06;
+
+  /* 边缘折射与内光 */
+  --lg-edge-hi: rgba(255, 255, 255, 0.95);
+  --lg-edge-mid: rgba(255, 255, 255, 0.42);
+  --lg-edge-lo: rgba(255, 255, 255, 0.04);
+  --lg-edge-w: 1.25px;
+  --lg-inner-top: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  --lg-inner-bottom: inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+  --lg-inner-glow: inset 0 0 22px -12px rgba(255, 255, 255, 0.85);
+  --lg-thickness: inset 0 -12px 20px -16px rgba(24, 28, 44, 0.28);
+  --lg-rim: inset 0 0 0 1px rgba(255, 255, 255, 0.26);
+  --lg-hairline: 0 0 0 0.5px rgba(72, 82, 112, 0.1);
+  --lg-thickness-line: inset 0 -1px 0 rgba(72, 82, 112, 0.1);
+
+  /* 阴影（随滚动进度加深，见 --lg-scroll 使用处） */
+  --lg-shadow-rest: 0 1px 2px rgba(22, 26, 40, 0.05);
+  --lg-shadow-float: 0 calc(10px + var(--lg-scroll) * 8px) calc(26px + var(--lg-scroll) * 14px) -18px rgba(22, 26, 40, 0.34);
+  --lg-shadow-modal: 0 42px 96px -42px rgba(16, 20, 34, 0.5);
+
+  /* 圆角与动效 */
+  --lg-r-l1: 26px;
+  --lg-r-l1-sm: 20px;
+  --lg-r-l2: 22px;
+  --lg-r-l3: 30px;
+  --lg-ease-liquid: cubic-bezier(0.22, 1.02, 0.28, 1);
+  --lg-ease-press: cubic-bezier(0.3, 0, 0.2, 1);
+  --lg-dur-morph: 420ms;
+  --lg-dur-press: 140ms;
+  --lg-dur-sweep: 720ms;
+
+  /* 安全区（原生 WindowInsets 写入；Web 回退到 env()） */
+  --lg-safe-top: env(safe-area-inset-top, 0px);
+  --lg-safe-bottom: env(safe-area-inset-bottom, 0px);
+  --lg-safe-left: env(safe-area-inset-left, 0px);
+  --lg-safe-right: env(safe-area-inset-right, 0px);
+  --lg-ime: 0px;
+  /* B2 布局度量：由 src/lib/insets.ts 实测写入（回退值保证首帧可用） */
+  --fd-nav-gap: 12px;
+  --fd-nav-h: 58px;
+  --fd-vvh: 100dvh;
+  /* B3：键盘覆盖高度（由 src/lib/insets.ts 从 visualViewport 推导，adjustResize 时为 0） */
+  --fd-kb: 0px;
+}
+
+[data-theme="dark"] {
+  --lg-tint-regular: rgba(26, 28, 38, 0.56);
+  --lg-tint-clear: rgba(22, 24, 34, 0.4);
+  --lg-tint-heavy: rgba(20, 22, 30, 0.78);
+  --lg-tint-paper: #0b0d14;
+  --lg-sat-l1: 165%;
+  --lg-bright-l1: 0.94;
+  --lg-edge-hi: rgba(255, 255, 255, 0.5);
+  --lg-edge-mid: rgba(255, 255, 255, 0.16);
+  --lg-edge-lo: rgba(255, 255, 255, 0.02);
+  --lg-inner-top: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  --lg-inner-bottom: inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+  --lg-inner-glow: inset 0 0 24px -14px rgba(160, 190, 255, 0.4);
+  --lg-thickness: inset 0 -14px 24px -18px rgba(0, 0, 0, 0.7);
+  --lg-rim: inset 0 0 0 1px rgba(255, 255, 255, 0.09);
+  --lg-hairline: 0 0 0 0.5px rgba(0, 0, 0, 0.5);
+  --lg-thickness-line: inset 0 -1px 0 rgba(255, 255, 255, 0.05);
+  --lg-shadow-rest: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --lg-shadow-float: 0 calc(12px + var(--lg-scroll) * 10px) calc(30px + var(--lg-scroll) * 16px) -20px rgba(0, 0, 0, 0.8);
+  --lg-shadow-modal: 0 44px 100px -44px rgba(0, 0, 0, 0.9);
+}
+
+/* ------------------------------------------------- L3 环境层（背景与光） --- */
+/* 背景：低饱和环境渐变 + 两枚柔光 + 极细颗粒（消除 banding，提供可折射内容） */
+body {
+  background-color: var(--fd-paper);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E"),
+    radial-gradient(120% 80% at 8% -10%, rgba(255, 236, 218, 0.55), transparent 58%),
+    radial-gradient(90% 70% at 100% 0%, rgba(214, 226, 255, 0.5), transparent 60%),
+    radial-gradient(70% 60% at 52% 112%, rgba(255, 214, 232, 0.38), transparent 64%),
+    linear-gradient(168deg, #f7f7fa 0%, #f2f3f8 46%, #eef0f6 100%);
+  background-attachment: fixed;
+}
+[data-theme="dark"] body {
+  background-color: #05060a;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.16'/%3E%3C/svg%3E"),
+    radial-gradient(110% 76% at 6% -8%, rgba(46, 62, 122, 0.5), transparent 60%),
+    radial-gradient(90% 66% at 100% 4%, rgba(96, 58, 120, 0.42), transparent 62%),
+    radial-gradient(70% 58% at 46% 114%, rgba(20, 76, 96, 0.4), transparent 66%),
+    linear-gradient(172deg, #06070c 0%, #080a12 44%, #05060a 100%);
+}
+
+/* ============================================================ Layer 1 =====
+   L1 动态液态玻璃：导航 / 头部 / 底部胶囊 / 菜单 / Popover / Toast /
+   Segmented / FAB / 弹窗。全部共享同一材质管线。 */
+.lg-l1 {
+  isolation: isolate;
+  border-radius: var(--lg-radius, var(--lg-r-l1));
+  background-color: color-mix(in srgb, rgb(var(--lg-ambient)) var(--lg-ambient-strength), var(--lg-tint-regular));
+  background-image:
+    radial-gradient(130% 90% at 16% -18%, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0) 62%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.04) 46%, rgba(255, 255, 255, 0.16) 100%),
+    linear-gradient(102deg, rgb(var(--lg-ambient) / var(--lg-ambient-glow)) 0%, transparent 52%);
+  border: 1px solid transparent; /* 由折射环承担描边 */
+  box-shadow:
+    var(--lg-inner-top),
+    var(--lg-inner-bottom),
+    var(--lg-inner-glow),
+    var(--lg-thickness),
+    var(--lg-thickness-line),
+    var(--lg-rim),
+    var(--lg-shadow-rest),
+    var(--lg-shadow-float),
+    var(--lg-hairline);
+  -webkit-backdrop-filter: blur(var(--lg-blur-l1)) saturate(var(--lg-sat-l1)) brightness(var(--lg-bright-l1));
+  backdrop-filter: blur(var(--lg-blur-l1)) saturate(var(--lg-sat-l1)) brightness(var(--lg-bright-l1));
+}
+[data-theme="dark"] .lg-l1 {
+  background-image:
+    radial-gradient(130% 90% at 16% -18%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.015) 46%, rgba(255, 255, 255, 0.05) 100%),
+    linear-gradient(102deg, rgb(var(--lg-ambient) / 14%) 0%, transparent 56%);
+}
+
+/* 说明：L1 不声明 position（Tailwind 工具类在 @layer utilities 中，
+   非分层规则会压过它）；需要定位的宿主组件在 JSX 上显式加 relative/fixed。 */
+
+/* 边缘折射环：conic 渐变模拟光线绕边缘的明暗转折（左上最亮、右下反向高光） */
+.lg-l1::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--lg-edge-w);
+  background: conic-gradient(
+    from 210deg,
+    var(--lg-edge-hi) 0deg,
+    var(--lg-edge-mid) 48deg,
+    var(--lg-edge-lo) 126deg,
+    color-mix(in srgb, var(--lg-edge-mid) 70%, rgb(var(--lg-ambient))) 168deg,
+    var(--lg-edge-lo) 212deg,
+    var(--lg-edge-mid) 268deg,
+    var(--lg-edge-hi) 318deg,
+    var(--lg-edge-hi) 360deg
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 0.9;
+}
+/* 顶部透镜光带：模拟玻璃厚度的折射压缩（screen 混合，仅顶部 46%） */
+.lg-l1::after {
+  content: "";
+  position: absolute;
+  inset: 1px 1px auto 1px;
+  height: 46%;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.14) 54%, rgba(255, 255, 255, 0) 100%);
+  -webkit-mask-image: radial-gradient(130% 104% at 50% -6%, #000 46%, transparent 92%);
+  mask-image: radial-gradient(130% 104% at 50% -6%, #000 46%, transparent 92%);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.85;
+}
+[data-theme="dark"] .lg-l1::after {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.03) 58%, transparent 100%);
+  opacity: 0.7;
+}
+
+/* clear 变体：更通透（用于覆盖在图像/渐变之上的关键控件） */
+.lg-l1-clear {
+  background-color: color-mix(in srgb, rgb(var(--lg-ambient)) 10%, var(--lg-tint-clear));
+  --lg-blur-l1: 18px;
+}
+/* heavy 变体：信息密度高的浮层（菜单/Toast），可读性优先 */
+.lg-l1-heavy {
+  background-color: color-mix(in srgb, rgb(var(--lg-ambient)) 10%, var(--lg-tint-heavy));
+  --lg-blur-l1: 26px;
+}
+
+/* ---- 把既有组件类映射到 L1 材质管线（保持类名契约） ---- */
+.fd-glass-nav {
+  /* 旧变量保留用于测试契约；实际材质由 lg-l1 接管 */
+  --fd-glass-nav-blur: 22px;
+}
+.sidebar-liquid,
+.header-liquid,
+.tabbar-liquid,
+.menu-liquid,
+.toast-liquid {
+  border-radius: var(--lg-radius, var(--lg-r-l1));
+}
+
+/* 顶部 header：悬浮、随滚动加深阴影（--lg-scroll 由 JS 写入） */
+.header-liquid {
+  --lg-radius: 24px;
+}
+
+/* 桌面侧边栏：L1 材质 + 更柔和的空间纵深（替换旧 fd-stack 薄片） */
+.sidebar-liquid {
+  --lg-radius: 30px;
+  border-radius: 30px;
+}
+
+/* 移动端底部胶囊 */
+.tabbar-liquid {
+  --lg-radius: 26px;
+  border-radius: 26px;
+  /* B2：安全区只由定位偏移承担一次；高度只由内容（h-14）决定，
+     这样 --fd-nav-h 实测值与"实际占用屏幕高度"一致，内容预留才能算准。 */
+  padding-bottom: 0;
+}
+
+/* ============================================================ Layer 2 =====
+   L2 标准内容材质：不透明底为主，弱渐变 + 内光 + 柔和投影；不使用 backdrop-filter。
+   保证长列表与大数据量下的可读性与滚动性能。 */
+.fd-card {
+  border-radius: var(--lg-r-l2);
+  border: 1px solid color-mix(in srgb, var(--fd-line) 58%, transparent);
+  background-color: color-mix(in srgb, rgb(var(--lg-ambient)) 2.5%, var(--fd-surface));
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(255, 255, 255, 0.2) 38%, rgba(255, 255, 255, 0) 62%),
+    radial-gradient(140% 100% at 0% -30%, rgb(var(--lg-ambient) / 9%), transparent 58%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(72, 82, 112, 0.05),
+    0 1px 1px rgba(22, 26, 40, 0.04),
+    0 3px 8px -4px rgba(22, 26, 40, 0.08),
+    0 18px 36px -28px rgba(22, 26, 40, 0.35);
+  padding: 1rem;
+}
+[data-theme="dark"] .fd-card {
+  border-color: color-mix(in srgb, var(--fd-line) 82%, transparent);
+  background-color: var(--fd-surface);
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0) 42%),
+    radial-gradient(120% 90% at 0% -20%, rgb(var(--lg-ambient) / 10%), transparent 60%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 18px 36px -28px rgba(0, 0, 0, 0.7);
+}
+
+/* L2 内的次级面板（时间线条目、筛选条等）：轻量 sunken 材质 */
+.lg-inset {
+  background-color: color-mix(in srgb, var(--fd-sunken) 88%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fd-line) 60%, transparent);
+  box-shadow: inset 0 1px 1px rgba(22, 26, 40, 0.04);
+}
+[data-theme="dark"] .lg-inset {
+  background-color: rgba(255, 255, 255, 0.035);
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.35);
+}
+
+/* ==================================================== 交互：流体形态 ===== */
+/* 底部导航选中胶囊：真实位移的液态块（位置/宽度由 AppShell FLIP 写入） */
+.lg-tab-pill {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 0;
+  border-radius: 18px;
+  background:
+    radial-gradient(120% 120% at 30% 0%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.45) 55%, rgba(255, 255, 255, 0.25));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.35),
+    0 6px 16px -8px rgba(22, 26, 40, 0.36),
+    0 0 0 1px rgba(255, 255, 255, 0.3);
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform var(--lg-dur-morph) var(--lg-ease-liquid),
+    width var(--lg-dur-morph) var(--lg-ease-liquid),
+    opacity 180ms linear;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lg-tab-pill {
+    transition: none;
+  }
+}
+[data-theme="dark"] .lg-tab-pill {
+  background: radial-gradient(120% 120% at 30% 0%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.06) 60%, rgba(255, 255, 255, 0.03));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    0 8px 18px -10px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+/* 选中项不再自带背景（由胶囊承担），保留图标/文字强调 */
+[data-lg-pill='1'] .fd-tab-active {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
+}
+[data-lg-pill='1'] .fd-tab-active svg {
+  transform: translateY(-1px) scale(1.04);
+}
+[data-lg-pill='1'] nav a svg {
+  transition: transform var(--lg-dur-morph) var(--lg-ease-liquid), opacity 200ms linear;
+}
+
+/* Segmented Control：滑动指示器（位置由 UI.tsx 测量写入） */
+.fd-seg {
+  position: relative;
+  isolation: isolate;
+}
+.fd-seg-ind {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 0;
+  border-radius: 10px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.7));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 4px 10px -6px rgba(22, 26, 40, 0.35),
+    0 0 0 1px rgba(22, 26, 40, 0.06);
+  transform: translate3d(0, 0, 0);
+  transition:
+    transform var(--lg-dur-morph) var(--lg-ease-liquid),
+    width var(--lg-dur-morph) var(--lg-ease-liquid);
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform, width;
+}
+[data-theme="dark"] .fd-seg-ind {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.08));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 6px 14px -8px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+.fd-seg > button {
+  position: relative;
+  z-index: 1;
+}
+/* 指示器存在时，按钮自身的选中底色去掉，改为文字/图标强调 */
+.fd-seg[data-lg-seg='1'] > button[aria-pressed='true'] {
+  background: transparent !important;
+  box-shadow: none !important;
+  font-weight: 600;
+}
+
+/* 菜单 / Popover：从锚点生长（origin 由组件内联写入），带轻微模糊过渡 */
+.lg-menu-pop {
+  transform-origin: var(--lg-menu-origin, top right);
+  animation: lg-menu-grow var(--lg-dur-morph) var(--lg-ease-liquid);
+}
+@keyframes lg-menu-grow {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(-6px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+/* 弹窗：底部抽屉式生长（移动端）/ 中心轻浮起（桌面），关闭有回缩 */
+.lg-sheet {
+  animation: lg-sheet-in var(--lg-dur-morph) var(--lg-ease-liquid);
+}
+@keyframes lg-sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+.lg-sheet-exit {
+  animation: lg-sheet-out 180ms cubic-bezier(0.4, 0, 1, 1) forwards;
+}
+@keyframes lg-sheet-out {
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.99);
+    filter: blur(3px);
+  }
+}
+/* 轻遮罩：用于下拉菜单（只压暗，不做全屏模糊，避免遮挡与 GPU 开销） */
+.lg-scrim-soft {
+  background-color: rgba(24, 27, 40, 0.14);
+  animation: lg-scrim-in 180ms linear;
+}
+
+.lg-scrim-liquid {
+  background:
+    radial-gradient(120% 90% at 50% 0%, rgb(var(--lg-ambient) / 18%), transparent 62%),
+    var(--fd-scrim);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  backdrop-filter: blur(10px) saturate(120%);
+  animation: lg-scrim-in 260ms linear;
+}
+@keyframes lg-scrim-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Toast：从下向上弹入，带轻微横向压缩释放（液态弹性） */
+.lg-toast-out-liquid {
+  animation: lg-toast-in 340ms var(--lg-ease-liquid);
+}
+@keyframes lg-toast-in {
+  0% {
+    opacity: 0;
+    transform: translateY(14px) scale(0.94, 0.88);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-2px) scale(1.01, 1.02);
+  }
+  100% {
+    transform: none;
+  }
+}
+
+/* 按钮：液态按压（体积变化 + 内光增强），不使用机械的透明度突变 */
+.fd-btn-primary {
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 58%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    0 1px 2px rgba(22, 26, 40, 0.16),
+    0 10px 22px -14px rgba(22, 26, 40, 0.45);
+  transition:
+    transform var(--lg-dur-press) var(--lg-ease-press),
+    box-shadow var(--lg-dur-press) var(--lg-ease-press),
+    filter 160ms linear;
+}
+.fd-btn-primary:active {
+  transform: scale(0.972) translateY(0.5px);
+  filter: brightness(1.04);
+  box-shadow:
+    inset 0 2px 6px rgba(0, 0, 0, 0.18),
+    0 1px 1px rgba(22, 26, 40, 0.12);
+}
+.fd-btn-soft {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    0 1px 2px rgba(22, 26, 40, 0.05);
+  transition:
+    transform var(--lg-dur-press) var(--lg-ease-press),
+    box-shadow var(--lg-dur-press) var(--lg-ease-press),
+    background-color 160ms linear;
+}
+.fd-btn-soft:active {
+  transform: scale(0.975);
+  box-shadow: inset 0 2px 6px rgba(22, 26, 40, 0.1);
+}
+[data-theme="dark"] .fd-btn-soft {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* 卡片按压（任务行/项目卡）：轻微内凹，非透明度闪烁 */
+.lg-pressable {
+  transition:
+    transform var(--lg-dur-press) var(--lg-ease-press),
+    box-shadow var(--lg-dur-press) var(--lg-ease-press),
+    background-color 160ms linear;
+}
+.lg-pressable:active {
+  transform: scale(0.995);
+}
+
+/* ============================================== Android 安全区与布局 ===== */
+/* 原生 WindowInsets 写入 --lg-safe-*；Web 端回退 env()。 */
+.lg-safe-frame {
+  padding-top: calc(var(--lg-safe-top) + 12px);
+  padding-left: max(var(--lg-safe-left), 0px);
+  padding-right: max(var(--lg-safe-right), 0px);
+}
+@media (max-width: 1023px) {
+  .lg-safe-frame {
+    padding-top: calc(var(--lg-safe-top) + 12px);
+  }
+}
+.lg-safe-bottom {
+  padding-bottom: max(var(--lg-safe-bottom), 0px);
+}
+
+/* 移动端内容预留（B2 重写）
+   预留 = 实测导航高度 + 2×导航间距 + 底部安全区 + 键盘高度 + 8px 呼吸余量
+   导航占用 = 导航高度（不含 safe） + 导航间距 + safe + ime
+   → 任一 safe / 任一字体缩放 / 任一 ime 下，预留恒大于占用（余量 = 间距 + 8px）。 */
+@media (max-width: 1023px) {
+  .lg-main-mobile {
+    padding-bottom: calc(
+      var(--fd-nav-h) + var(--fd-nav-gap) * 2 + var(--lg-safe-bottom) + 8px
+    );
+  }
+}
+
+/* 320–360 窄屏：收紧栅格与字号，避免横向溢出 */
+@media (max-width: 360px) {
+  :root {
+    --lg-blur-l1: 16px;
+    --lg-blur-l3: 24px;
+  }
+  body {
+    font-size: 13.5px;
+  }
+  .fd-card {
+    padding: 0.8rem;
+  }
+}
+
+/* ================================================= 性能与降级策略 ======== */
+/* 移动端降低模糊半径（GPU 成本随半径平方增长） */
+@media (max-width: 767px) {
+  :root {
+    --lg-blur-l1: var(--lg-blur-l1-sm);
+    --lg-blur-l3: 26px;
+  }
+}
+
+/* 低性能兜底：不支持 backdrop-filter 时使用高不透明材质 */
+@supports not ((backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px))) {
+  .lg-l1 {
+    background-color: var(--lg-tint-heavy);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* 降低透明度（系统辅助功能）：切换为实底材质，去掉折射光带 */
+@media (prefers-reduced-transparency: reduce) {
+  .lg-l1 {
+    background-color: var(--lg-tint-heavy) !important;
+    background-image: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+  .lg-l1::after {
+    display: none;
+  }
+}
+
+/* 高对比度：强化边框与文字，弱化光带 */
+@media (prefers-contrast: more) {
+  .lg-l1 {
+    border: 1px solid var(--fd-ink);
+    box-shadow: none;
+    background-image: none;
+  }
+  .lg-l1::before,
+  .lg-l1::after {
+    display: none;
+  }
+  .fd-card {
+    border-color: var(--fd-ink-2);
+  }
+}
+
+/* 降低动效：保留状态变化，去掉位移/模糊/弹簧 */
+@media (prefers-reduced-motion: reduce) {
+  .lg-menu-pop,
+  .lg-sheet,
+  .lg-sheet-exit,
+  .lg-toast-out-liquid,
+  /* 轻遮罩：用于下拉菜单（只压暗，不做全屏模糊，避免遮挡与 GPU 开销） */
+.lg-scrim-soft {
+  background-color: rgba(24, 27, 40, 0.14);
+  animation: lg-scrim-in 180ms linear;
+}
+
+.lg-scrim-liquid {
+    animation: none !important;
+  }
+  .fd-btn-primary:active,
+  .fd-btn-soft:active,
+  .lg-pressable:active {
+    transform: none;
+  }
+  .fd-seg-ind,
+  [data-lg-pill='1'] nav a svg {
+    transition: none !important;
+  }
+}
+
+/* ================================================ 组件细节（v2 补充） ==== */
+/* L3 浮层材质：更强模糊与更实的底，用于弹窗/确认框 */
+.lg-l3 {
+  --lg-blur-l1: var(--lg-blur-l3);
+  --lg-radius: var(--lg-r-l3);
+  border-radius: var(--lg-r-l3);
+  background-color: color-mix(in srgb, rgb(var(--lg-ambient)) 12%, var(--lg-tint-heavy));
+}
+/* 圆形浮控件（头像球 / 移动端 FAB） */
+.lg-orb,
+.lg-fab {
+  --lg-radius: 999px;
+  border-radius: 999px;
+}
+.lg-fab {
+  transition:
+    transform var(--lg-dur-press) var(--lg-ease-press),
+    box-shadow var(--lg-dur-press) var(--lg-ease-press);
+}
+.lg-fab:active {
+  transform: scale(0.94);
+}
+.lg-orb:active {
+  transform: scale(0.95);
+}
+
+/* 底部导航：胶囊在内容之下 */
+.lg-pill-host > * {
+  position: relative;
+  z-index: 1;
+}
+.lg-pill-host > .lg-tab-pill {
+  position: absolute;
+  z-index: 0;
+}
+[data-lg-pill='1'] .fd-tab-active {
+  color: var(--fd-accent-ink);
+}
+[data-theme='dark'] [data-lg-pill='1'] .fd-tab-active {
+  color: #dbe6ff;
+}
+
+/* Toast 语义色：保留状态可辨识（L1 材质 + 语义描边） */
+[data-fd-toast='success'].lg-l1 {
+  border-color: color-mix(in srgb, var(--fd-success) 46%, transparent);
+}
+[data-fd-toast='error'].lg-l1 {
+  border-color: color-mix(in srgb, var(--fd-danger) 50%, transparent);
+}
+[data-fd-toast='info'].lg-l1 {
+  border-color: color-mix(in srgb, var(--fd-info) 42%, transparent);
+}
+
+/* 桌面导航选中项：液态内光块（与移动端胶囊呼应） */
+.fd-nav-item-active {
+  background-image:
+    radial-gradient(120% 120% at 18% 0%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.5) 58%, rgba(255, 255, 255, 0.28));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    0 6px 16px -12px rgba(22, 26, 40, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.32);
+}
+[data-theme='dark'] .fd-nav-item-active {
+  background-image: radial-gradient(120% 120% at 18% 0%, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.06) 60%, rgba(255, 255, 255, 0.02));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 8px 18px -14px rgba(0, 0, 0, 0.8),
+    0 0 0 1px rgba(255, 255, 255, 0.06);
+}
+
+/* 表单控件：内凹 + 顶部内光，避免“纯白块”观感 */
+.fd-input {
+  background-color: color-mix(in srgb, var(--fd-sunken) 72%, transparent);
+  border-color: color-mix(in srgb, var(--fd-line) 78%, transparent);
+  box-shadow: inset 0 1px 2px rgba(22, 26, 40, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  transition: box-shadow 180ms var(--lg-ease-press), border-color 160ms linear, background-color 160ms linear;
+}
+.fd-input:focus,
+.fd-input:focus-visible {
+  background-color: var(--fd-surface);
+  box-shadow: inset 0 1px 2px rgba(22, 26, 40, 0.05), 0 0 0 3px color-mix(in srgb, var(--fd-accent) 18%, transparent);
+}
+[data-theme='dark'] .fd-input {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* 设置页开关：液态滑块 */
+[role='switch'] span {
+  box-shadow: 0 1px 2px rgba(22, 26, 40, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  transition: left 260ms var(--lg-ease-liquid), transform 200ms var(--lg-ease-press);
+}
+
+/* 粘性头部 / 底部胶囊：安全区偏移（Android 状态栏与手势条不被遮挡） */
+[data-lg-app='1'] header.sticky {
+  top: calc(var(--lg-safe-top) + 12px);
+}
+[data-lg-app='1'] nav[aria-label='底部导航'] {
+  /* B2：唯一一次安全区计算 —— 四边同时生效（横屏刘海/三键侧栏也不压住导航） */
+  left: calc(var(--lg-safe-left) + var(--fd-nav-gap));
+  right: calc(var(--lg-safe-right) + var(--fd-nav-gap));
+  bottom: calc(var(--lg-safe-bottom) + var(--fd-nav-gap));
+  transition: transform 240ms var(--lg-ease-liquid), opacity 200ms linear;
+}
+/* B3：键盘弹出 → 导航滑出屏幕（而不是被 nav 的 bottom 抬到屏幕中部）。
+   --fd-kb 只来自 visualViewport，adjustResize 已被系统压缩视口时为 0，因此不会双重位移。 */
+[data-lg-app='1'][data-lg-kb='1'] nav[aria-label='底部导航'] {
+  transform: translate3d(0, 165%, 0);
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* 深色模式下卡片内部分隔线更克制，避免“白线过亮” */
+[data-theme='dark'] .divide-line-2 > * + * {
+  border-color: rgba(255, 255, 255, 0.06);
+}
+/* ------------------------------------------------ 玻璃上文字可读性校准 ----
+   依据 docs/phase5.0/lg-evidence/contrast/contrast-report.json 的实测对比度：
+   浅色玻璃底约 #e6e7e9–#e9e6ef，深色玻璃底约 #2f3547–#4c5161。
+   目标：普通文字 ≥ 4.5:1（WCAG AA）。 */
+.header-liquid,
+.sidebar-liquid,
+.tabbar-liquid {
+  --fd-ink-2: #56565d;
+  --fd-ink-3: #5b5b62;
+}
+[data-theme='dark'] .header-liquid,
+[data-theme='dark'] .sidebar-liquid,
+[data-theme='dark'] .tabbar-liquid {
+  --fd-ink-2: #d6d6de;
+  --fd-ink-3: #ccccd5;
+}
+/* 深色下选中项使用更亮的文字，保证高亮胶囊上仍有足够对比 */
+[data-theme='dark'] .sidebar-liquid .fd-nav-item-active {
+  color: #ffffff;
+}
+[data-theme='dark'] .tabbar-liquid .fd-tab-active {
+  color: #e6efff;
+}
+
+/* ------------------------------------------------ B2：响应式基础 ----------
+   Android WebView 会做 text autosizing，会让"字体缩放"测试结果不可预测；
+   显式关闭自动放大，但保留系统字体大小（rem 基数字号）与显示大小（density）。 */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+/* 文档级滚动容器：显式声明，避免厂商 WebView 把 body 当作独立滚动体 */
+body {
+  overscroll-behavior-y: none;
+}
+
+/* ================================================ B3：弹窗三段式 ========
+   Header 固定 / Body 独立滚动 / Footer 固定。
+   - overlay 的 padding-bottom = --fd-kb：键盘覆盖多少就抬多少（adjustResize 时其值为 0，
+     因为系统已经压缩了视口，所以不会出现双重位移）；
+   - panel 的 max-height 由 --fd-vvh（visualViewport 高度）推导：键盘弹出后自动变矮。 */
+.fd-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0;
+  padding-bottom: var(--fd-kb, 0px);
+}
+@media (min-width: 640px) {
+  .fd-modal-overlay {
+    align-items: center;
+    padding: 24px;
+    padding-bottom: calc(24px + var(--fd-kb, 0px));
+  }
+}
+
+.fd-modal-panel {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 0;
+  max-height: calc(var(--fd-vvh, 100dvh) - var(--lg-safe-top, 0px) - 16px);
+  overflow: hidden;
+  border-radius: var(--lg-r-l3) var(--lg-r-l3) 0 0;
+}
+@media (min-width: 640px) {
+  .fd-modal-panel {
+    max-width: 520px;
+    max-height: calc(var(--fd-vvh, 100dvh) - 48px);
+    border-radius: var(--lg-r-l3);
+  }
+}
+
+.fd-modal-head {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 20px 10px;
+}
+
+/* 唯一滚动区域：长表单在这里滚，头部与 footer 不动 */
+.fd-modal-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 6px 20px 14px;
+  scroll-padding-block: 16px 104px;
+}
+
+.fd-modal-foot {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 12px 20px calc(12px + max(0px, var(--lg-safe-bottom, 0px) - var(--fd-kb, 0px)));
+  border-top: 1px solid color-mix(in srgb, var(--fd-line) 70%, transparent);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.16));
+}
+[data-theme='dark'] .fd-modal-foot {
+  border-top-color: rgba(255, 255, 255, 0.08);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+}
+
+/* 确认框：同样受视口高度约束（窄屏/大字体下不越界） */
+.fd-confirm-panel {
+  max-height: calc(var(--fd-vvh, 100dvh) - var(--lg-safe-top, 0px) - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}

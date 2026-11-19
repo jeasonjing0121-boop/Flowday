@@ -1,0 +1,53 @@
+{
+  "meta": {
+    "phase": "4.1-production-reload",
+    "base": "http://127.0.0.1:4173",
+    "repeats": 5,
+    "browserVersion": "Edg/157.0.4341.60",
+    "note": "vite preview 生产构建；页面就绪判定：main + [data-fd-stats] 出现"
+  },
+  "bySize": {
+    "1000": {
+      "reloadToReady": {
+        "repeats": [
+          402.8,
+          138.1,
+          106.3,
+          81.3,
+          94.3
+        ],
+        "median": 106.3,
+        "max": 402.8,
+        "min": 81.3
+      }
+    },
+    "5000": {
+      "reloadToReady": {
+        "repeats": [
+          102.9,
+          130.8,
+          119.5,
+          131.9,
+          111.2
+        ],
+        "median": 119.5,
+        "max": 131.9,
+        "min": 102.9
+      }
+    },
+    "10000": {
+      "reloadToReady": {
+        "repeats": [
+          165.7,
+          222.2,
+          191.9,
+          216.8,
+          159.7
+        ],
+        "median": 191.9,
+        "max": 222.2,
+        "min": 159.7
+      }
+    }
+  }
+}

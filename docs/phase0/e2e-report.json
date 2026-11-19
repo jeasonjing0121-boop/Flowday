@@ -1,0 +1,165 @@
+{
+  "generatedAt": "2026-11-13T13:31:42.691Z",
+  "browser": "Edg/157.0.4341.57",
+  "baseUrl": "http://127.0.0.1:5173",
+  "viewportTested": [
+    "1440x900",
+    "390x844"
+  ],
+  "total": 30,
+  "passed": 30,
+  "failed": 0,
+  "consoleErrors": [],
+  "results": [
+    {
+      "name": "首页渲染出今日工作台",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "示例数据提示可见",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "首页无横向溢出",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "无 JS 运行时错误",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "打开新建任务弹窗并填写标题",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "点击「添加任务」成功",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "任务写入 LocalStorage",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "新任务出现在列表中",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "点击复选框标记完成",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可撤销完成",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "刷新页面后任务仍在（LocalStorage 持久化）",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "删除任务并从存储移除",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "点击「打卡今天」写入打卡记录",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "刷新后打卡记录仍在",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可撤销打卡",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "默认月视图显示月份标题",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可切换到周视图",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可切换到日视图",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可翻到下一月并刷新标题",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "可一键回到今天",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "助手页面显示演示模式说明",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "发送消息后生成提案卡",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "确认执行后真实写入任务",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "对话区显示已执行状态",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "侧边栏导航到「习惯」",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "页面标题随路由更新",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "移动端无横向溢出",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "移动端底部导航存在 5 个入口",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "底部导航固定在视口底部",
+      "pass": true,
+      "detail": "{\"found\":true,\"position\":\"fixed\",\"bottom\":912,\"innerH\":912}"
+    },
+    {
+      "name": "浏览器控制台/运行时无错误",
+      "pass": true,
+      "detail": ""
+    }
+  ]
+}

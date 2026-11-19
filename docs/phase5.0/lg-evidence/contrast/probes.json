@@ -1,0 +1,716 @@
+[
+  {
+    "scene": "today",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 0,
+    "role": "glass-header-title",
+    "rect": {
+      "x": 301,
+      "y": 19,
+      "w": 80,
+      "h": 24
+    },
+    "color": "rgb(29, 29, 31)",
+    "fontSize": 16,
+    "fontWeight": 600,
+    "text": "今日"
+  },
+  {
+    "scene": "today",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 1,
+    "role": "glass-header-meta",
+    "rect": {
+      "x": 301,
+      "y": 43,
+      "w": 80,
+      "h": 18
+    },
+    "color": "rgb(91, 91, 98)",
+    "fontSize": 11,
+    "fontWeight": 400,
+    "text": "11 月 18 日 周三"
+  },
+  {
+    "scene": "today",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 2,
+    "role": "glass-sidebar-label",
+    "rect": {
+      "x": 66,
+      "y": 103,
+      "w": 28,
+      "h": 20
+    },
+    "color": "rgb(29, 29, 31)",
+    "fontSize": 14,
+    "fontWeight": 500,
+    "text": "今日"
+  },
+  {
+    "scene": "today",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 3,
+    "role": "glass-sidebar-note",
+    "rect": {
+      "x": 25,
+      "y": 795,
+      "w": 206,
+      "h": 36
+    },
+    "color": "rgb(91, 91, 98)",
+    "fontSize": 10,
+    "fontWeight": 400,
+    "text": "IndexedDB 本地存储 · 数据只保存在这"
+  },
+  {
+    "scene": "today",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 4,
+    "role": "card-heading",
+    "rect": {
+      "x": 301,
+      "y": 182,
+      "w": 77,
+      "h": 20
+    },
+    "color": "rgb(29, 29, 31)",
+    "fontSize": 14,
+    "fontWeight": 600,
+    "text": "今日焦点"
+  },
+  {
+    "scene": "today",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 5,
+    "role": "card-body",
+    "rect": {
+      "x": 284,
+      "y": 92,
+      "w": 284,
+      "h": 33
+    },
+    "color": "rgb(29, 29, 31)",
+    "fontSize": 26,
+    "fontWeight": 700,
+    "text": "下午好，朋友"
+  },
+  {
+    "scene": "settings",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 6,
+    "role": "glass-header-title",
+    "rect": {
+      "x": 301,
+      "y": 19,
+      "w": 80,
+      "h": 24
+    },
+    "color": "rgb(29, 29, 31)",
+    "fontSize": 16,
+    "fontWeight": 600,
+    "text": "设置"
+  },
+  {
+    "scene": "settings",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 7,
+    "role": "glass-header-meta",
+    "rect": {
+      "x": 301,
+      "y": 43,
+      "w": 80,
+      "h": 18
+    },
+    "color": "rgb(91, 91, 98)",
+    "fontSize": 11,
+    "fontWeight": 400,
+    "text": "11 月 18 日 周三"
+  },
+  {
+    "scene": "settings",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 8,
+    "role": "glass-sidebar-label",
+    "rect": {
+      "x": 65,
+      "y": 102,
+      "w": 28,
+      "h": 20
+    },
+    "color": "rgb(86, 86, 93)",
+    "fontSize": 14,
+    "fontWeight": 400,
+    "text": "今日"
+  },
+  {
+    "scene": "settings",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 9,
+    "role": "glass-sidebar-note",
+    "rect": {
+      "x": 25,
+      "y": 795,
+      "w": 206,
+      "h": 36
+    },
+    "color": "rgb(91, 91, 98)",
+    "fontSize": 10,
+    "fontWeight": 400,
+    "text": "IndexedDB 本地存储 · 数据只保存在这"
+  },
+  {
+    "scene": "settings",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 10,
+    "role": "card-heading",
+    "rect": {
+      "x": 396,
+      "y": 109,
+      "w": 726,
+      "h": 20
+    },
+    "color": "rgb(29, 29, 31)",
+    "fontSize": 14,
+    "fontWeight": 600,
+    "text": "个人资料"
+  },
+  {
+    "scene": "settings",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 11,
+    "role": "card-body",
+    "rect": {
+      "x": 396,
+      "y": 209,
+      "w": 726,
+      "h": 18
+    },
+    "color": "rgb(107, 107, 112)",
+    "fontSize": 11,
+    "fontWeight": 400,
+    "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在"
+  },
+  {
+    "scene": "settings",
+    "theme": "light",
+    "viewport": "desktop",
+    "index": 12,
+    "role": "card-muted",
+    "rect": {
+      "x": 396,
+      "y": 209,
+      "w": 726,
+      "h": 18
+    },
+    "color": "rgb(107, 107, 112)",
+    "fontSize": 11,
+    "fontWeight": 400,
+    "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在"
+  },
+  {
+    "scene": "today",
+    "theme": "light",
+    "viewport": "mobile",
+    "index": 13,
+    "role": "glass-header-title",
+    "rect": {
+      "x": 63,
+      "y": 28,
+      "w": 30,
+      "h": 25
+    },
+    "color": "rgb(29, 29, 31)",
+    "fontSize": 15,
+    "fontWeight": 600,
+    "text": "今日"
+  },
+  {
+    "scene": "today",
+    "theme": "light",
+    "viewport": "mobile",
+    "index": 14,
+    "role": "card-heading",
+    "rect": {
+      "x": 33,
+      "y": 362,
+      "w": 77,
+      "h": 20
+    },
+    "color": "rgb(29, 29, 31)",
+    "fontSize": 14,
+    "fontWeight": 600,
+    "text": "今日焦点"
+  },
+  {
+    "scene": "today",
+    "theme": "light",
+    "viewport": "mobile",
+    "index": 15,
+    "role": "card-body",
+    "rect": {
+      "x": 16,
+      "y": 84,
+      "w": 284,
+      "h": 33
+    },
+    "color": "rgb(29, 29, 31)",
+    "fontSize": 26,
+    "fontWeight": 700,
+    "text": "下午好，朋友"
+  },
+  {
+    "scene": "today",
+    "theme": "light",
+    "viewport": "mobile",
+    "index": 16,
+    "role": "card-muted",
+    "rect": {
+      "x": 101,
+      "y": 214,
+      "w": 256,
+      "h": 16
+    },
+    "color": "rgb(107, 107, 112)",
+    "fontSize": 12,
+    "fontWeight": 400,
+    "text": "今日完成"
+  },
+  {
+    "scene": "settings",
+    "theme": "light",
+    "viewport": "mobile",
+    "index": 17,
+    "role": "glass-header-title",
+    "rect": {
+      "x": 63,
+      "y": 28,
+      "w": 30,
+      "h": 25
+    },
+    "color": "rgb(29, 29, 31)",
+    "fontSize": 15,
+    "fontWeight": 600,
+    "text": "设置"
+  },
+  {
+    "scene": "settings",
+    "theme": "light",
+    "viewport": "mobile",
+    "index": 18,
+    "role": "card-heading",
+    "rect": {
+      "x": 33,
+      "y": 101,
+      "w": 324,
+      "h": 20
+    },
+    "color": "rgb(29, 29, 31)",
+    "fontSize": 14,
+    "fontWeight": 600,
+    "text": "个人资料"
+  },
+  {
+    "scene": "settings",
+    "theme": "light",
+    "viewport": "mobile",
+    "index": 19,
+    "role": "card-body",
+    "rect": {
+      "x": 33,
+      "y": 201,
+      "w": 324,
+      "h": 18
+    },
+    "color": "rgb(107, 107, 112)",
+    "fontSize": 11,
+    "fontWeight": 400,
+    "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在"
+  },
+  {
+    "scene": "settings",
+    "theme": "light",
+    "viewport": "mobile",
+    "index": 20,
+    "role": "card-muted",
+    "rect": {
+      "x": 33,
+      "y": 201,
+      "w": 324,
+      "h": 18
+    },
+    "color": "rgb(107, 107, 112)",
+    "fontSize": 11,
+    "fontWeight": 400,
+    "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在"
+  },
+  {
+    "scene": "today",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 21,
+    "role": "glass-header-title",
+    "rect": {
+      "x": 301,
+      "y": 19,
+      "w": 80,
+      "h": 24
+    },
+    "color": "rgb(245, 245, 247)",
+    "fontSize": 16,
+    "fontWeight": 600,
+    "text": "今日"
+  },
+  {
+    "scene": "today",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 22,
+    "role": "glass-header-meta",
+    "rect": {
+      "x": 301,
+      "y": 43,
+      "w": 80,
+      "h": 18
+    },
+    "color": "rgb(189, 189, 198)",
+    "fontSize": 11,
+    "fontWeight": 400,
+    "text": "11 月 18 日 周三"
+  },
+  {
+    "scene": "today",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 23,
+    "role": "glass-sidebar-label",
+    "rect": {
+      "x": 66,
+      "y": 103,
+      "w": 28,
+      "h": 20
+    },
+    "color": "rgb(255, 255, 255)",
+    "fontSize": 14,
+    "fontWeight": 500,
+    "text": "今日"
+  },
+  {
+    "scene": "today",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 24,
+    "role": "glass-sidebar-note",
+    "rect": {
+      "x": 25,
+      "y": 795,
+      "w": 206,
+      "h": 36
+    },
+    "color": "rgb(189, 189, 198)",
+    "fontSize": 10,
+    "fontWeight": 400,
+    "text": "IndexedDB 本地存储 · 数据只保存在这"
+  },
+  {
+    "scene": "today",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 25,
+    "role": "card-heading",
+    "rect": {
+      "x": 301,
+      "y": 182,
+      "w": 77,
+      "h": 20
+    },
+    "color": "rgb(245, 245, 247)",
+    "fontSize": 14,
+    "fontWeight": 600,
+    "text": "今日焦点"
+  },
+  {
+    "scene": "today",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 26,
+    "role": "card-body",
+    "rect": {
+      "x": 284,
+      "y": 92,
+      "w": 284,
+      "h": 33
+    },
+    "color": "rgb(245, 245, 247)",
+    "fontSize": 26,
+    "fontWeight": 700,
+    "text": "下午好，朋友"
+  },
+  {
+    "scene": "settings",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 27,
+    "role": "glass-header-title",
+    "rect": {
+      "x": 301,
+      "y": 19,
+      "w": 80,
+      "h": 24
+    },
+    "color": "rgb(245, 245, 247)",
+    "fontSize": 16,
+    "fontWeight": 600,
+    "text": "设置"
+  },
+  {
+    "scene": "settings",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 28,
+    "role": "glass-header-meta",
+    "rect": {
+      "x": 301,
+      "y": 43,
+      "w": 80,
+      "h": 18
+    },
+    "color": "rgb(189, 189, 198)",
+    "fontSize": 11,
+    "fontWeight": 400,
+    "text": "11 月 18 日 周三"
+  },
+  {
+    "scene": "settings",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 29,
+    "role": "glass-sidebar-label",
+    "rect": {
+      "x": 65,
+      "y": 102,
+      "w": 28,
+      "h": 20
+    },
+    "color": "rgb(201, 201, 209)",
+    "fontSize": 14,
+    "fontWeight": 400,
+    "text": "今日"
+  },
+  {
+    "scene": "settings",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 30,
+    "role": "glass-sidebar-note",
+    "rect": {
+      "x": 25,
+      "y": 795,
+      "w": 206,
+      "h": 36
+    },
+    "color": "rgb(189, 189, 198)",
+    "fontSize": 10,
+    "fontWeight": 400,
+    "text": "IndexedDB 本地存储 · 数据只保存在这"
+  },
+  {
+    "scene": "settings",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 31,
+    "role": "card-heading",
+    "rect": {
+      "x": 396,
+      "y": 109,
+      "w": 726,
+      "h": 20
+    },
+    "color": "rgb(245, 245, 247)",
+    "fontSize": 14,
+    "fontWeight": 600,
+    "text": "个人资料"
+  },
+  {
+    "scene": "settings",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 32,
+    "role": "card-body",
+    "rect": {
+      "x": 396,
+      "y": 209,
+      "w": 726,
+      "h": 18
+    },
+    "color": "rgb(154, 154, 160)",
+    "fontSize": 11,
+    "fontWeight": 400,
+    "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在"
+  },
+  {
+    "scene": "settings",
+    "theme": "dark",
+    "viewport": "desktop",
+    "index": 33,
+    "role": "card-muted",
+    "rect": {
+      "x": 396,
+      "y": 209,
+      "w": 726,
+      "h": 18
+    },
+    "color": "rgb(154, 154, 160)",
+    "fontSize": 11,
+    "fontWeight": 400,
+    "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在"
+  },
+  {
+    "scene": "today",
+    "theme": "dark",
+    "viewport": "mobile",
+    "index": 34,
+    "role": "glass-header-title",
+    "rect": {
+      "x": 63,
+      "y": 28,
+      "w": 30,
+      "h": 25
+    },
+    "color": "rgb(245, 245, 247)",
+    "fontSize": 15,
+    "fontWeight": 600,
+    "text": "今日"
+  },
+  {
+    "scene": "today",
+    "theme": "dark",
+    "viewport": "mobile",
+    "index": 35,
+    "role": "card-heading",
+    "rect": {
+      "x": 33,
+      "y": 362,
+      "w": 77,
+      "h": 20
+    },
+    "color": "rgb(245, 245, 247)",
+    "fontSize": 14,
+    "fontWeight": 600,
+    "text": "今日焦点"
+  },
+  {
+    "scene": "today",
+    "theme": "dark",
+    "viewport": "mobile",
+    "index": 36,
+    "role": "card-body",
+    "rect": {
+      "x": 16,
+      "y": 84,
+      "w": 284,
+      "h": 33
+    },
+    "color": "rgb(245, 245, 247)",
+    "fontSize": 26,
+    "fontWeight": 700,
+    "text": "下午好，朋友"
+  },
+  {
+    "scene": "today",
+    "theme": "dark",
+    "viewport": "mobile",
+    "index": 37,
+    "role": "card-muted",
+    "rect": {
+      "x": 101,
+      "y": 214,
+      "w": 256,
+      "h": 16
+    },
+    "color": "rgb(154, 154, 160)",
+    "fontSize": 12,
+    "fontWeight": 400,
+    "text": "今日完成"
+  },
+  {
+    "scene": "settings",
+    "theme": "dark",
+    "viewport": "mobile",
+    "index": 38,
+    "role": "glass-header-title",
+    "rect": {
+      "x": 63,
+      "y": 28,
+      "w": 30,
+      "h": 25
+    },
+    "color": "rgb(245, 245, 247)",
+    "fontSize": 15,
+    "fontWeight": 600,
+    "text": "设置"
+  },
+  {
+    "scene": "settings",
+    "theme": "dark",
+    "viewport": "mobile",
+    "index": 39,
+    "role": "card-heading",
+    "rect": {
+      "x": 33,
+      "y": 101,
+      "w": 324,
+      "h": 20
+    },
+    "color": "rgb(245, 245, 247)",
+    "fontSize": 14,
+    "fontWeight": 600,
+    "text": "个人资料"
+  },
+  {
+    "scene": "settings",
+    "theme": "dark",
+    "viewport": "mobile",
+    "index": 40,
+    "role": "card-body",
+    "rect": {
+      "x": 33,
+      "y": 201,
+      "w": 324,
+      "h": 18
+    },
+    "color": "rgb(154, 154, 160)",
+    "fontSize": 11,
+    "fontWeight": 400,
+    "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在"
+  },
+  {
+    "scene": "settings",
+    "theme": "dark",
+    "viewport": "mobile",
+    "index": 41,
+    "role": "card-muted",
+    "rect": {
+      "x": 33,
+      "y": 201,
+      "w": 324,
+      "h": 18
+    },
+    "color": "rgb(154, 154, 160)",
+    "fontSize": 11,
+    "fontWeight": 400,
+    "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在"
+  }
+]

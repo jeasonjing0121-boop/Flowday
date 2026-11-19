@@ -1,0 +1,45 @@
+{
+  "shots": [
+    "v3-light-desktop-today.png",
+    "v3-light-closeup-header.png",
+    "v3-light-closeup-card.png",
+    "v3-light-desktop-tasks.png",
+    "v3-dark-desktop-today.png",
+    "v3-dark-closeup-header.png",
+    "v3-dark-closeup-card.png",
+    "v3-dark-desktop-tasks.png",
+    "v3-light-mobile-today.png",
+    "v3-light-closeup-tabbar.png",
+    "v3-dark-mobile-today.png",
+    "v3-dark-closeup-tabbar.png",
+    "v3-dark-closeup-header.png",
+    "v3-light-mobile-modal.png",
+    "v3-light-closeup-modal.png",
+    "v3-btn-normal.png",
+    "v3-btn-hover.png",
+    "v3-btn-active.png"
+  ],
+  "frames": 12,
+  "backdrop": {
+    "mobileHome": {
+      "elements": 6,
+      "elementBefore": 2,
+      "names": [
+        "fd-glass.fd-glass-nav",
+        "fd-nav-item.fd-nav-item-active",
+        "fd-glass.fd-glass-nav",
+        "lg-l1.lg-l1-heavy",
+        "lg-l1.lg-l1-clear",
+        "fd-glass.fd-glass-nav"
+      ]
+    }
+  },
+  "notes": {
+    "buttonStates": true,
+    "specularShift": {
+      "scroll": "0.688",
+      "shift": "matrix(1, 0, 0, 1, 3.008, -2.064)",
+      "headerShift": "matrix(1, 0, 0, 1, 3.008, -2.064)"
+    }
+  }
+}

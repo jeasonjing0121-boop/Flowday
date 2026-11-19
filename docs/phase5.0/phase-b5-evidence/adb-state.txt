@@ -1,0 +1,4 @@
+﻿adb: Android Debug Bridge version 1.0.41 Version 33.0.0-8141338 Installed as C:\WINDOWS\system32\adb.exe
+devices:
+List of devices attached
+

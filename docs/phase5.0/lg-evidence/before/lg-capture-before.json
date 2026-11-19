@@ -1,0 +1,262 @@
+{
+  "generatedAt": "2026-11-18T04:26:09.919Z",
+  "title": "lg-capture-before",
+  "passed": 47,
+  "failed": 2,
+  "total": 49,
+  "results": [
+    {
+      "name": "[light 1440px] /today 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1440 clientWidth=1440"
+    },
+    {
+      "name": "[light 1440px] /tasks 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1425 clientWidth=1425"
+    },
+    {
+      "name": "[light 1440px] /projects 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1440 clientWidth=1440"
+    },
+    {
+      "name": "[light 1440px] /calendar 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1425 clientWidth=1425"
+    },
+    {
+      "name": "[light 1440px] /habits 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1440 clientWidth=1440"
+    },
+    {
+      "name": "[light 1440px] /settings 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1425 clientWidth=1425"
+    },
+    {
+      "name": "[light 1280px] /today 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1280 clientWidth=1280"
+    },
+    {
+      "name": "[light 1280px] /tasks 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1265 clientWidth=1265"
+    },
+    {
+      "name": "[light 1280px] /projects 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1280 clientWidth=1280"
+    },
+    {
+      "name": "[light 1280px] /calendar 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1265 clientWidth=1265"
+    },
+    {
+      "name": "[light 1280px] /habits 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1280 clientWidth=1280"
+    },
+    {
+      "name": "[light 1280px] /settings 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1265 clientWidth=1265"
+    },
+    {
+      "name": "[light 768px] /today 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=753 clientWidth=753"
+    },
+    {
+      "name": "[light 768px] /tasks 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=753 clientWidth=753"
+    },
+    {
+      "name": "[light 768px] /projects 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=768 clientWidth=768"
+    },
+    {
+      "name": "[light 768px] /calendar 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=753 clientWidth=753"
+    },
+    {
+      "name": "[light 768px] /habits 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=768 clientWidth=768"
+    },
+    {
+      "name": "[light 768px] /settings 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=753 clientWidth=753"
+    },
+    {
+      "name": "[light 390px] /today 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=390 clientWidth=390"
+    },
+    {
+      "name": "[light 390px] /tasks 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=390 clientWidth=390"
+    },
+    {
+      "name": "[light 390px] /settings 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=390 clientWidth=390"
+    },
+    {
+      "name": "[light 320px] /today 无横向溢出",
+      "pass": false,
+      "detail": "scrollWidth=358 clientWidth=320"
+    },
+    {
+      "name": "[light 320px] /tasks 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=320 clientWidth=320"
+    },
+    {
+      "name": "[light 320px] /settings 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=320 clientWidth=320"
+    },
+    {
+      "name": "[dark 1440px] /today 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1440 clientWidth=1440"
+    },
+    {
+      "name": "[dark 1440px] /tasks 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1425 clientWidth=1425"
+    },
+    {
+      "name": "[dark 1440px] /projects 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1440 clientWidth=1440"
+    },
+    {
+      "name": "[dark 1440px] /calendar 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1425 clientWidth=1425"
+    },
+    {
+      "name": "[dark 1440px] /habits 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1440 clientWidth=1440"
+    },
+    {
+      "name": "[dark 1440px] /settings 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1425 clientWidth=1425"
+    },
+    {
+      "name": "[dark 1280px] /today 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1280 clientWidth=1280"
+    },
+    {
+      "name": "[dark 1280px] /tasks 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1265 clientWidth=1265"
+    },
+    {
+      "name": "[dark 1280px] /projects 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1280 clientWidth=1280"
+    },
+    {
+      "name": "[dark 1280px] /calendar 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1265 clientWidth=1265"
+    },
+    {
+      "name": "[dark 1280px] /habits 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1280 clientWidth=1280"
+    },
+    {
+      "name": "[dark 1280px] /settings 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=1265 clientWidth=1265"
+    },
+    {
+      "name": "[dark 768px] /today 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=753 clientWidth=753"
+    },
+    {
+      "name": "[dark 768px] /tasks 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=753 clientWidth=753"
+    },
+    {
+      "name": "[dark 768px] /projects 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=768 clientWidth=768"
+    },
+    {
+      "name": "[dark 768px] /calendar 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=753 clientWidth=753"
+    },
+    {
+      "name": "[dark 768px] /habits 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=768 clientWidth=768"
+    },
+    {
+      "name": "[dark 768px] /settings 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=753 clientWidth=753"
+    },
+    {
+      "name": "[dark 390px] /today 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=390 clientWidth=390"
+    },
+    {
+      "name": "[dark 390px] /tasks 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=390 clientWidth=390"
+    },
+    {
+      "name": "[dark 390px] /settings 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=390 clientWidth=390"
+    },
+    {
+      "name": "[dark 320px] /today 无横向溢出",
+      "pass": false,
+      "detail": "scrollWidth=358 clientWidth=320"
+    },
+    {
+      "name": "[dark 320px] /tasks 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=320 clientWidth=320"
+    },
+    {
+      "name": "[dark 320px] /settings 无横向溢出",
+      "pass": true,
+      "detail": "scrollWidth=320 clientWidth=320"
+    },
+    {
+      "name": "滚动期间无明显长帧（>32ms 占比 <10%）",
+      "pass": true,
+      "detail": "{\"samples\":193,\"avgMs\":16.58,\"p95Ms\":16.7,\"longFrames\":0}"
+    }
+  ],
+  "base": "http://127.0.0.1:5173",
+  "label": "before",
+  "perf": {
+    "samples": 193,
+    "avgMs": 16.58,
+    "p95Ms": 16.7,
+    "longFrames": 0
+  }
+}

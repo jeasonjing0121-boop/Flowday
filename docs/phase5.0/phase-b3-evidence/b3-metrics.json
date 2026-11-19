@@ -1,0 +1,235 @@
+{
+  "noKb": {
+    "label": "T1 无键盘",
+    "kb": 0,
+    "vvBottom": 2121,
+    "panelBottom": 844,
+    "footBottom": 843,
+    "saveBtnBottom": 783,
+    "saveVisible": true
+  },
+  "kbOpen": {
+    "label": "T2 键盘 320",
+    "kb": 320,
+    "vvBottom": 524,
+    "panelBottom": 524,
+    "footBottom": 523,
+    "saveBtnBottom": 511,
+    "saveVisible": true
+  },
+  "focus": [
+    {
+      "field": "task-title",
+      "inPanel": true,
+      "top": 123,
+      "bottom": 161,
+      "footTop": 462,
+      "visible": true
+    },
+    {
+      "field": "task-date",
+      "inPanel": true,
+      "top": 199,
+      "bottom": 237,
+      "footTop": 462,
+      "visible": true
+    },
+    {
+      "field": "task-time",
+      "inPanel": true,
+      "top": 199,
+      "bottom": 238,
+      "footTop": 462,
+      "visible": true
+    },
+    {
+      "field": "task-duration",
+      "inPanel": false,
+      "top": 199,
+      "bottom": 238,
+      "footTop": 462,
+      "visible": true
+    },
+    {
+      "field": "task-project",
+      "inPanel": true,
+      "top": 259,
+      "bottom": 298,
+      "footTop": 462,
+      "visible": true
+    },
+    {
+      "field": "task-notes",
+      "inPanel": true,
+      "top": 366,
+      "bottom": 442,
+      "footTop": 462,
+      "visible": true
+    }
+  ],
+  "longForm": {
+    "label": "T4 长表单 150%",
+    "kb": 320,
+    "vvBottom": 524,
+    "panelBottom": 524,
+    "footBottom": 523,
+    "saveBtnBottom": 511,
+    "saveVisible": true
+  },
+  "kbClosed": {
+    "label": "T6 键盘收起",
+    "kb": 0,
+    "vvBottom": 844,
+    "panelBottom": 844,
+    "footBottom": 843,
+    "saveBtnBottom": 783,
+    "saveVisible": true
+  },
+  "widths": [
+    {
+      "label": "T7 320px kb=0",
+      "kb": 0,
+      "vvBottom": 1960,
+      "panelBottom": 640,
+      "footBottom": 639,
+      "saveBtnBottom": 579,
+      "saveVisible": true
+    },
+    {
+      "label": "T7 320px kb=320",
+      "kb": 320,
+      "vvBottom": 320,
+      "panelBottom": 320,
+      "footBottom": 319,
+      "saveBtnBottom": 307,
+      "saveVisible": true
+    },
+    {
+      "label": "T7 360px kb=0",
+      "kb": 0,
+      "vvBottom": 2178,
+      "panelBottom": 800,
+      "footBottom": 799,
+      "saveBtnBottom": 739,
+      "saveVisible": true
+    },
+    {
+      "label": "T7 360px kb=320",
+      "kb": 320,
+      "vvBottom": 480,
+      "panelBottom": 480,
+      "footBottom": 479,
+      "saveBtnBottom": 467,
+      "saveVisible": true
+    },
+    {
+      "label": "T7 390px kb=0",
+      "kb": 0,
+      "vvBottom": 2121,
+      "panelBottom": 844,
+      "footBottom": 843,
+      "saveBtnBottom": 783,
+      "saveVisible": true
+    },
+    {
+      "label": "T7 390px kb=320",
+      "kb": 320,
+      "vvBottom": 524,
+      "panelBottom": 524,
+      "footBottom": 523,
+      "saveBtnBottom": 511,
+      "saveVisible": true
+    },
+    {
+      "label": "T7 412px kb=0",
+      "kb": 0,
+      "vvBottom": 2177,
+      "panelBottom": 915,
+      "footBottom": 914,
+      "saveBtnBottom": 854,
+      "saveVisible": true
+    },
+    {
+      "label": "T7 412px kb=320",
+      "kb": 320,
+      "vvBottom": 595,
+      "panelBottom": 595,
+      "footBottom": 594,
+      "saveBtnBottom": 582,
+      "saveVisible": true
+    }
+  ],
+  "navModes": [
+    {
+      "mode": "手势",
+      "safeBottom": 0,
+      "label": "T8 手势 + 键盘",
+      "kb": 320,
+      "vvBottom": 524,
+      "panelBottom": 524,
+      "footBottom": 523,
+      "saveBtnBottom": 511,
+      "saveVisible": true
+    },
+    {
+      "mode": "三键",
+      "safeBottom": 48,
+      "label": "T8 三键 + 键盘",
+      "kb": 320,
+      "vvBottom": 524,
+      "panelBottom": 524,
+      "footBottom": 523,
+      "saveBtnBottom": 511,
+      "saveVisible": true
+    }
+  ],
+  "landscape": [
+    {
+      "label": "T9 横屏无键盘",
+      "kb": 0,
+      "vvBottom": 453,
+      "panelBottom": 398,
+      "footBottom": 397,
+      "saveBtnBottom": 385,
+      "saveVisible": true
+    },
+    {
+      "label": "T9 横屏+键盘200",
+      "kb": 200,
+      "vvBottom": 190,
+      "panelBottom": 166,
+      "footBottom": 165,
+      "saveBtnBottom": 153,
+      "saveVisible": true
+    }
+  ],
+  "lifecycle": {
+    "beforeHidden": {
+      "kb": 320
+    },
+    "hiddenState": {
+      "kbHidden": "0px"
+    },
+    "afterVisible": {
+      "kb": 320,
+      "panelBottom": 524
+    }
+  },
+  "shots": [
+    "T1-no-keyboard.png",
+    "T2-keyboard-open.png",
+    "T3-focus-last-field.png",
+    "T4-long-form-150.png",
+    "T6-keyboard-closed.png",
+    "T7-320-nokb.png",
+    "T7-320-kb.png",
+    "T7-360-nokb.png",
+    "T7-390-nokb.png",
+    "T7-412-nokb.png",
+    "T7-412-kb.png",
+    "T8-gesture-kb.png",
+    "T8-3button-kb.png",
+    "T9-nokb.png",
+    "T9-kb.png"
+  ]
+}

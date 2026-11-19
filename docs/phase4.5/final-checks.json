@@ -1,0 +1,133 @@
+{
+  "generatedAt": "2026-11-15T05:52:17.832Z",
+  "base": "http://127.0.0.1:5173",
+  "passed": 25,
+  "failed": 0,
+  "results": [
+    {
+      "name": "页面缩放 200%：6 页面无横向溢出",
+      "pass": true,
+      "detail": "0,0,0,0,0,0"
+    },
+    {
+      "name": "页面缩放 200%：无文字被截断",
+      "pass": true,
+      "detail": "[]"
+    },
+    {
+      "name": "页面缩放 200%：弹窗在视口内且可滚动",
+      "pass": true,
+      "detail": "{\"found\":true,\"within\":true,\"scrollable\":false}"
+    },
+    {
+      "name": "文字放大 200%：无横向溢出",
+      "pass": true,
+      "detail": "{\"over\":0,\"blocked\":0,\"blockedLabels\":[],\"navOk\":true,\"buttons\":43}"
+    },
+    {
+      "name": "文字放大 200%：视口内按钮均可被点到（无遮挡）",
+      "pass": true,
+      "detail": "{\"over\":0,\"blocked\":0,\"blockedLabels\":[],\"navOk\":true,\"buttons\":43}"
+    },
+    {
+      "name": "文字放大 200%：可见导航链接仍可用",
+      "pass": true,
+      "detail": "{\"over\":0,\"blocked\":0,\"blockedLabels\":[],\"navOk\":true,\"buttons\":43}"
+    },
+    {
+      "name": "文字放大 200%：弹窗可滚动且操作按钮存在",
+      "pass": true,
+      "detail": "{\"found\":true,\"scrollable\":true,\"confirmVisibleAfterScroll\":true}"
+    },
+    {
+      "name": "键盘弹出（视口 390 高）：聚焦输入框仍在可视区",
+      "pass": true,
+      "detail": "{\"focusedTag\":\"textarea\",\"focusedId\":\"task-notes\",\"visible\":true,\"innerHeight\":390,\"dialogTop\":31,\"dialogScrollable\":true}"
+    },
+    {
+      "name": "键盘弹出时：确认按钮可通过弹窗滚动到达",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "键盘收起后布局正常（无溢出、弹窗保持）",
+      "pass": true,
+      "detail": "{\"over\":0,\"dialogOk\":true}"
+    },
+    {
+      "name": "1) 首次启动：示例数据提示 + 主界面渲染",
+      "pass": true,
+      "detail": "{\"demo\":true,\"hasMain\":true,\"tasks\":3}"
+    },
+    {
+      "name": "2) 页面导航：6 页标题正确",
+      "pass": true,
+      "detail": "{\"/today\":\"今日\",\"/tasks\":\"任务\",\"/calendar\":\"日历\",\"/habits\":\"习惯\",\"/assistant\":\"AI 助手 · Jing\",\"/settings\":\"设置\"}"
+    },
+    {
+      "name": "3) 创建任务：列表出现新任务",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "4) 编辑任务：标题更新",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "5) 完成/取消完成：aria-pressed 状态切换",
+      "pass": true,
+      "detail": "pressed=true"
+    },
+    {
+      "name": "6) 搜索与筛选：筛选计数出现并可清空",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "7) 日历：切换到周视图",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "8) 习惯：创建并打卡",
+      "pass": true,
+      "detail": "{\"modalReady\":true,\"typedValue\":\"终验习惯\",\"habitCreated\":true,\"habitChecked\":true,\"checkedState\":true}"
+    },
+    {
+      "name": "9) 统计：勾选后今日完成数变化",
+      "pass": true,
+      "detail": "1 → 0"
+    },
+    {
+      "name": "10) 主题：切换后跨页面持久生效",
+      "pass": true,
+      "detail": "{\"darkApplied\":true,\"darkPersisted\":true}"
+    },
+    {
+      "name": "11) 备份：导出→导入（校验和 verified，数据可恢复）",
+      "pass": true,
+      "detail": "{\"ok\":true,\"chip\":\"verified\"}"
+    },
+    {
+      "name": "12) 多标签：第二标签随第一标签更新且无冲突横幅",
+      "pass": true,
+      "detail": "{\"rev\":11,\"banner\":false}"
+    },
+    {
+      "name": "13) 键盘导航：skip link → main",
+      "pass": true,
+      "detail": "{\"skip\":true,\"mainFocused\":true}"
+    },
+    {
+      "name": "14) 移动端：底部导航 + 无溢出 + 侧栏隐藏",
+      "pass": true,
+      "detail": "{\"over\":0,\"bottomNav\":true,\"asideHidden\":true}"
+    },
+    {
+      "name": "15) 异常恢复：IDB 不可用时明确报错不白屏，恢复后数据完好",
+      "pass": true,
+      "detail": "{\"degraded\":{\"rendered\":true,\"persistence\":false,\"toast\":\"本地数据库不可用：当前环境不支持 IndexedDB；本次修改不会被保存\"},\"recoveredOk\":{\"persistence\":true,\"tasks\":1}}"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "generatedAt": "2026-11-15T05:28:12.000Z",
+  "base": "http://127.0.0.1:5173",
+  "results": [
+    {
+      "name": "S1 正常备份导入（校验和 verified + 确认后写入 + 备份时间真实展示）",
+      "pass": true,
+      "detail": "chip=verified exportedAt=2026-11-14T08:00:00.000Z txt=备份时间：2026/11/14 16:00:00"
+    },
+    {
+      "name": "S2 旧格式备份导入（标记未校验）",
+      "pass": true,
+      "detail": "chip=unverified-legacy"
+    },
+    {
+      "name": "S3 校验和错误拒绝导入（禁止继续）",
+      "pass": true,
+      "detail": "校验失败，已禁止导入：备份校验和不匹配：文件可能被修改或已损坏，已拒绝导入"
+    },
+    {
+      "name": "S4 未知格式版本拒绝导入",
+      "pass": true,
+      "detail": "校验失败，已禁止导入：备份格式版本 v2 高于当前应用支持的 v1，请升级应用后再导入"
+    },
+    {
+      "name": "S5 重复 ID 与非法字段修正提示",
+      "pass": true,
+      "detail": "{\"dup\":1,\"priority\":3,\"notes\":5000}"
+    },
+    {
+      "name": "S6 预览期间数据变化 → 冲突提示 + 禁用确认 + 无部分写入",
+      "pass": true,
+      "detail": "{\"conflictShown\":true,\"staleDisabled\":true,\"ghostRev\":5,\"revAfter\":5}"
+    },
+    {
+      "name": "S7 未保存修改时取消导入（数据不变）",
+      "pass": true,
+      "detail": "second=true"
+    },
+    {
+      "name": "S8 未保存修改时确认继续导入",
+      "pass": true,
+      "detail": "second=true"
+    },
+    {
+      "name": "S12 persist 真实状态展示与 API 一致",
+      "pass": true,
+      "detail": "api=false chip=not-granted"
+    },
+    {
+      "name": "S14 成功导出后记录并展示上次导出时间",
+      "pass": true,
+      "detail": "files=1"
+    },
+    {
+      "name": "S15 导出失败不更新导出时间",
+      "pass": true,
+      "detail": "key=null"
+    },
+    {
+      "name": "S16 移动端预览弹窗无横向溢出",
+      "pass": true,
+      "detail": "overflow=false"
+    },
+    {
+      "name": "S11 persist 已授权状态展示",
+      "pass": true,
+      "detail": "granted"
+    },
+    {
+      "name": "S13 persist 不支持状态展示（无申请按钮）",
+      "pass": true,
+      "detail": "unsupported"
+    }
+  ]
+}

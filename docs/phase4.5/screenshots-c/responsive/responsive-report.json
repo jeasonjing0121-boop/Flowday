@@ -1,0 +1,201 @@
+{
+  "generatedAt": "2026-11-15T02:54:07.659Z",
+  "widths": {
+    "390": {
+      "pages": {
+        "/today": {
+          "over": 0,
+          "offenders": []
+        },
+        "/tasks": {
+          "over": 0,
+          "offenders": []
+        },
+        "/calendar": {
+          "over": 0,
+          "offenders": []
+        },
+        "/habits": {
+          "over": 0,
+          "offenders": []
+        },
+        "/assistant": {
+          "over": 0,
+          "offenders": []
+        },
+        "/settings": {
+          "over": 0,
+          "offenders": []
+        }
+      },
+      "modal": {
+        "found": true,
+        "top": 287,
+        "bottom": 900,
+        "left": 0,
+        "right": 390,
+        "vw": 390,
+        "vh": 900,
+        "within": true,
+        "over": 0
+      },
+      "menu": {
+        "found": true,
+        "top": 66,
+        "right": 316,
+        "bottom": 176,
+        "vw": 390,
+        "vh": 900,
+        "clipped": false
+      },
+      "projectChips": {
+        "count": 3,
+        "texts": [
+          "产品迭代",
+          "个人成长",
+          "产品迭代"
+        ]
+      },
+      "projectSelect": {
+        "found": true,
+        "options": [
+          "未分类",
+          "产品迭代",
+          "个人成长"
+        ],
+        "label": "分类"
+      }
+    },
+    "768": {
+      "pages": {
+        "/today": {
+          "over": 0,
+          "offenders": []
+        },
+        "/tasks": {
+          "over": 0,
+          "offenders": []
+        },
+        "/calendar": {
+          "over": 0,
+          "offenders": []
+        },
+        "/habits": {
+          "over": 0,
+          "offenders": []
+        },
+        "/assistant": {
+          "over": 0,
+          "offenders": []
+        },
+        "/settings": {
+          "over": 0,
+          "offenders": []
+        }
+      },
+      "modal": {
+        "found": true,
+        "top": 213,
+        "bottom": 715,
+        "left": 142,
+        "right": 626,
+        "vw": 768,
+        "vh": 900,
+        "within": true,
+        "over": 0
+      },
+      "menu": {
+        "found": true,
+        "top": 62,
+        "right": 612,
+        "bottom": 168,
+        "vw": 768,
+        "vh": 900,
+        "clipped": false
+      },
+      "projectChips": {
+        "count": 3,
+        "texts": [
+          "产品迭代",
+          "个人成长",
+          "产品迭代"
+        ]
+      },
+      "projectSelect": {
+        "found": true,
+        "options": [
+          "未分类",
+          "产品迭代",
+          "个人成长"
+        ],
+        "label": "分类"
+      }
+    },
+    "1280": {
+      "pages": {
+        "/today": {
+          "over": 0,
+          "offenders": []
+        },
+        "/tasks": {
+          "over": 0,
+          "offenders": []
+        },
+        "/calendar": {
+          "over": 0,
+          "offenders": []
+        },
+        "/habits": {
+          "over": 0,
+          "offenders": []
+        },
+        "/assistant": {
+          "over": 0,
+          "offenders": []
+        },
+        "/settings": {
+          "over": 0,
+          "offenders": []
+        }
+      },
+      "modal": {
+        "found": true,
+        "top": 213,
+        "bottom": 715,
+        "left": 398,
+        "right": 882,
+        "vw": 1280,
+        "vh": 900,
+        "within": true,
+        "over": 0
+      },
+      "menu": {
+        "found": true,
+        "top": 62,
+        "right": 1124,
+        "bottom": 168,
+        "vw": 1280,
+        "vh": 900,
+        "clipped": false
+      },
+      "projectChips": {
+        "count": 3,
+        "texts": [
+          "产品迭代",
+          "个人成长",
+          "产品迭代"
+        ]
+      },
+      "projectSelect": {
+        "found": true,
+        "options": [
+          "未分类",
+          "产品迭代",
+          "个人成长"
+        ],
+        "label": "分类"
+      }
+    }
+  },
+  "dark390": "dark"
+}

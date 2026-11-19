@@ -1,0 +1,9 @@
+﻿{
+    "keystoreInRepo":  true,
+    "keystoreGitignored":  true,
+    "releaseSigningPropsExists":  true,
+    "releaseKeystoreExists":  true,
+    "signingEnvVarSetNow":  false,
+    "debugKeystoreExists":  false,
+    "releaseBlockConditional":  "signingConfigs.release 仅在 FLOWDAY_SIGNING_PROPS 指向的文件存在时配置"
+}

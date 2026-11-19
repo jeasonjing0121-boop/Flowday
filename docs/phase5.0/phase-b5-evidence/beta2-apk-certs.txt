@@ -1,0 +1,4 @@
+﻿Signer #1 certificate DN: CN=FlowDay Beta, OU=FlowDay, O=FlowDay, L=Local, ST=Local, C=CN
+Signer #1 certificate SHA-256 digest: b56b304818b9291c5fc76263b47c909315b07a39f7f7d31a8169c8a38256ba77
+Signer #1 certificate SHA-1 digest: ab903ae99f11e10095b50c93db6e0888e3d14cf0
+Signer #1 certificate MD5 digest: 2fc843859ae6b6075360788db3d7687f

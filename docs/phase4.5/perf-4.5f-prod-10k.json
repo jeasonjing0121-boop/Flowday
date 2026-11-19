@@ -1,0 +1,176 @@
+{
+  "generatedAt": "2026-11-15T06:03:11.179Z",
+  "base": "http://127.0.0.1:4173",
+  "env": "prod",
+  "viewport": "1280x900",
+  "repeats": 2,
+  "scales": {
+    "10000": {
+      "tasks": 10000,
+      "repeats": 2,
+      "expected": {
+        "search": 953,
+        "priority1": 3334,
+        "todayCount": 167
+      },
+      "loadMs": {
+        "median": 657,
+        "min": 381,
+        "max": 933,
+        "repeats": [
+          933,
+          381
+        ]
+      },
+      "firstRenderMs": {
+        "median": 12,
+        "min": 11,
+        "max": 13,
+        "repeats": [
+          11,
+          13
+        ]
+      },
+      "domNodes": {
+        "median": 1140.5,
+        "min": 1140,
+        "max": 1141,
+        "repeats": [
+          1141,
+          1140
+        ]
+      },
+      "renderedRows": {
+        "median": 44,
+        "min": 44,
+        "max": 44,
+        "repeats": [
+          44,
+          44
+        ]
+      },
+      "scroll": [
+        {
+          "frames": 44,
+          "avgFrameMs": 45.81,
+          "droppedPct": 95.5,
+          "maxFrameMs": 66.7
+        },
+        {
+          "frames": 51,
+          "avgFrameMs": 39.73,
+          "droppedPct": 98,
+          "maxFrameMs": 83.3
+        }
+      ],
+      "toggleRenderMs": {
+        "median": 92.25,
+        "min": 56.2,
+        "max": 128.3,
+        "repeats": [
+          128.3,
+          56.2
+        ]
+      },
+      "togglePersistMs": {
+        "median": 241.15,
+        "min": 236.2,
+        "max": 246.1,
+        "repeats": [
+          246.1,
+          236.2
+        ]
+      },
+      "editOpenMs": {
+        "median": 57.4,
+        "min": 52.4,
+        "max": 62.4,
+        "repeats": [
+          52.4,
+          62.4
+        ]
+      },
+      "searchMs": {
+        "median": 90.95,
+        "min": 78.1,
+        "max": 103.8,
+        "repeats": [
+          103.8,
+          78.1
+        ]
+      },
+      "priorityFilterMs": {
+        "median": 33.25,
+        "min": 27.4,
+        "max": 39.1,
+        "repeats": [
+          39.1,
+          27.4
+        ]
+      },
+      "dateFilterMs": {
+        "median": 42.45,
+        "min": 39.8,
+        "max": 45.1,
+        "repeats": [
+          39.8,
+          45.1
+        ]
+      },
+      "dashReadyMs": {
+        "median": 250,
+        "min": 231,
+        "max": 269,
+        "repeats": [
+          269,
+          231
+        ]
+      },
+      "heapMB": {
+        "median": 15.59,
+        "min": 5.42,
+        "max": 25.76,
+        "repeats": [
+          5.42,
+          25.76
+        ]
+      },
+      "longTaskCount": {
+        "median": 3,
+        "min": 3,
+        "max": 3,
+        "repeats": [
+          3,
+          3
+        ]
+      },
+      "longTaskMs": {
+        "median": 302.5,
+        "min": 265,
+        "max": 340,
+        "repeats": [
+          340,
+          265
+        ]
+      },
+      "calendarReadyMs": {
+        "median": 492,
+        "min": 492,
+        "max": 492,
+        "repeats": [
+          492
+        ]
+      },
+      "weekSwitchMs": {
+        "median": 125,
+        "min": 125,
+        "max": 125,
+        "repeats": [
+          125
+        ]
+      }
+    }
+  },
+  "notes": [],
+  "browser": "Edg/157.0.4341.60"
+}

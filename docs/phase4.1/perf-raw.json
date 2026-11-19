@@ -1,0 +1,1187 @@
+{
+  "meta": {
+    "phase": "4.1",
+    "generatedAt": "2026-11-14T10:50:49.910Z",
+    "repeatsPerKeyMetric": 5,
+    "sizes": [
+      1000,
+      5000,
+      10000
+    ],
+    "environment": {
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+      "platform": "Win32",
+      "hardwareConcurrency": 8,
+      "deviceMemoryGB": 8,
+      "language": "zh-CN",
+      "screen": {
+        "w": 800,
+        "h": 600,
+        "dpr": 1
+      },
+      "timezone": "Asia/Shanghai",
+      "indexedDB": true,
+      "storageEstimate": true,
+      "now": "2026-11-14T10:50:49.904Z",
+      "browserVersion": "Edg/157.0.4341.60",
+      "edgeVersion": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+      "nodeVersion": "v24.16.0",
+      "os": "win32 AMD64",
+      "cpu": "Intel Core i7-8565U (4C/8T, 1.8GHz)",
+      "ramGB": 8
+    },
+    "isolation": "临时 Chromium 用户配置目录 + 独立数据库 flowday-bench-4-1 / flowday-bench-split-4-1；应用级测量使用临时 profile 内的 flowday-db，profile 结束后删除，与用户真实浏览器数据隔离",
+    "methodology": {
+      "rawStorage": "performance.now() 计时，含 IndexedDB 事务创建、提交与结构化克隆；应用级重载以 Page.navigate 到 /today 后页面内检测 __FD_STATE__ + [data-fd-stats] 就绪时间",
+      "appLevel": "performance.now() 计时，含 IndexedDB 事务创建、提交与结构化克隆；应用级重载以 Page.navigate 到 /today 后页面内检测 __FD_STATE__ + [data-fd-stats] 就绪时间",
+      "dataset": "确定性生成：任务日期覆盖 -20~+39 天，P1-P3 轮转，1/5 已完成，1/3 含备注，1/4 含时间；习惯 3 个，打卡记录 = 任务数/10",
+      "persistenceDecomposition": "在页面加载前 HOOK IDBObjectStore.put 与 transaction complete，记录 点击→写入开始（含 React 渲染与 180ms 防抖）与 写入开始→事务完成 两段耗时，不使用轮询读库",
+      "moduleBench": "直接 import Vite dev server 暴露的真实生产模块（/src/lib/selectors.ts、/src/lib/data.ts、/src/lib/storage/db.ts、/src/lib/storage/backup.ts），测量真实函数耗时",
+      "consistency": "仅统计\"确认已进入内存状态\"的创建操作，避免输入失败造成的假阴性"
+    },
+    "scripts": [
+      "scripts/bench-4.1.mjs",
+      "scripts/bench-4.1b.mjs",
+      "scripts/bench-4.1c.mjs"
+    ],
+    "rawSources": [
+      "perf-raw-run1-storage-app.json",
+      "perf-raw-detail.json",
+      "perf-raw-modules.json"
+    ],
+    "notes": [
+      "首轮一致性测试未校验创建是否成功，出现假阴性；consistency 采用补充轮（创建后校验内存状态，5 次/场景）结果。",
+      "首轮应用级数据在测量时通过 appDbTasks 校验过规模（1000/5000/10000），有效。",
+      "拆分 Store 原型为合成查询，用于评估架构方向，不代表真实访问分布。",
+      "所有测试均在临时浏览器 profile 中完成，未读写用户真实浏览器数据。"
+    ]
+  },
+  "rawStorage": {
+    "1000": {
+      "jsonBytes": 208546,
+      "initialWrite": {
+        "repeats": [
+          18.5,
+          15.599999997764826,
+          9.800000000745058,
+          13,
+          16.600000001490116
+        ],
+        "median": 15.6,
+        "max": 18.5,
+        "min": 9.8
+      },
+      "wholeRead": {
+        "repeats": [
+          34,
+          6,
+          4.399999998509884,
+          9.199999999254942,
+          4.299999997019768
+        ],
+        "median": 6,
+        "max": 34,
+        "min": 4.3
+      },
+      "singleUpdate": {
+        "repeats": [
+          54.399999998509884,
+          6.899999998509884,
+          10.400000002235174,
+          9.099999997764826,
+          7.100000001490116
+        ],
+        "median": 9.1,
+        "max": 54.4,
+        "min": 6.9
+      },
+      "sequential20Writes": {
+        "repeats": [
+          406,
+          214.69999999925494,
+          178.80000000074506,
+          411.9000000022352,
+          169.89999999850988
+        ],
+        "median": 214.7,
+        "max": 411.9,
+        "min": 169.9
+      },
+      "batched20Writes": {
+        "repeats": [
+          61.69999999925494,
+          56.30000000074506,
+          56.20000000298023,
+          63.400000002235174,
+          57.900000002235174
+        ],
+        "median": 57.9,
+        "max": 63.4,
+        "min": 56.2
+      },
+      "jsonCost": {
+        "stringifyMs": 1.5,
+        "parseMs": 1.8999999985098839,
+        "jsonBytes": 214793,
+        "tasks": 1040
+      },
+      "storageEstimate": {
+        "usage": 5998586,
+        "quota": 10743416826,
+        "details": {
+          "indexedDB": 5998586
+        }
+      }
+    },
+    "5000": {
+      "jsonBytes": 1050354,
+      "initialWrite": {
+        "repeats": [
+          46.100000001490116,
+          38.399999998509884,
+          116.29999999701977,
+          39.80000000074506,
+          43.69999999925494
+        ],
+        "median": 43.7,
+        "max": 116.3,
+        "min": 38.4
+      },
+      "wholeRead": {
+        "repeats": [
+          21.600000001490116,
+          18.600000001490116,
+          17.300000000745058,
+          19.900000002235174,
+          18.300000000745058
+        ],
+        "median": 18.6,
+        "max": 21.6,
+        "min": 17.3
+      },
+      "singleUpdate": {
+        "repeats": [
+          49,
+          51,
+          81.39999999850988,
+          45.5,
+          47.30000000074506
+        ],
+        "median": 49,
+        "max": 81.4,
+        "min": 45.5
+      },
+      "sequential20Writes": {
+        "repeats": [
+          934.6999999992549,
+          1002.5,
+          959.8000000007451,
+          947.1999999992549,
+          893.6999999992549
+        ],
+        "median": 947.2,
+        "max": 1002.5,
+        "min": 893.7
+      },
+      "batched20Writes": {
+        "repeats": [
+          325.3999999985099,
+          325.1000000014901,
+          302.69999999925494,
+          313.6000000014901,
+          280.19999999925494
+        ],
+        "median": 313.6,
+        "max": 325.4,
+        "min": 280.2
+      },
+      "jsonCost": {
+        "stringifyMs": 8.300000000745058,
+        "parseMs": 7.899999998509884,
+        "jsonBytes": 1056601,
+        "tasks": 5040
+      },
+      "storageEstimate": {
+        "usage": 3348310,
+        "quota": 10740766550,
+        "details": {
+          "indexedDB": 3348310
+        }
+      }
+    },
+    "10000": {
+      "jsonBytes": 2102646,
+      "initialWrite": {
+        "repeats": [
+          147.30000000074506,
+          53.69999999925494,
+          54.399999998509884,
+          66.30000000074506,
+          31.900000002235174
+        ],
+        "median": 54.4,
+        "max": 147.3,
+        "min": 31.9
+      },
+      "wholeRead": {
+        "repeats": [
+          32.099999997764826,
+          31.600000001490116,
+          34.099999997764826,
+          31.899999998509884,
+          29.300000000745058
+        ],
+        "median": 31.9,
+        "max": 34.1,
+        "min": 29.3
+      },
+      "singleUpdate": {
+        "repeats": [
+          79.80000000074506,
+          73.80000000074506,
+          68.60000000149012,
+          64,
+          59
+        ],
+        "median": 68.6,
+        "max": 79.8,
+        "min": 59
+      },
+      "sequential20Writes": {
+        "repeats": [
+          1287.9000000022352,
+          1350.300000000745,
+          1437.5,
+          1478.6000000014901,
+          1212.7999999970198
+        ],
+        "median": 1350.3,
+        "max": 1478.6,
+        "min": 1212.8
+      },
+      "batched20Writes": {
+        "repeats": [
+          425.5,
+          497.5,
+          543.8999999985099,
+          491.70000000298023,
+          506.80000000074506
+        ],
+        "median": 497.5,
+        "max": 543.9,
+        "min": 425.5
+      },
+      "jsonCost": {
+        "stringifyMs": 16.100000001490116,
+        "parseMs": 17.5,
+        "jsonBytes": 2108893,
+        "tasks": 10040
+      },
+      "storageEstimate": {
+        "usage": 4116290,
+        "quota": 10741534530,
+        "details": {
+          "indexedDB": 4116290
+        }
+      }
+    }
+  },
+  "appLevel": {
+    "1000": {
+      "reloadToReady": {
+        "repeats": [
+          1029.5,
+          330.5,
+          326.79999999701977,
+          550,
+          409.5
+        ],
+        "median": 409.5,
+        "max": 1029.5,
+        "min": 326.8
+      },
+      "navigationTiming": {
+        "dcl": 306.4000000022352,
+        "load": 308.30000000074506
+      },
+      "search": {
+        "repeats": [
+          672.8000000007451,
+          467.19999999925494,
+          413.70000000298023,
+          451.79999999701977,
+          597.1999999992549
+        ],
+        "median": 467.2,
+        "max": 672.8,
+        "min": 413.7
+      },
+      "priorityFilter": {
+        "repeats": [
+          855.6999999992549,
+          959.8000000007451,
+          690.3999999985099,
+          953.3999999985099,
+          979.7000000029802
+        ],
+        "median": 953.4,
+        "max": 979.7,
+        "min": 690.4
+      },
+      "statusFilter": {
+        "repeats": [
+          778.4000000022352,
+          682.1000000014901,
+          586.5999999977648,
+          869.8999999985099,
+          715.3999999985099
+        ],
+        "median": 715.4,
+        "max": 869.9,
+        "min": 586.6
+      },
+      "togglePersist": {
+        "repeats": [
+          975.1999999992549,
+          910,
+          827.9000000022352,
+          727.6999999992549,
+          791.6000000014901
+        ],
+        "median": 827.9,
+        "max": 975.2,
+        "min": 727.7
+      },
+      "renderedRowsAfterSearch": [
+        143,
+        143,
+        143,
+        143,
+        143
+      ],
+      "appDbJsonBytes": 208746,
+      "appDbTasks": 1000
+    },
+    "5000": {
+      "reloadToReady": {
+        "repeats": [
+          305.80000000074506,
+          334.30000000074506,
+          359.5999999977648,
+          404.80000000074506,
+          454.70000000298023
+        ],
+        "median": 359.6,
+        "max": 454.7,
+        "min": 305.8
+      },
+      "navigationTiming": {
+        "dcl": 264.20000000298023,
+        "load": 267
+      },
+      "search": {
+        "repeats": [
+          1681.5,
+          1358.8999999985099,
+          1467.0999999977648,
+          1361.5999999977648,
+          1217.5
+        ],
+        "median": 1361.6,
+        "max": 1681.5,
+        "min": 1217.5
+      },
+      "priorityFilter": {
+        "repeats": [
+          2447.7999999970198,
+          2116.2000000029802,
+          2453.199999999255,
+          2275.199999999255,
+          2309.10000000149
+        ],
+        "median": 2309.1,
+        "max": 2453.2,
+        "min": 2116.2
+      },
+      "statusFilter": {
+        "repeats": [
+          1833,
+          2540.800000000745,
+          2531.699999999255,
+          1761.1000000014901,
+          3128.5
+        ],
+        "median": 2531.7,
+        "max": 3128.5,
+        "min": 1761.1
+      },
+      "togglePersist": {
+        "repeats": [
+          5638,
+          2141.60000000149,
+          2047.7000000029802,
+          1900.4000000022352,
+          5217.5
+        ],
+        "median": 2141.6,
+        "max": 5638,
+        "min": 1900.4
+      },
+      "renderedRowsAfterSearch": [
+        715,
+        715,
+        715,
+        715,
+        715
+      ],
+      "appDbJsonBytes": 1050554,
+      "appDbTasks": 5000
+    },
+    "10000": {
+      "reloadToReady": {
+        "repeats": [
+          1018.5,
+          490.80000000074506,
+          435.4000000022352,
+          452.80000000074506,
+          410.5
+        ],
+        "median": 452.8,
+        "max": 1018.5,
+        "min": 410.5
+      },
+      "navigationTiming": {
+        "dcl": 185.40000000223517,
+        "load": 187.10000000149012
+      },
+      "search": {
+        "repeats": [
+          2646.900000002235,
+          2111.599999997765,
+          2847.400000002235,
+          12248.599999997765,
+          2561.699999999255
+        ],
+        "median": 2646.9,
+        "max": 12248.6,
+        "min": 2111.6
+      },
+      "priorityFilter": {
+        "repeats": [
+          4684.79999999702,
+          7297.699999999255,
+          5634,
+          7791.89999999851,
+          4510.29999999702
+        ],
+        "median": 5634,
+        "max": 7791.9,
+        "min": 4510.3
+      },
+      "statusFilter": {
+        "repeats": [
+          3891.900000002235,
+          4702.39999999851,
+          4130.5,
+          4636.89999999851,
+          16182.60000000149
+        ],
+        "median": 4636.9,
+        "max": 16182.6,
+        "min": 3891.9
+      },
+      "togglePersist": {
+        "repeats": [
+          7919.099999997765,
+          6812.800000000745,
+          5794,
+          5560.89999999851,
+          10462.70000000298
+        ],
+        "median": 6812.8,
+        "max": 10462.7,
+        "min": 5560.9
+      },
+      "renderedRowsAfterSearch": [
+        1429,
+        1429,
+        1429,
+        1429,
+        1429
+      ],
+      "appDbJsonBytes": 2102846,
+      "appDbTasks": 10000
+    }
+  },
+  "appDetail": {
+    "1000": {
+      "taskCount": 1000,
+      "compute": {
+        "filterToday": {
+          "ms": 0.29999999701976776,
+          "n": 17
+        },
+        "filterOpen": {
+          "ms": 0.19999999925494194,
+          "n": 800
+        },
+        "searchTitle": {
+          "ms": 0.6000000014901161,
+          "n": 143
+        },
+        "priorityFilter": {
+          "ms": 0.19999999925494194,
+          "n": 334
+        },
+        "combinedFilter": {
+          "ms": 0.19999999925494194,
+          "n": 347
+        },
+        "sortAll": {
+          "ms": 3.699999999254942,
+          "n": 1000
+        },
+        "todayStats": {
+          "ms": 0.3999999985098839,
+          "n": 442
+        },
+        "last7Day": {
+          "ms": 0.8000000007450581,
+          "n": 0
+        },
+        "groupedRenderPrep": {
+          "ms": 4.5,
+          "n": 820
+        },
+        "habitLogsFilter": {
+          "ms": 0.10000000149011612,
+          "n": 4
+        }
+      },
+      "toggleEndToEnd": {
+        "repeats": [
+          801.8,
+          874.4,
+          1001.8,
+          949.1,
+          921.3
+        ],
+        "median": 921.3,
+        "max": 1001.8,
+        "min": 801.8
+      },
+      "toggleClickToPutStart": {
+        "repeats": [
+          801.1,
+          847.3,
+          987.5,
+          922.1,
+          920.3
+        ],
+        "median": 920.3,
+        "max": 987.5,
+        "min": 801.1
+      },
+      "togglePutDuration": {
+        "repeats": [
+          0.7,
+          27.1,
+          14.3,
+          27,
+          1
+        ],
+        "median": 14.3,
+        "max": 27.1,
+        "min": 0.7
+      }
+    },
+    "5000": {
+      "taskCount": 5000,
+      "compute": {
+        "filterToday": {
+          "ms": 1,
+          "n": 83
+        },
+        "filterOpen": {
+          "ms": 0.4000000022351742,
+          "n": 4000
+        },
+        "searchTitle": {
+          "ms": 1.8999999985098839,
+          "n": 715
+        },
+        "priorityFilter": {
+          "ms": 0.5,
+          "n": 1667
+        },
+        "combinedFilter": {
+          "ms": 0.6000000014901161,
+          "n": 1743
+        },
+        "sortAll": {
+          "ms": 14.599999997764826,
+          "n": 5000
+        },
+        "todayStats": {
+          "ms": 1.800000000745058,
+          "n": 2182
+        },
+        "last7Day": {
+          "ms": 1.5,
+          "n": 0
+        },
+        "groupedRenderPrep": {
+          "ms": 20.800000000745058,
+          "n": 4020
+        },
+        "habitLogsFilter": {
+          "ms": 0.09999999776482582,
+          "n": 17
+        }
+      },
+      "toggleEndToEnd": {
+        "repeats": [
+          2063.2,
+          2327.6,
+          4155.3,
+          2322.8,
+          4195.9
+        ],
+        "median": 2327.6,
+        "max": 4195.9,
+        "min": 2063.2
+      },
+      "toggleClickToPutStart": {
+        "repeats": [
+          2013,
+          2155.9,
+          2356.6,
+          2266,
+          2399.2
+        ],
+        "median": 2266,
+        "max": 2399.2,
+        "min": 2013
+      },
+      "togglePutDuration": {
+        "repeats": [
+          50.2,
+          171.7,
+          1798.7,
+          56.8,
+          1796.7
+        ],
+        "median": 171.7,
+        "max": 1798.7,
+        "min": 50.2
+      }
+    },
+    "10000": {
+      "taskCount": 10000,
+      "compute": {
+        "filterToday": {
+          "ms": 1.7999999970197678,
+          "n": 167
+        },
+        "filterOpen": {
+          "ms": 1.2000000029802322,
+          "n": 8000
+        },
+        "searchTitle": {
+          "ms": 3.7999999970197678,
+          "n": 1429
+        },
+        "priorityFilter": {
+          "ms": 0.7000000029802322,
+          "n": 3334
+        },
+        "combinedFilter": {
+          "ms": 1.199999999254942,
+          "n": 3497
+        },
+        "sortAll": {
+          "ms": 43.80000000074506,
+          "n": 10000
+        },
+        "todayStats": {
+          "ms": 3.899999998509884,
+          "n": 4342
+        },
+        "last7Day": {
+          "ms": 15.100000001490116,
+          "n": 0
+        },
+        "groupedRenderPrep": {
+          "ms": 45.600000001490116,
+          "n": 8020
+        },
+        "habitLogsFilter": {
+          "ms": 0.19999999925494194,
+          "n": 34
+        }
+      },
+      "toggleEndToEnd": {
+        "repeats": [
+          7759.4,
+          11566.8,
+          7413.1,
+          8202,
+          9724.1
+        ],
+        "median": 8202,
+        "max": 11566.8,
+        "min": 7413.1
+      },
+      "toggleClickToPutStart": {
+        "repeats": [
+          4532.5,
+          7708.7,
+          4408.6,
+          4777.4,
+          5895.6
+        ],
+        "median": 4777.4,
+        "max": 7708.7,
+        "min": 4408.6
+      },
+      "togglePutDuration": {
+        "repeats": [
+          3226.9,
+          3858.1,
+          3004.5,
+          3424.6,
+          3828.5
+        ],
+        "median": 3424.6,
+        "max": 3858.1,
+        "min": 3004.5
+      }
+    }
+  },
+  "moduleBench": {
+    "1000": {
+      "tasks": 1000,
+      "jsonBytes": 208546,
+      "sortTasks": {
+        "ms": 5.100000001490116,
+        "max": 24.699999999254942,
+        "n": 1000
+      },
+      "todayStats": {
+        "ms": 0.19999999925494194,
+        "max": 0.6000000014901161,
+        "n": 0
+      },
+      "last7DayCompletion": {
+        "ms": 1.800000000745058,
+        "max": 5.199999999254942,
+        "n": 7
+      },
+      "focusTasks": {
+        "ms": 1.1000000014901161,
+        "max": 2,
+        "n": 3
+      },
+      "filterQuery": {
+        "ms": 1.199999999254942,
+        "max": 2.300000000745058,
+        "n": 143
+      },
+      "filterPriority": {
+        "ms": 1.300000000745058,
+        "max": 2.300000000745058,
+        "n": 334
+      },
+      "filterStatusDone": {
+        "ms": 0.7999999970197678,
+        "max": 1.300000000745058,
+        "n": 200
+      },
+      "filterDateToday": {
+        "ms": 0.19999999925494194,
+        "max": 0.3999999985098839,
+        "n": 17
+      },
+      "sanitizeImportedData": {
+        "ms": 1.199999999254942,
+        "max": 2.899999998509884,
+        "n": 0
+      },
+      "parseImportedData": {
+        "ms": 3.100000001490116,
+        "max": 4.899999998509884,
+        "n": 0
+      },
+      "migrateStoredState": {
+        "ms": 0.6999999992549419,
+        "max": 0.8999999985098839,
+        "n": 1000
+      },
+      "validateBackup": {
+        "ms": 4.5,
+        "max": 6.199999999254942,
+        "n": 0
+      },
+      "jsonStringify": {
+        "ms": 0.8000000007450581,
+        "max": 2.800000000745058,
+        "n": 0
+      },
+      "jsonParse": {
+        "ms": 1.800000000745058,
+        "max": 3,
+        "n": 0
+      },
+      "idbReadState": {
+        "ms": 33,
+        "max": 86.80000000074506,
+        "n": 0
+      },
+      "idbWriteState": {
+        "ms": 20.600000001490116,
+        "max": 180,
+        "n": 0
+      }
+    },
+    "5000": {
+      "tasks": 5000,
+      "jsonBytes": 1050354,
+      "sortTasks": {
+        "ms": 24.300000000745058,
+        "max": 27,
+        "n": 5000
+      },
+      "todayStats": {
+        "ms": 0.8999999985098839,
+        "max": 1.1000000014901161,
+        "n": 0
+      },
+      "last7DayCompletion": {
+        "ms": 9.300000000745058,
+        "max": 11.899999998509884,
+        "n": 7
+      },
+      "focusTasks": {
+        "ms": 7,
+        "max": 7.599999997764826,
+        "n": 3
+      },
+      "filterQuery": {
+        "ms": 5.600000001490116,
+        "max": 5.800000000745058,
+        "n": 715
+      },
+      "filterPriority": {
+        "ms": 7.5,
+        "max": 7.600000001490116,
+        "n": 1667
+      },
+      "filterStatusDone": {
+        "ms": 3.300000000745058,
+        "max": 3.400000002235174,
+        "n": 1000
+      },
+      "filterDateToday": {
+        "ms": 0.8000000007450581,
+        "max": 1.3999999985098839,
+        "n": 83
+      },
+      "sanitizeImportedData": {
+        "ms": 3.2000000029802322,
+        "max": 3.599999997764826,
+        "n": 0
+      },
+      "parseImportedData": {
+        "ms": 14.199999999254942,
+        "max": 17.199999999254942,
+        "n": 0
+      },
+      "migrateStoredState": {
+        "ms": 4.600000001490116,
+        "max": 7,
+        "n": 5000
+      },
+      "validateBackup": {
+        "ms": 19.800000000745058,
+        "max": 20.300000000745058,
+        "n": 0
+      },
+      "jsonStringify": {
+        "ms": 4.399999998509884,
+        "max": 5.100000001490116,
+        "n": 0
+      },
+      "jsonParse": {
+        "ms": 9,
+        "max": 9.199999999254942,
+        "n": 0
+      },
+      "idbReadState": {
+        "ms": 19.600000001490116,
+        "max": 34.5,
+        "n": 0
+      },
+      "idbWriteState": {
+        "ms": 33.70000000298023,
+        "max": 44.5,
+        "n": 0
+      }
+    },
+    "10000": {
+      "tasks": 10000,
+      "jsonBytes": 2102646,
+      "sortTasks": {
+        "ms": 49.5,
+        "max": 51.399999998509884,
+        "n": 10000
+      },
+      "todayStats": {
+        "ms": 2.5,
+        "max": 3.099999997764826,
+        "n": 0
+      },
+      "last7DayCompletion": {
+        "ms": 22.600000001490116,
+        "max": 23.600000001490116,
+        "n": 7
+      },
+      "focusTasks": {
+        "ms": 13.5,
+        "max": 15,
+        "n": 3
+      },
+      "filterQuery": {
+        "ms": 15.800000000745058,
+        "max": 16.400000002235174,
+        "n": 1429
+      },
+      "filterPriority": {
+        "ms": 16.699999999254942,
+        "max": 21.800000000745058,
+        "n": 3334
+      },
+      "filterStatusDone": {
+        "ms": 6.899999998509884,
+        "max": 8.5,
+        "n": 2000
+      },
+      "filterDateToday": {
+        "ms": 0.8000000007450581,
+        "max": 0.8000000007450581,
+        "n": 167
+      },
+      "sanitizeImportedData": {
+        "ms": 7.100000001490116,
+        "max": 8.100000001490116,
+        "n": 0
+      },
+      "parseImportedData": {
+        "ms": 28.5,
+        "max": 31.300000000745058,
+        "n": 0
+      },
+      "migrateStoredState": {
+        "ms": 4.800000000745058,
+        "max": 10.200000002980232,
+        "n": 10000
+      },
+      "validateBackup": {
+        "ms": 33.70000000298023,
+        "max": 42.19999999925494,
+        "n": 0
+      },
+      "jsonStringify": {
+        "ms": 8.5,
+        "max": 10.199999999254942,
+        "n": 0
+      },
+      "jsonParse": {
+        "ms": 17.699999999254942,
+        "max": 18.100000001490116,
+        "n": 0
+      },
+      "idbReadState": {
+        "ms": 33.19999999925494,
+        "max": 40.399999998509884,
+        "n": 0
+      },
+      "idbWriteState": {
+        "ms": 33.19999999925494,
+        "max": 39.099999997764826,
+        "n": 0
+      }
+    }
+  },
+  "transactionCost": {
+    "avgSequentialTransaction": 35.995999999940395,
+    "singleCursorRead": 2.7000000029802322,
+    "ofs": 1
+  },
+  "architecturePrototype": {
+    "1000": {
+      "bulkWrite": 453,
+      "today": 3.5,
+      "open": 38.100000001490116,
+      "byProject": 16.099999997764826,
+      "searchTitle": 33.19999999925494,
+      "countOpen": 11.699999999254942,
+      "singleUpdate": 1.699999999254942,
+      "cursorPage50": 12.100000001490116
+    },
+    "5000": {
+      "bulkWrite": 1630.9000000022352,
+      "today": 3,
+      "open": 98.39999999850988,
+      "byProject": 43.900000002235174,
+      "searchTitle": 78,
+      "countOpen": 35.19999999925494,
+      "singleUpdate": 2.800000000745058,
+      "cursorPage50": 5.400000002235174
+    },
+    "10000": {
+      "bulkWrite": 4432.5,
+      "today": 15.900000002235174,
+      "open": 468.5,
+      "byProject": 114.10000000149012,
+      "searchTitle": 219.89999999850988,
+      "countOpen": 173.80000000074506,
+      "singleUpdate": 2.099999997764826,
+      "cursorPage50": 7.800000000745058
+    }
+  },
+  "consistency": {
+    "scale": 5000,
+    "repeats": 5,
+    "createFailures": 0,
+    "scenarios": {
+      "createThenLeaveWithinDebounce": {
+        "passes": 5,
+        "total": 5,
+        "raw": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "createThenLeaveAfterDebounce": {
+        "passes": 5,
+        "total": 5,
+        "raw": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "modifyThenLeaveImmediately": {
+        "passes": 5,
+        "total": 5,
+        "raw": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "tabSwitchAndReturn": {
+        "passes": 5,
+        "total": 5,
+        "raw": [
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    }
+  },
+  "consistencyRun1Superseded": {
+    "scale": 5000,
+    "repeats": 3,
+    "scenarios": {
+      "immediateNavigateWithinDebounce": {
+        "passes": 0,
+        "total": 3,
+        "raw": [
+          false,
+          false,
+          false
+        ]
+      },
+      "afterDebounceWait": {
+        "passes": 2,
+        "total": 3,
+        "raw": [
+          true,
+          false,
+          true
+        ]
+      },
+      "tabSwitch": {
+        "passes": 3,
+        "total": 3,
+        "raw": [
+          true,
+          true,
+          true
+        ]
+      }
+    }
+  },
+  "productionReload": {
+    "1000": {
+      "reloadToReady": {
+        "repeats": [
+          402.8,
+          138.1,
+          106.3,
+          81.3,
+          94.3
+        ],
+        "median": 106.3,
+        "max": 402.8,
+        "min": 81.3
+      }
+    },
+    "5000": {
+      "reloadToReady": {
+        "repeats": [
+          102.9,
+          130.8,
+          119.5,
+          131.9,
+          111.2
+        ],
+        "median": 119.5,
+        "max": 131.9,
+        "min": 102.9
+      }
+    },
+    "10000": {
+      "reloadToReady": {
+        "repeats": [
+          165.7,
+          222.2,
+          191.9,
+          216.8,
+          159.7
+        ],
+        "median": 191.9,
+        "max": 222.2,
+        "min": 159.7
+      }
+    }
+  },
+  "productionReloadMeta": {
+    "phase": "4.1-production-reload",
+    "base": "http://127.0.0.1:4173",
+    "repeats": 5,
+    "browserVersion": "Edg/157.0.4341.60",
+    "note": "vite preview 生产构建；页面就绪判定：main + [data-fd-stats] 出现"
+  }
+}

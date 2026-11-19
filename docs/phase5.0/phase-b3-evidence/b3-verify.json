@@ -1,0 +1,506 @@
+{
+  "generatedAt": "2026-11-18T11:59:10.563Z",
+  "title": "b3-verify",
+  "passed": 99,
+  "failed": 0,
+  "total": 99,
+  "results": [
+    {
+      "name": "[T1 无键盘] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=0 expect=0"
+    },
+    {
+      "name": "[T1 无键盘] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=844 vvBottom=2121"
+    },
+    {
+      "name": "[T1 无键盘] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":734,\"bottom\":843,\"height\":109,\"left\":1,\"right\":389} vvBottom=2121"
+    },
+    {
+      "name": "[T1 无键盘] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":747,\"bottom\":783,\"height\":36,\"left\":285,\"right\":369}"
+    },
+    {
+      "name": "[T1 无键盘] 无横向溢出",
+      "pass": true,
+      "detail": "390/390"
+    },
+    {
+      "name": "[T1 无键盘] 底部导航可见（opacity=1）",
+      "pass": true,
+      "detail": "{\"opacity\":1,\"transform\":\"none\"}"
+    },
+    {
+      "name": "[T2 键盘 320] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=320 expect=320"
+    },
+    {
+      "name": "[T2 键盘 320] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=524 vvBottom=524"
+    },
+    {
+      "name": "[T2 键盘 320] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":462,\"bottom\":523,\"height\":61,\"left\":1,\"right\":389} vvBottom=524"
+    },
+    {
+      "name": "[T2 键盘 320] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":475,\"bottom\":511,\"height\":36,\"left\":285,\"right\":369}"
+    },
+    {
+      "name": "[T2 键盘 320] 无横向溢出",
+      "pass": true,
+      "detail": "390/390"
+    },
+    {
+      "name": "[T2 键盘弹出] Body 成为独立滚动区（可滚动或内容未溢出）",
+      "pass": true,
+      "detail": "{\"top\":95,\"bottom\":462,\"height\":367,\"left\":1,\"right\":389,\"scrollH\":525,\"clientH\":367}"
+    },
+    {
+      "name": "[T2 键盘弹出] 底部导航不再上浮到屏幕中部（应滑出视口）",
+      "pass": true,
+      "detail": "{\"opacity\":1,\"top\":726,\"vvH\":524}"
+    },
+    {
+      "name": "[T3] 聚焦 #task-title 后输入框完整可见（不被 Footer/键盘遮挡）",
+      "pass": true,
+      "detail": "{\"elBox\":{\"top\":123,\"bottom\":161},\"footTop\":462,\"panelTop\":40,\"vvBottom\":524}"
+    },
+    {
+      "name": "[T3] 聚焦 #task-date 后输入框完整可见（不被 Footer/键盘遮挡）",
+      "pass": true,
+      "detail": "{\"elBox\":{\"top\":199,\"bottom\":237},\"footTop\":462,\"panelTop\":40,\"vvBottom\":524}"
+    },
+    {
+      "name": "[T3] 聚焦 #task-time 后输入框完整可见（不被 Footer/键盘遮挡）",
+      "pass": true,
+      "detail": "{\"elBox\":{\"top\":199,\"bottom\":238},\"footTop\":462,\"panelTop\":40,\"vvBottom\":524}"
+    },
+    {
+      "name": "[T3] 聚焦 #task-duration 后输入框完整可见（不被 Footer/键盘遮挡）",
+      "pass": true,
+      "detail": "{\"elBox\":{\"top\":199,\"bottom\":238},\"footTop\":462,\"panelTop\":40,\"vvBottom\":524}"
+    },
+    {
+      "name": "[T3] 聚焦 #task-project 后输入框完整可见（不被 Footer/键盘遮挡）",
+      "pass": true,
+      "detail": "{\"elBox\":{\"top\":259,\"bottom\":298},\"footTop\":462,\"panelTop\":40,\"vvBottom\":524}"
+    },
+    {
+      "name": "[T3] 聚焦 #task-notes 后输入框完整可见（不被 Footer/键盘遮挡）",
+      "pass": true,
+      "detail": "{\"elBox\":{\"top\":366,\"bottom\":442},\"footTop\":462,\"panelTop\":40,\"vvBottom\":524}"
+    },
+    {
+      "name": "[T4 长表单 150%] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=320 expect=320"
+    },
+    {
+      "name": "[T4 长表单 150%] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=524 vvBottom=524"
+    },
+    {
+      "name": "[T4 长表单 150%] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":444,\"bottom\":523,\"height\":79,\"left\":1,\"right\":389} vvBottom=524"
+    },
+    {
+      "name": "[T4 长表单 150%] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":457,\"bottom\":511,\"height\":54,\"left\":243,\"right\":369}"
+    },
+    {
+      "name": "[T4 长表单 150%] 无横向溢出",
+      "pass": true,
+      "detail": "390/390"
+    },
+    {
+      "name": "[T4 长表单] Body 可滚动（字体 150% 下内容超长）",
+      "pass": true,
+      "detail": "{\"scrollable\":true,\"before\":158,\"after\":384,\"scrollH\":729,\"clientH\":345}"
+    },
+    {
+      "name": "[T4 长表单] 滚动到底后 Footer/保存按钮仍在可视区",
+      "pass": true,
+      "detail": "{\"top\":457,\"bottom\":511,\"height\":54,\"left\":243,\"right\":369}"
+    },
+    {
+      "name": "[T5] 连续切换焦点 3 轮：每次聚焦项都可见",
+      "pass": true,
+      "detail": "违规 0 次"
+    },
+    {
+      "name": "[T6 键盘收起] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=0 expect=0"
+    },
+    {
+      "name": "[T6 键盘收起] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=844 vvBottom=844"
+    },
+    {
+      "name": "[T6 键盘收起] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":734,\"bottom\":843,\"height\":109,\"left\":1,\"right\":389} vvBottom=844"
+    },
+    {
+      "name": "[T6 键盘收起] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":747,\"bottom\":783,\"height\":36,\"left\":285,\"right\":369}"
+    },
+    {
+      "name": "[T6 键盘收起] 无横向溢出",
+      "pass": true,
+      "detail": "390/390"
+    },
+    {
+      "name": "[T6 键盘收起] 底部导航恢复可见",
+      "pass": true,
+      "detail": "{\"opacity\":1}"
+    },
+    {
+      "name": "[T6 键盘收起] 弹窗尺寸恢复（面板高度回到正常上限内）",
+      "pass": true,
+      "detail": "{\"top\":154,\"bottom\":844,\"height\":690,\"left\":0,\"right\":390}"
+    },
+    {
+      "name": "[T7 320px kb=0] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=0 expect=0"
+    },
+    {
+      "name": "[T7 320px kb=0] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=640 vvBottom=1960"
+    },
+    {
+      "name": "[T7 320px kb=0] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":530,\"bottom\":639,\"height\":109,\"left\":1,\"right\":319} vvBottom=1960"
+    },
+    {
+      "name": "[T7 320px kb=0] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":543,\"bottom\":579,\"height\":36,\"left\":215,\"right\":299}"
+    },
+    {
+      "name": "[T7 320px kb=0] 无横向溢出",
+      "pass": true,
+      "detail": "320/320"
+    },
+    {
+      "name": "[T7 320px kb=320] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=320 expect=320"
+    },
+    {
+      "name": "[T7 320px kb=320] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=320 vvBottom=320"
+    },
+    {
+      "name": "[T7 320px kb=320] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":258,\"bottom\":319,\"height\":61,\"left\":1,\"right\":319} vvBottom=320"
+    },
+    {
+      "name": "[T7 320px kb=320] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":271,\"bottom\":307,\"height\":36,\"left\":215,\"right\":299}"
+    },
+    {
+      "name": "[T7 320px kb=320] 无横向溢出",
+      "pass": true,
+      "detail": "320/320"
+    },
+    {
+      "name": "[T7 360px kb=0] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=0 expect=0"
+    },
+    {
+      "name": "[T7 360px kb=0] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=800 vvBottom=2178"
+    },
+    {
+      "name": "[T7 360px kb=0] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":690,\"bottom\":799,\"height\":109,\"left\":1,\"right\":359} vvBottom=2178"
+    },
+    {
+      "name": "[T7 360px kb=0] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":703,\"bottom\":739,\"height\":36,\"left\":255,\"right\":339}"
+    },
+    {
+      "name": "[T7 360px kb=0] 无横向溢出",
+      "pass": true,
+      "detail": "360/360"
+    },
+    {
+      "name": "[T7 360px kb=320] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=320 expect=320"
+    },
+    {
+      "name": "[T7 360px kb=320] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=480 vvBottom=480"
+    },
+    {
+      "name": "[T7 360px kb=320] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":418,\"bottom\":479,\"height\":61,\"left\":1,\"right\":359} vvBottom=480"
+    },
+    {
+      "name": "[T7 360px kb=320] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":431,\"bottom\":467,\"height\":36,\"left\":255,\"right\":339}"
+    },
+    {
+      "name": "[T7 360px kb=320] 无横向溢出",
+      "pass": true,
+      "detail": "360/360"
+    },
+    {
+      "name": "[T7 390px kb=0] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=0 expect=0"
+    },
+    {
+      "name": "[T7 390px kb=0] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=844 vvBottom=2121"
+    },
+    {
+      "name": "[T7 390px kb=0] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":734,\"bottom\":843,\"height\":109,\"left\":1,\"right\":389} vvBottom=2121"
+    },
+    {
+      "name": "[T7 390px kb=0] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":747,\"bottom\":783,\"height\":36,\"left\":285,\"right\":369}"
+    },
+    {
+      "name": "[T7 390px kb=0] 无横向溢出",
+      "pass": true,
+      "detail": "390/390"
+    },
+    {
+      "name": "[T7 390px kb=320] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=320 expect=320"
+    },
+    {
+      "name": "[T7 390px kb=320] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=524 vvBottom=524"
+    },
+    {
+      "name": "[T7 390px kb=320] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":462,\"bottom\":523,\"height\":61,\"left\":1,\"right\":389} vvBottom=524"
+    },
+    {
+      "name": "[T7 390px kb=320] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":475,\"bottom\":511,\"height\":36,\"left\":285,\"right\":369}"
+    },
+    {
+      "name": "[T7 390px kb=320] 无横向溢出",
+      "pass": true,
+      "detail": "390/390"
+    },
+    {
+      "name": "[T7 412px kb=0] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=0 expect=0"
+    },
+    {
+      "name": "[T7 412px kb=0] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=915 vvBottom=2177"
+    },
+    {
+      "name": "[T7 412px kb=0] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":805,\"bottom\":914,\"height\":109,\"left\":1,\"right\":411} vvBottom=2177"
+    },
+    {
+      "name": "[T7 412px kb=0] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":818,\"bottom\":854,\"height\":36,\"left\":307,\"right\":391}"
+    },
+    {
+      "name": "[T7 412px kb=0] 无横向溢出",
+      "pass": true,
+      "detail": "412/412"
+    },
+    {
+      "name": "[T7 412px kb=320] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=320 expect=320"
+    },
+    {
+      "name": "[T7 412px kb=320] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=595 vvBottom=595"
+    },
+    {
+      "name": "[T7 412px kb=320] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":533,\"bottom\":594,\"height\":61,\"left\":1,\"right\":411} vvBottom=595"
+    },
+    {
+      "name": "[T7 412px kb=320] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":546,\"bottom\":582,\"height\":36,\"left\":307,\"right\":391}"
+    },
+    {
+      "name": "[T7 412px kb=320] 无横向溢出",
+      "pass": true,
+      "detail": "412/412"
+    },
+    {
+      "name": "[T8 手势 + 键盘] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=320 expect=320"
+    },
+    {
+      "name": "[T8 手势 + 键盘] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=524 vvBottom=524"
+    },
+    {
+      "name": "[T8 手势 + 键盘] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":462,\"bottom\":523,\"height\":61,\"left\":1,\"right\":389} vvBottom=524"
+    },
+    {
+      "name": "[T8 手势 + 键盘] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":475,\"bottom\":511,\"height\":36,\"left\":285,\"right\":369}"
+    },
+    {
+      "name": "[T8 手势 + 键盘] 无横向溢出",
+      "pass": true,
+      "detail": "390/390"
+    },
+    {
+      "name": "[T8 手势] 键盘收起后导航底边距 = safe-bottom + 12",
+      "pass": true,
+      "detail": "gap=12 expect=12"
+    },
+    {
+      "name": "[T8 三键 + 键盘] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=320 expect=320"
+    },
+    {
+      "name": "[T8 三键 + 键盘] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=524 vvBottom=524"
+    },
+    {
+      "name": "[T8 三键 + 键盘] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":462,\"bottom\":523,\"height\":61,\"left\":1,\"right\":389} vvBottom=524"
+    },
+    {
+      "name": "[T8 三键 + 键盘] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":475,\"bottom\":511,\"height\":36,\"left\":285,\"right\":369}"
+    },
+    {
+      "name": "[T8 三键 + 键盘] 无横向溢出",
+      "pass": true,
+      "detail": "390/390"
+    },
+    {
+      "name": "[T8 三键] 键盘收起后导航底边距 = safe-bottom + 12",
+      "pass": true,
+      "detail": "gap=60 expect=60"
+    },
+    {
+      "name": "[T9 横屏无键盘] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=0 expect=0"
+    },
+    {
+      "name": "[T9 横屏无键盘] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=398 vvBottom=453"
+    },
+    {
+      "name": "[T9 横屏无键盘] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":336,\"bottom\":397,\"height\":61,\"left\":163,\"right\":681} vvBottom=453"
+    },
+    {
+      "name": "[T9 横屏无键盘] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":349,\"bottom\":385,\"height\":36,\"left\":577,\"right\":661}"
+    },
+    {
+      "name": "[T9 横屏无键盘] 无横向溢出",
+      "pass": true,
+      "detail": "844/844"
+    },
+    {
+      "name": "[T9 横屏+键盘200] --fd-kb 与键盘高度一致",
+      "pass": true,
+      "detail": "--fd-kb=200 expect=200"
+    },
+    {
+      "name": "[T9 横屏+键盘200] 弹窗面板底部不超过可视视口",
+      "pass": true,
+      "detail": "panel.bottom=166 vvBottom=190"
+    },
+    {
+      "name": "[T9 横屏+键盘200] Footer 在可视区内（不被键盘遮挡）",
+      "pass": true,
+      "detail": "foot={\"top\":104,\"bottom\":165,\"height\":61,\"left\":163,\"right\":681} vvBottom=190"
+    },
+    {
+      "name": "[T9 横屏+键盘200] 保存按钮完整可见",
+      "pass": true,
+      "detail": "saveBtn={\"top\":117,\"bottom\":153,\"height\":36,\"left\":577,\"right\":661}"
+    },
+    {
+      "name": "[T9 横屏+键盘200] 无横向溢出",
+      "pass": true,
+      "detail": "844/844"
+    },
+    {
+      "name": "[T10] 进入后台时键盘占位清零（避免残留遮挡）",
+      "pass": true,
+      "detail": "{\"kbHidden\":\"0px\"}"
+    },
+    {
+      "name": "[T10] 回前台后布局自洽（面板与 Footer 仍在视口内）",
+      "pass": true,
+      "detail": "{\"top\":462,\"bottom\":523,\"height\":61,\"left\":1,\"right\":389}"
+    },
+    {
+      "name": "保存按钮可见率 100%",
+      "pass": true,
+      "detail": "16/16"
+    }
+  ],
+  "base": "http://127.0.0.1:5173",
+  "saveVisible": "16/16"
+}

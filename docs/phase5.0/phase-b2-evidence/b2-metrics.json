@@ -1,0 +1,419 @@
+{
+  "handshake": {
+    "afterBoot": {
+      "calls": 2,
+      "appliedTotal": 4,
+      "safe": {
+        "top": 24,
+        "bottom": 48,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      }
+    },
+    "afterReload": {
+      "beforeReload": 2,
+      "totalAfter": 4,
+      "safe": {
+        "top": 24,
+        "bottom": 48,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      }
+    },
+    "afterForeground": {
+      "beforeForeground": 4,
+      "afterForeground": 5
+    }
+  },
+  "core": [
+    {
+      "scenario": "S1-无Insets",
+      "insets": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "imeBottom": 0
+      },
+      "font": "100",
+      "occlusion": -20,
+      "navBottomGap": 12,
+      "headerTop": 12,
+      "reserve": 90,
+      "expectedReserve": 90,
+      "safe": {
+        "top": 0,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      },
+      "navH": 58,
+      "contentBottom": 754,
+      "navTop": 774
+    },
+    {
+      "scenario": "S2-手势导航",
+      "insets": {
+        "top": 24,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "imeBottom": 0
+      },
+      "font": "100",
+      "occlusion": -20,
+      "navBottomGap": 12,
+      "headerTop": 36,
+      "reserve": 90,
+      "expectedReserve": 90,
+      "safe": {
+        "top": 24,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      },
+      "navH": 58,
+      "contentBottom": 754,
+      "navTop": 774
+    },
+    {
+      "scenario": "S3-三键导航",
+      "insets": {
+        "top": 24,
+        "bottom": 48,
+        "left": 0,
+        "right": 0,
+        "imeBottom": 0
+      },
+      "font": "100",
+      "occlusion": -20,
+      "navBottomGap": 60,
+      "headerTop": 36,
+      "reserve": 138,
+      "expectedReserve": 138,
+      "safe": {
+        "top": 24,
+        "bottom": 48,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      },
+      "navH": 58,
+      "contentBottom": 706,
+      "navTop": 726
+    },
+    {
+      "scenario": "S4-三键+字体150%",
+      "insets": {
+        "top": 24,
+        "bottom": 48,
+        "left": 0,
+        "right": 0,
+        "imeBottom": 0
+      },
+      "font": "150",
+      "occlusion": -20,
+      "navBottomGap": 60,
+      "headerTop": 36,
+      "reserve": 166,
+      "expectedReserve": 166,
+      "safe": {
+        "top": 24,
+        "bottom": 48,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      },
+      "navH": 86,
+      "contentBottom": 678,
+      "navTop": 698
+    }
+  ],
+  "responsive": [
+    {
+      "label": "320×640 三键",
+      "viewport": {
+        "w": 320,
+        "h": 640
+      },
+      "nav": {
+        "top": 522,
+        "bottom": 580,
+        "left": 12,
+        "right": 308,
+        "w": 296,
+        "h": 58
+      },
+      "navLeftGap": 12,
+      "navRightGap": 12,
+      "safe": {
+        "top": 24,
+        "bottom": 48,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      },
+      "occlusion": -20,
+      "overflowX": {
+        "sw": 320,
+        "cw": 320
+      }
+    },
+    {
+      "label": "360×800 三键",
+      "viewport": {
+        "w": 360,
+        "h": 800
+      },
+      "nav": {
+        "top": 682,
+        "bottom": 740,
+        "left": 12,
+        "right": 348,
+        "w": 336,
+        "h": 58
+      },
+      "navLeftGap": 12,
+      "navRightGap": 12,
+      "safe": {
+        "top": 24,
+        "bottom": 48,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      },
+      "occlusion": -20,
+      "overflowX": {
+        "sw": 360,
+        "cw": 360
+      }
+    },
+    {
+      "label": "390×844 三键",
+      "viewport": {
+        "w": 390,
+        "h": 844
+      },
+      "nav": {
+        "top": 726,
+        "bottom": 784,
+        "left": 12,
+        "right": 378,
+        "w": 366,
+        "h": 58
+      },
+      "navLeftGap": 12,
+      "navRightGap": 12,
+      "safe": {
+        "top": 24,
+        "bottom": 48,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      },
+      "occlusion": -20,
+      "overflowX": {
+        "sw": 390,
+        "cw": 390
+      }
+    },
+    {
+      "label": "412×915 三键",
+      "viewport": {
+        "w": 412,
+        "h": 915
+      },
+      "nav": {
+        "top": 797,
+        "bottom": 855,
+        "left": 12,
+        "right": 400,
+        "w": 388,
+        "h": 58
+      },
+      "navLeftGap": 12,
+      "navRightGap": 12,
+      "safe": {
+        "top": 24,
+        "bottom": 48,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      },
+      "occlusion": -20,
+      "overflowX": {
+        "sw": 412,
+        "cw": 412
+      }
+    },
+    {
+      "label": "320×640 手势",
+      "viewport": {
+        "w": 320,
+        "h": 640
+      },
+      "nav": {
+        "top": 570,
+        "bottom": 628,
+        "left": 12,
+        "right": 308,
+        "w": 296,
+        "h": 58
+      },
+      "navLeftGap": 12,
+      "navRightGap": 12,
+      "safe": {
+        "top": 24,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      },
+      "occlusion": -20,
+      "overflowX": {
+        "sw": 320,
+        "cw": 320
+      }
+    },
+    {
+      "label": "360×800 手势",
+      "viewport": {
+        "w": 360,
+        "h": 800
+      },
+      "nav": {
+        "top": 730,
+        "bottom": 788,
+        "left": 12,
+        "right": 348,
+        "w": 336,
+        "h": 58
+      },
+      "navLeftGap": 12,
+      "navRightGap": 12,
+      "safe": {
+        "top": 24,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      },
+      "occlusion": -20,
+      "overflowX": {
+        "sw": 360,
+        "cw": 360
+      }
+    },
+    {
+      "label": "390×844 手势",
+      "viewport": {
+        "w": 390,
+        "h": 844
+      },
+      "nav": {
+        "top": 774,
+        "bottom": 832,
+        "left": 12,
+        "right": 378,
+        "w": 366,
+        "h": 58
+      },
+      "navLeftGap": 12,
+      "navRightGap": 12,
+      "safe": {
+        "top": 24,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      },
+      "occlusion": -20,
+      "overflowX": {
+        "sw": 390,
+        "cw": 390
+      }
+    },
+    {
+      "label": "412×915 手势",
+      "viewport": {
+        "w": 412,
+        "h": 915
+      },
+      "nav": {
+        "top": 845,
+        "bottom": 903,
+        "left": 12,
+        "right": 400,
+        "w": 388,
+        "h": 58
+      },
+      "navLeftGap": 12,
+      "navRightGap": 12,
+      "safe": {
+        "top": 24,
+        "bottom": 0,
+        "left": 0,
+        "right": 0,
+        "ime": 0
+      },
+      "occlusion": -20,
+      "overflowX": {
+        "sw": 412,
+        "cw": 412
+      }
+    },
+    {
+      "label": "844×390 横屏+左侧安全区",
+      "viewport": {
+        "w": 844,
+        "h": 390
+      },
+      "nav": {
+        "top": 296,
+        "bottom": 354,
+        "left": 60,
+        "right": 832,
+        "w": 772,
+        "h": 58
+      },
+      "navLeftGap": 60,
+      "navRightGap": 12,
+      "safe": {
+        "top": 0,
+        "bottom": 24,
+        "left": 48,
+        "right": 0,
+        "ime": 0
+      },
+      "occlusion": -20,
+      "overflowX": {
+        "sw": 844,
+        "cw": 844
+      }
+    }
+  ],
+  "navHeight": {
+    "font100": {
+      "navH": 58,
+      "navRect": 58,
+      "reserve": 138,
+      "occlusion": -20
+    },
+    "font130": {
+      "navH": 75,
+      "navRect": 75,
+      "reserve": 155,
+      "occlusion": -20
+    },
+    "font150": {
+      "navH": 86,
+      "navRect": 86,
+      "reserve": 166,
+      "occlusion": -20
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "phase": "4.2-responsive",
+    "base": "http://127.0.0.1:5173",
+    "browserVersion": "Edg/157.0.4341.60",
+    "dataset": 5000
+  },
+  "results": {
+    "mobile": {
+      "viewport": "390x844",
+      "rows": 44,
+      "overflowX": false,
+      "navVisible": true,
+      "pageHeight": 266499,
+      "hasTasksHeading": true,
+      "bottomRows": 38,
+      "scrolled": 265603,
+      "topRows": 44
+    },
+    "tablet": {
+      "viewport": "768x1024",
+      "rows": 48,
+      "overflowX": false,
+      "navVisible": true,
+      "pageHeight": 266469,
+      "hasTasksHeading": true,
+      "bottomRows": 38,
+      "scrolled": 265393,
+      "topRows": 48
+    },
+    "desktop": {
+      "viewport": "1440x900",
+      "rows": 46,
+      "overflowX": false,
+      "navVisible": false,
+      "pageHeight": 266405,
+      "hasTasksHeading": true,
+      "bottomRows": 38,
+      "scrolled": 265453,
+      "topRows": 46
+    }
+  }
+}

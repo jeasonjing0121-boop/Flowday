@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "phase": "4.2-r4-scroll",
+    "base": "http://127.0.0.1:5173",
+    "browserVersion": "Edg/157.0.4341.60",
+    "dataset": 5000
+  },
+  "dataChangeKeptScroll": true,
+  "beforeToggle": 4000,
+  "afterToggle": 4000,
+  "conditionChangeResetToTop": true,
+  "afterQuery": 271,
+  "listTop": 278.5,
+  "clearKeptPosition": true,
+  "afterClear": 271
+}

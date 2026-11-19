@@ -1,0 +1,19 @@
+﻿{
+    "model":  "V2458A",
+    "manufacturer":  "vivo",
+    "androidRelease":  "17",
+    "apiLevel":  "37",
+    "buildId":  "PD2458_A_17.2.13.2.W10",
+    "osVersion":  "17.0",
+    "kernel":  "6.6.127-android15-8-g3b723d0e8507-abogki558077879-4k",
+    "securityPatch":  "2026-10-01",
+    "webview":  "adb.exe : grep: WebView: No such file or directory\r\nAt F:\\DeepSeekHarness\\FlowDay\\scripts\\device-acceptance.ps1:28 char:30\r\n+ function Sh([string]$cmd) { (\u0026 $adb shell $cmd 2\u003e\u00261 | Out-String).Tri ...\r\n+                              ~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (grep: WebView: No such file or directory:String) [], RemoteException\r\n    + FullyQualifiedErrorId : NativeCommandError\r\n \r\ngrep: package: No such file or directory\r\nFailed to write while dumping service webviewupdate: Broken pipe",
+    "navigationMode":  "2",
+    "fontScale":  "1.0",
+    "wmSize":  "Physical size: 1260x2800",
+    "wmDensity":  "Physical density: 560",
+    "brightness":  "46",
+    "brightnessMode":  "1",
+    "installed":  "Error: Shell does not have permission to access user 666\r\npackage:app.flowday.beta",
+    "insetsDump":  "adb.exe : /system/bin/sh: navigationBars: inaccessible or not found\r\nAt F:\\DeepSeekHarness\\FlowDay\\scripts\\device-acceptance.ps1:28 char:30\r\n+ function Sh([string]$cmd) { (\u0026 $adb shell $cmd 2\u003e\u00261 | Out-String).Tri ...\r\n+                              ~~~~~~~~~~~~~~~~~~~~~~\r\n    + CategoryInfo          : NotSpecified: (/system/bin/sh:...le or not found:String) [], RemoteException\r\n    + FullyQualifiedErrorId : NativeCommandError\r\n \r\n/system/bin/sh: Insets: inaccessible or not found\r\n/system/bin/sh: displayCutout: inaccessible or not found\r\nFailed to write while dumping service window: Broken pipe"
+}

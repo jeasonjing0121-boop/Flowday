@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-11-14T10:50:49.910Z",
+  "bySize": {
+    "1000": {
+      "jsonKB": 204,
+      "storage": {
+        "initialWrite": 15.6,
+        "wholeRead": 6,
+        "singleUpdate": 9.1,
+        "sequential20": 214.7,
+        "batched20": 57.9
+      },
+      "app": {
+        "reloadToReady": 409.5,
+        "searchUI": 467.2,
+        "priorityUI": 953.4,
+        "statusUI": 715.4,
+        "toggleEndToEnd": 921.3,
+        "toggleWrite": 14.3
+      },
+      "compute": {
+        "filterQuery": 1.199999999254942,
+        "sortTasks": 5.100000001490116,
+        "todayStats": 0.19999999925494194,
+        "last7Day": 1.800000000745058,
+        "sanitize": 1.199999999254942
+      },
+      "module": {
+        "readState": 33,
+        "writeState": 20.600000001490116
+      }
+    },
+    "5000": {
+      "jsonKB": 1026,
+      "storage": {
+        "initialWrite": 43.7,
+        "wholeRead": 18.6,
+        "singleUpdate": 49,
+        "sequential20": 947.2,
+        "batched20": 313.6
+      },
+      "app": {
+        "reloadToReady": 359.6,
+        "searchUI": 1361.6,
+        "priorityUI": 2309.1,
+        "statusUI": 2531.7,
+        "toggleEndToEnd": 2327.6,
+        "toggleWrite": 171.7
+      },
+      "compute": {
+        "filterQuery": 5.600000001490116,
+        "sortTasks": 24.300000000745058,
+        "todayStats": 0.8999999985098839,
+        "last7Day": 9.300000000745058,
+        "sanitize": 3.2000000029802322
+      },
+      "module": {
+        "readState": 19.600000001490116,
+        "writeState": 33.70000000298023
+      }
+    },
+    "10000": {
+      "jsonKB": 2053,
+      "storage": {
+        "initialWrite": 54.4,
+        "wholeRead": 31.9,
+        "singleUpdate": 68.6,
+        "sequential20": 1350.3,
+        "batched20": 497.5
+      },
+      "app": {
+        "reloadToReady": 452.8,
+        "searchUI": 2646.9,
+        "priorityUI": 5634,
+        "statusUI": 4636.9,
+        "toggleEndToEnd": 8202,
+        "toggleWrite": 3424.6
+      },
+      "compute": {
+        "filterQuery": 15.800000000745058,
+        "sortTasks": 49.5,
+        "todayStats": 2.5,
+        "last7Day": 22.600000001490116,
+        "sanitize": 7.100000001490116
+      },
+      "module": {
+        "readState": 33.19999999925494,
+        "writeState": 33.19999999925494
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+﻿FlowDay B5.1 真机日志核验摘要（vivo X200s / V2458A / API 37 / WebView 157.0.8103.38）
+采集时间：2026-11-19 23:08-23:15（Asia/Shanghai）
+
+[1] Capacitor "Error injecting safe area CSS" 复现计数
+  - 首轮九项脚本（未清 logcat）：3 条，pid=5974（非当前应用进程 8813）→ 判定为历史缓冲中的旧进程日志
+  - 清空 logcat 后启动 Beta.2（app.flowday.beta）：0 条
+  - 清空 logcat 后启动 B5test（app.flowday.beta.b5test）：0 条
+  - 对 B5test 执行 pm clear 后重新首启（清空 logcat）：0 条
+  结论：本构建当前进程未复现，非本轮回归；功能无影响（Insets 实测 42px/18px 正常）。
+
+[2] Capacitor "Unable to read file at path public/plugins"
+  - 首轮脚本：1 条（W/Capacitor, pid 5974，旧进程）
+  - 清空 logcat 后复测：未出现
+  结论：非本轮回归；无功能影响。
+
+[3] 崩溃 / ANR 扫描（清空缓冲后重测）
+  - `logcat -b crash` 中匹配 app.flowday / FATAL EXCEPTION / AndroidRuntime：0 条
+  - `logcat -b events` 中 am_crash / am_anr：0 条
+  - 测试应用进程：存活（pidof 有值）
+
+[4] 说明
+  - 为复现"首次启动"行为，仅对 app.flowday.beta.b5test 执行 pm clear；Beta.2 未卸载、未更新、未清数据。
+  - 原始日志见同目录：device-verify.log、b5test-capacitor-log.txt、crash-buffer.txt；
+    清空缓冲后的原始计数见上述复测记录（本文件为结论性摘要）。

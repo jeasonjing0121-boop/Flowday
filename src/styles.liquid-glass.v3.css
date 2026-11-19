@@ -1,0 +1,369 @@
+/* ============================================================================
+   FlowDay Liquid Glass v3（Phase 5.0-B / B4）
+   ----------------------------------------------------------------------------
+   相对 Beta.2（普通磨砂玻璃）的六项光学升级，全部在既有 `.lg-l1` 体系内实现，
+   不新增 DOM 节点、不更换组件结构，只重排/新增材质层：
+
+   1) 双边缘轮廓：外侧暗发丝（box-shadow 外圈）+ 内侧镜面高光（inset），
+      浅色主题靠"暗边定形"，深色主题靠"亮边定形"，不再白叠白。
+   2) 折射模拟：`.lg-l1::before` 为「折射带」——内缩一圈的环带，带自身
+      backdrop-filter(blur 2px + saturate) 采样背后内容并沿环带压暗/提亮，
+      再叠 conic 双明暗渐变，模拟"边缘光线弯折 + 内容被压缩"的观感。
+      ⚠ 局限：WebView 无法做真实的光学位移折射（无 displacement），
+      这里是"环带重采样 + 明暗转折"的等效模拟，非真实光学折射。
+   3) 三层结构（同一元素的多层背景，肉眼可辨）：
+      外层 = 环境反射与镜面光池；中层 = 环带折射与厚度；内层 = 透光与背景染色。
+   4) 环境染色：--lg-ambient-strength 8% → 16%（浅）/12%（深），
+      并在底部叠一层环境反光，避免整块玻璃呈单一白色。
+   5) 动态镜面：`::after` 的 transform 由 --lg-scroll 驱动（仅 transform/opacity，
+      合成层动画，不触发布局/绘制）；滚动时高光沿边缘缓慢平移。
+   6) 按压反馈：按钮/卡片按下时镜面带下移并增强（transform + opacity），
+      松开回落；reduced-motion 下禁用位移只保留极轻微透明度变化。
+   ========================================================================== */
+
+/* ---------------------------------------------------------- v3 光学 Token --- */
+:root {
+  /* 环境染色（可感知的颜色响应） */
+  --lg-ambient-strength: 12%;
+  --lg-ambient-glow: 16%;
+  /* 双边缘：外暗内亮 */
+  --lg-edge-outer: rgba(24, 30, 46, 0.22);
+  --lg-edge-outer-soft: rgba(24, 30, 46, 0.08);
+  --lg-edge-inner: rgba(255, 255, 255, 0.82);
+  --lg-edge-inner-soft: rgba(255, 255, 255, 0.38);
+  /* 折射带 */
+  --lg-refract-w: 10px;
+  --lg-refract-blur: 2px;
+  --lg-refract-sat: 150%;
+  --lg-refract-warm: rgba(255, 236, 214, 0.28);
+  --lg-refract-cool: rgba(30, 40, 70, 0.26);
+  /* 镜面高光（含下方暗线，保证浅色背景可见） */
+  --lg-specular: rgba(255, 255, 255, 0.95);
+  --lg-specular-soft: rgba(255, 255, 255, 0.34);
+  --lg-specular-under: rgba(24, 30, 46, 0.07);
+  /* 高光位移限制在元素内部：左右各留 10px，位移区间 -8px…+8px */
+  --lg-specular-shift: calc((var(--lg-scroll, 0) - 0.5) * 16px);
+  /* 厚度 */
+  --lg-thickness-inner: inset 0 -18px 26px -22px rgba(18, 24, 40, 0.34);
+  --lg-thickness-line: inset 0 -1px 0 rgba(24, 30, 46, 0.12);
+}
+
+[data-theme='dark'] {
+  --lg-ambient-strength: 9%;
+  --lg-ambient-glow: 15%;
+  --lg-edge-outer: rgba(0, 0, 0, 0.7);
+  --lg-edge-outer-soft: rgba(0, 0, 0, 0.42);
+  --lg-edge-inner: rgba(255, 255, 255, 0.34);
+  --lg-edge-inner-soft: rgba(255, 255, 255, 0.12);
+  --lg-refract-warm: rgba(255, 226, 190, 0.12);
+  --lg-refract-cool: rgba(0, 0, 0, 0.32);
+  --lg-specular: rgba(255, 255, 255, 0.5);
+  --lg-specular-soft: rgba(255, 255, 255, 0.14);
+  --lg-specular-under: rgba(0, 0, 0, 0.34);
+  --lg-thickness-inner: inset 0 -20px 30px -22px rgba(0, 0, 0, 0.78);
+  --lg-thickness-line: inset 0 -1px 0 rgba(255, 255, 255, 0.06);
+}
+
+/* ------------------------------------------------- L1 三层材质（重写） ----- */
+.lg-l1 {
+  /* 内层 last（最底）：透光 + 背景染色；中层：环带柔光；外层 top：环境反射 */
+  background-color: color-mix(in srgb, rgb(var(--lg-ambient-soft)) var(--lg-ambient-strength), var(--lg-tint-regular));
+  background-image:
+    /* ① 外层：环境反射光池（左上）*/
+    radial-gradient(120% 82% at 20% -22%, rgba(255, 255, 255, 0.72) 0%, rgba(255, 255, 255, 0) 60%),
+    /* ② 外层：环境反光（底部，取自 --lg-ambient，避免整块纯白）*/
+    linear-gradient(0deg, rgb(var(--lg-ambient-soft) / 18%) 0%, transparent 38%),
+    /* ③ 中层：折射环带的柔和内光（与 ::before 的环带同方向）*/
+    radial-gradient(135% 110% at 50% -34%, rgba(255, 255, 255, 0.3) 0%, transparent 60%),
+    /* ④ 内层：透光渐变（顶部薄亮 → 中部通透 → 底部略厚）*/
+    linear-gradient(180deg, rgba(255, 255, 255, 0.46) 0%, rgba(255, 255, 255, 0.08) 44%, rgba(255, 255, 255, 0.2) 100%);
+  /* 双边缘 + 厚度（外暗内亮） */
+  box-shadow:
+    inset 0 1px 0 var(--lg-edge-inner),
+    inset 0 0 0 0.75px var(--lg-edge-inner-soft),
+    inset 0 -1px 0 var(--lg-edge-inner-soft),
+    var(--lg-thickness-inner),
+    var(--lg-thickness-line),
+    var(--lg-shadow-rest),
+    var(--lg-shadow-float),
+    0 0 0 0.6px var(--lg-edge-outer),
+    0 0 0 2px var(--lg-edge-outer-soft);
+  -webkit-backdrop-filter: blur(var(--lg-blur-l1)) saturate(var(--lg-sat-l1)) brightness(var(--lg-bright-l1));
+  backdrop-filter: blur(var(--lg-blur-l1)) saturate(var(--lg-sat-l1)) brightness(var(--lg-bright-l1));
+}
+
+[data-theme='dark'] .lg-l1 {
+  background-image:
+    radial-gradient(120% 82% at 20% -22%, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 58%),
+    linear-gradient(0deg, rgb(var(--lg-ambient-soft) / 12%) 0%, transparent 36%),
+    radial-gradient(135% 110% at 50% -34%, rgba(255, 255, 255, 0.1) 0%, transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.015) 44%, rgba(255, 255, 255, 0.06) 100%);
+}
+
+/* 折射带（原「边缘折射环」升级）：
+   - 内缩 --lg-refract-w 的环带；
+   - 自身 backdrop-filter 采样背后内容 → 产生"边缘内容被压暗/提亮"的透镜感；
+   - 叠 conic 双明暗：左上亮 + 右下暗（浅色靠暗段定形）。 */
+.lg-l1::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--lg-refract-w);
+  background:
+    conic-gradient(
+      from 205deg,
+      var(--lg-specular) 0deg,
+      var(--lg-specular-soft) 46deg,
+      var(--lg-refract-cool) 104deg,
+      var(--lg-refract-warm) 156deg,
+      var(--lg-refract-cool) 218deg,
+      var(--lg-specular-soft) 274deg,
+      var(--lg-specular) 320deg,
+      var(--lg-specular) 360deg
+    );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0.96;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* 仅在核心组件启用"环带二次采样"（额外合成层受控：移动端同时最多 2 个 + 弹窗）：
+   底部导航、顶部栏、弹窗/确认框、下拉菜单。其余 L1（头像球/浮动按钮/Toast）
+   只用渐变环带，视觉同源但不额外采样。 */
+.tabbar-liquid::before,
+.header-liquid::before,
+.lg-l3::before,
+.menu-liquid::before {
+  -webkit-backdrop-filter: blur(var(--lg-refract-blur)) saturate(var(--lg-refract-sat)) brightness(1.04);
+  backdrop-filter: blur(var(--lg-refract-blur)) saturate(var(--lg-refract-sat)) brightness(1.04);
+}
+[data-theme='dark'] .lg-l1::before {
+  opacity: 0.9;
+}
+[data-theme='dark'] .tabbar-liquid::before,
+[data-theme='dark'] .header-liquid::before,
+[data-theme='dark'] .lg-l3::before,
+[data-theme='dark'] .menu-liquid::before {
+  -webkit-backdrop-filter: blur(var(--lg-refract-blur)) saturate(130%) brightness(0.98);
+  backdrop-filter: blur(var(--lg-refract-blur)) saturate(130%) brightness(0.98);
+}
+
+/* 镜面高光带（原「顶部透镜光带」升级）：
+   - 顶部亮线 + 其下暗线（浅色背景上可辨）；
+   - transform 由 --lg-scroll 驱动（合成层动画）；
+   - 仅核心组件常驻 will-change（导航/头部/弹窗），避免全站合成层膨胀。 */
+.lg-l1::after {
+  content: '';
+  position: absolute;
+  inset: 0.5px 10px auto 10px;
+  height: 52%;
+  border-radius: inherit;
+  background:
+    linear-gradient(180deg, var(--lg-specular) 0%, var(--lg-specular-soft) 26%, transparent 62%),
+    linear-gradient(180deg, transparent 58%, var(--lg-specular-under) 100%);
+  -webkit-mask-image: radial-gradient(126% 104% at 50% -8%, #000 44%, transparent 92%);
+  mask-image: radial-gradient(126% 104% at 50% -8%, #000 44%, transparent 92%);
+  transform: translate3d(var(--lg-specular-shift), calc(var(--lg-scroll, 0) * -3px), 0);
+  transition: transform 140ms linear, opacity 160ms linear;
+  opacity: 0.9;
+  pointer-events: none;
+  z-index: 1;
+}
+[data-theme='dark'] .lg-l1::after {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.22) 0%, rgba(255, 255, 255, 0.08) 30%, transparent 62%),
+    linear-gradient(180deg, transparent 62%, rgba(0, 0, 0, 0.3) 100%);
+  opacity: 0.75;
+}
+
+/* 核心组件：允许高光常驻合成层（数量受控：底部导航 / 顶部栏 / 弹窗） */
+.header-liquid::after,
+.tabbar-liquid::after,
+.lg-l3::after {
+  will-change: transform;
+}
+
+/* 变体微调：clear 更薄、heavy 更厚 */
+.lg-l1-clear {
+  --lg-refract-w: 8px;
+  --lg-ambient-strength: 10%;
+}
+.lg-l1-heavy {
+  --lg-refract-w: 11px;
+  --lg-ambient-strength: 14%;
+}
+
+/* --------------------------------------------- 底部导航 / 选中胶囊（升级） -- */
+.tabbar-liquid {
+  /* 导航是最需要"立体悬浮"的组件：加一层更强的下方投影与更明确的暗边 */
+  box-shadow:
+    inset 0 1px 0 var(--lg-edge-inner),
+    inset 0 0 0 0.75px var(--lg-edge-inner-soft),
+    inset 0 -18px 26px -22px rgba(18, 24, 40, 0.34),
+    inset 0 -1px 0 rgba(24, 30, 46, 0.14),
+    0 8px 22px -14px rgba(18, 24, 40, 0.42),
+    0 2px 6px -2px rgba(18, 24, 40, 0.16),
+    0 0 0 0.6px var(--lg-edge-outer),
+    0 0 0 2px var(--lg-edge-outer-soft);
+}
+[data-theme='dark'] .tabbar-liquid {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 0 0 0.75px rgba(255, 255, 255, 0.1),
+    inset 0 -20px 30px -22px rgba(0, 0, 0, 0.8),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    0 10px 26px -14px rgba(0, 0, 0, 0.8),
+    0 2px 6px -2px rgba(0, 0, 0, 0.5),
+    0 0 0 0.6px rgba(0, 0, 0, 0.7),
+    0 0 0 2px rgba(0, 0, 0, 0.4);
+}
+
+/* 选中胶囊：与 L1 同源的"小玻璃"，同样有双边缘与镜面 */
+.lg-tab-pill {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.72) 34%, rgba(255, 255, 255, 0.5) 100%),
+    linear-gradient(0deg, rgb(var(--lg-ambient-soft) / 24%) 0%, transparent 60%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.98),
+    inset 0 0 0 0.75px rgba(255, 255, 255, 0.5),
+    inset 0 -8px 14px -12px rgba(18, 24, 40, 0.4),
+    0 6px 16px -8px rgba(22, 26, 40, 0.4),
+    0 0 0 0.6px rgba(24, 30, 46, 0.18);
+}
+[data-theme='dark'] .lg-tab-pill {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.12) 34%, rgba(255, 255, 255, 0.05) 100%),
+    linear-gradient(0deg, rgb(var(--lg-ambient-soft) / 26%) 0%, transparent 62%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 0 0 0.75px rgba(255, 255, 255, 0.12),
+    inset 0 -10px 16px -12px rgba(0, 0, 0, 0.85),
+    0 8px 18px -10px rgba(0, 0, 0, 0.85),
+    0 0 0 0.6px rgba(0, 0, 0, 0.7);
+}
+
+/* -------------------------------------------------- 卡片（L2 边缘语言） ---- */
+.fd-card {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.96),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.5),
+    inset 0 -1px 0 rgba(24, 30, 46, 0.06),
+    0 1px 1px rgba(22, 26, 40, 0.05),
+    0 4px 10px -6px rgba(22, 26, 40, 0.12),
+    0 0 0 0.5px rgba(24, 30, 46, 0.1);
+}
+[data-theme='dark'] .fd-card {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.07),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.04),
+    0 1px 2px rgba(0, 0, 0, 0.5),
+    0 16px 30px -24px rgba(0, 0, 0, 0.7),
+    0 0 0 0.5px rgba(0, 0, 0, 0.6);
+}
+
+/* ------------------------------------------------------ 按压光学反馈 ------ */
+/* 统一语言：按下 → 镜面带走平并增强（体积压缩感），松开回弹。 */
+.fd-btn-primary,
+.fd-btn-soft,
+.fd-btn-ghost,
+.lg-pressable,
+.fd-nav-item {
+  position: relative;
+  isolation: isolate;
+}
+.fd-btn-primary::after,
+.fd-btn-soft::after,
+.lg-pressable::after,
+.fd-nav-item::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.06) 46%, transparent 70%);
+  opacity: 0;
+  transform: translate3d(0, -2px, 0);
+  transition: opacity 120ms linear, transform 120ms var(--lg-ease-press);
+  pointer-events: none;
+  z-index: -1;
+}
+.fd-btn-primary:active::after,
+.fd-btn-soft:active::after,
+.lg-pressable:active::after,
+.fd-nav-item:active::after {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+.fd-btn-primary:active {
+  transform: scale(0.972) translateY(0.5px);
+  box-shadow:
+    inset 0 2px 8px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 1px 1px rgba(22, 26, 40, 0.14);
+}
+[data-theme='dark'] .fd-btn-primary::after {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, transparent 60%);
+}
+
+/* ------------------------------------------------------ v3 降级守卫 ------ */
+/* 降低透明度 / 高对比度：关闭折射带与镜面层，保持实底可读性 */
+@media (prefers-reduced-transparency: reduce) {
+  .lg-l1::before,
+  .lg-l1::after {
+    display: none !important;
+  }
+  .lg-l1 {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+@media (prefers-contrast: more) {
+  .lg-l1::before,
+  .lg-l1::after {
+    display: none !important;
+  }
+  .lg-l1 {
+    box-shadow: 0 0 0 1px var(--fd-ink) !important;
+    background-image: none !important;
+  }
+  .fd-card {
+    box-shadow: 0 0 0 1px var(--fd-ink-2) !important;
+  }
+}
+/* 不支持 backdrop-filter 的旧 WebView：折射带退化为纯渐变，避免发灰 */
+@supports not ((backdrop-filter: blur(4px)) or (-webkit-backdrop-filter: blur(4px))) {
+  .lg-l1::before,
+  .tabbar-liquid::before,
+  .header-liquid::before,
+  .lg-l3::before,
+  .menu-liquid::before {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+    opacity: 0.7;
+  }
+}
+/* 降低动态效果：关闭镜面位移与按压位移，仅保留透明度变化 */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --lg-specular-shift: 0px;
+  }
+  .lg-l1::after,
+  .fd-btn-primary::after,
+  .fd-btn-soft::after,
+  .lg-pressable::after,
+  .fd-nav-item::after {
+    transition: opacity 120ms linear !important;
+  }
+  .fd-btn-primary:active,
+  .fd-btn-soft:active,
+  .lg-pressable:active {
+    transform: none !important;
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-11-15T05:30:22.346Z",
+  "base": "http://127.0.0.1:5173",
+  "results": [
+    {
+      "name": "高频保存（40 次快速勾选）无丢失且 revision 单调",
+      "pass": true,
+      "detail": "{\"rapid\":{\"clicked\":40},\"before\":1,\"after\":2}"
+    },
+    {
+      "name": "revision 与 meta 一致（CAS 单事务）",
+      "pass": true,
+      "detail": "{\"rev\":2,\"meta\":2}"
+    },
+    {
+      "name": "写入异常（abort 注入）被捕获：持久化关闭 + 错误提示",
+      "pass": true,
+      "detail": "{\"persistence\":false,\"toast\":\"保存到本地数据库失败，请检查浏览器存储空间\"}"
+    },
+    {
+      "name": "配额异常被捕获：持久化关闭 + 错误提示",
+      "pass": true,
+      "detail": "{\"persistence\":false,\"toast\":\"保存到本地数据库失败，请检查浏览器存储空间\"}"
+    },
+    {
+      "name": "IndexedDB 不可用：应用仍可渲染并明确报错（不白屏）",
+      "pass": true,
+      "detail": "{\"ready\":true,\"persistence\":false,\"toast\":\"本地数据库不可用：当前环境不支持 IndexedDB；本次修改不会被保存\",\"rendered\":true}"
+    },
+    {
+      "name": "IndexedDB 恢复后数据完好（异常未破坏已有数据）",
+      "pass": true,
+      "detail": "{\"revision\":2,\"metaRevision\":2,\"tasks\":10000,\"uniqueIds\":10000,\"completed\":0}"
+    },
+    {
+      "name": "页面关闭期间写入：重载后数据一致（无半写，revision 单调）",
+      "pass": true,
+      "detail": "{\"revBefore\":2,\"rev\":2,\"unique\":10000,\"tasks\":10000}"
+    },
+    {
+      "name": "持续写入下读取一致：revision 单调且任务 id 唯一",
+      "pass": true,
+      "detail": "{\"monotonic\":true,\"unique\":true,\"count\":10000,\"lastRev\":2}"
+    },
+    {
+      "name": "导入失败被拒绝且不破坏已有数据",
+      "pass": true,
+      "detail": "{\"previewBlocked\":{\"confirmDisabled\":true,\"error\":true},\"tasks\":10000}"
+    }
+  ],
+  "passed": 9,
+  "failed": 0
+}

@@ -1,0 +1,594 @@
+{
+  "meta": {
+    "phase": "4.1",
+    "generatedAt": "2026-11-14T10:50:49.910Z",
+    "repeatsPerMetric": 5,
+    "sizes": [
+      1000,
+      5000,
+      10000
+    ],
+    "environment": {
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+      "platform": "Win32",
+      "hardwareConcurrency": 8,
+      "deviceMemoryGB": 8,
+      "language": "zh-CN",
+      "screen": {
+        "w": 800,
+        "h": 600,
+        "dpr": 1
+      },
+      "timezone": "Asia/Shanghai",
+      "indexedDB": true,
+      "storageEstimate": true,
+      "now": "2026-11-14T10:50:49.904Z",
+      "browserVersion": "Edg/157.0.4341.60",
+      "edgeVersion": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36 Edg/157.0.0.0",
+      "nodeVersion": "v24.16.0",
+      "os": "win32 AMD64",
+      "cpu": "Intel Core i7-8565U (4C/8T, 1.8GHz)",
+      "ramGB": 8
+    },
+    "methodology": {
+      "isolation": "临时 Chromium 用户配置目录 + 独立数据库 flowday-bench-4-1 / flowday-bench-split-4-1；应用级测量使用临时 profile 内的 flowday-db，profile 结束后删除，与用户真实浏览器数据隔离",
+      "timing": "performance.now() 计时，含 IndexedDB 事务创建、提交与结构化克隆；应用级重载以 Page.navigate 到 /today 后页面内检测 __FD_STATE__ + [data-fd-stats] 就绪时间",
+      "dataset": "确定性生成：任务日期覆盖 -20~+39 天，P1-P3 轮转，1/5 已完成，1/3 含备注，1/4 含时间；习惯 3 个，打卡记录 = 任务数/10",
+      "warmup": "每次冷写入先删除独立数据库；应用级重载包含首次（冷）与后续（热）重复，取 5 次的中位数与最大值"
+    },
+    "testScript": "scripts/bench-4.1.mjs"
+  },
+  "rawStorage": {
+    "1000": {
+      "jsonBytes": 208546,
+      "initialWrite": {
+        "repeats": [
+          18.5,
+          15.599999997764826,
+          9.800000000745058,
+          13,
+          16.600000001490116
+        ],
+        "median": 15.6,
+        "max": 18.5,
+        "min": 9.8
+      },
+      "wholeRead": {
+        "repeats": [
+          34,
+          6,
+          4.399999998509884,
+          9.199999999254942,
+          4.299999997019768
+        ],
+        "median": 6,
+        "max": 34,
+        "min": 4.3
+      },
+      "singleUpdate": {
+        "repeats": [
+          54.399999998509884,
+          6.899999998509884,
+          10.400000002235174,
+          9.099999997764826,
+          7.100000001490116
+        ],
+        "median": 9.1,
+        "max": 54.4,
+        "min": 6.9
+      },
+      "sequential20Writes": {
+        "repeats": [
+          406,
+          214.69999999925494,
+          178.80000000074506,
+          411.9000000022352,
+          169.89999999850988
+        ],
+        "median": 214.7,
+        "max": 411.9,
+        "min": 169.9
+      },
+      "batched20Writes": {
+        "repeats": [
+          61.69999999925494,
+          56.30000000074506,
+          56.20000000298023,
+          63.400000002235174,
+          57.900000002235174
+        ],
+        "median": 57.9,
+        "max": 63.4,
+        "min": 56.2
+      },
+      "jsonCost": {
+        "stringifyMs": 1.5,
+        "parseMs": 1.8999999985098839,
+        "jsonBytes": 214793,
+        "tasks": 1040
+      },
+      "storageEstimate": {
+        "usage": 5998586,
+        "quota": 10743416826,
+        "details": {
+          "indexedDB": 5998586
+        }
+      }
+    },
+    "5000": {
+      "jsonBytes": 1050354,
+      "initialWrite": {
+        "repeats": [
+          46.100000001490116,
+          38.399999998509884,
+          116.29999999701977,
+          39.80000000074506,
+          43.69999999925494
+        ],
+        "median": 43.7,
+        "max": 116.3,
+        "min": 38.4
+      },
+      "wholeRead": {
+        "repeats": [
+          21.600000001490116,
+          18.600000001490116,
+          17.300000000745058,
+          19.900000002235174,
+          18.300000000745058
+        ],
+        "median": 18.6,
+        "max": 21.6,
+        "min": 17.3
+      },
+      "singleUpdate": {
+        "repeats": [
+          49,
+          51,
+          81.39999999850988,
+          45.5,
+          47.30000000074506
+        ],
+        "median": 49,
+        "max": 81.4,
+        "min": 45.5
+      },
+      "sequential20Writes": {
+        "repeats": [
+          934.6999999992549,
+          1002.5,
+          959.8000000007451,
+          947.1999999992549,
+          893.6999999992549
+        ],
+        "median": 947.2,
+        "max": 1002.5,
+        "min": 893.7
+      },
+      "batched20Writes": {
+        "repeats": [
+          325.3999999985099,
+          325.1000000014901,
+          302.69999999925494,
+          313.6000000014901,
+          280.19999999925494
+        ],
+        "median": 313.6,
+        "max": 325.4,
+        "min": 280.2
+      },
+      "jsonCost": {
+        "stringifyMs": 8.300000000745058,
+        "parseMs": 7.899999998509884,
+        "jsonBytes": 1056601,
+        "tasks": 5040
+      },
+      "storageEstimate": {
+        "usage": 3348310,
+        "quota": 10740766550,
+        "details": {
+          "indexedDB": 3348310
+        }
+      }
+    },
+    "10000": {
+      "jsonBytes": 2102646,
+      "initialWrite": {
+        "repeats": [
+          147.30000000074506,
+          53.69999999925494,
+          54.399999998509884,
+          66.30000000074506,
+          31.900000002235174
+        ],
+        "median": 54.4,
+        "max": 147.3,
+        "min": 31.9
+      },
+      "wholeRead": {
+        "repeats": [
+          32.099999997764826,
+          31.600000001490116,
+          34.099999997764826,
+          31.899999998509884,
+          29.300000000745058
+        ],
+        "median": 31.9,
+        "max": 34.1,
+        "min": 29.3
+      },
+      "singleUpdate": {
+        "repeats": [
+          79.80000000074506,
+          73.80000000074506,
+          68.60000000149012,
+          64,
+          59
+        ],
+        "median": 68.6,
+        "max": 79.8,
+        "min": 59
+      },
+      "sequential20Writes": {
+        "repeats": [
+          1287.9000000022352,
+          1350.300000000745,
+          1437.5,
+          1478.6000000014901,
+          1212.7999999970198
+        ],
+        "median": 1350.3,
+        "max": 1478.6,
+        "min": 1212.8
+      },
+      "batched20Writes": {
+        "repeats": [
+          425.5,
+          497.5,
+          543.8999999985099,
+          491.70000000298023,
+          506.80000000074506
+        ],
+        "median": 497.5,
+        "max": 543.9,
+        "min": 425.5
+      },
+      "jsonCost": {
+        "stringifyMs": 16.100000001490116,
+        "parseMs": 17.5,
+        "jsonBytes": 2108893,
+        "tasks": 10040
+      },
+      "storageEstimate": {
+        "usage": 4116290,
+        "quota": 10741534530,
+        "details": {
+          "indexedDB": 4116290
+        }
+      }
+    }
+  },
+  "appLevel": {
+    "1000": {
+      "reloadToReady": {
+        "repeats": [
+          1029.5,
+          330.5,
+          326.79999999701977,
+          550,
+          409.5
+        ],
+        "median": 409.5,
+        "max": 1029.5,
+        "min": 326.8
+      },
+      "navigationTiming": {
+        "dcl": 306.4000000022352,
+        "load": 308.30000000074506
+      },
+      "search": {
+        "repeats": [
+          672.8000000007451,
+          467.19999999925494,
+          413.70000000298023,
+          451.79999999701977,
+          597.1999999992549
+        ],
+        "median": 467.2,
+        "max": 672.8,
+        "min": 413.7
+      },
+      "priorityFilter": {
+        "repeats": [
+          855.6999999992549,
+          959.8000000007451,
+          690.3999999985099,
+          953.3999999985099,
+          979.7000000029802
+        ],
+        "median": 953.4,
+        "max": 979.7,
+        "min": 690.4
+      },
+      "statusFilter": {
+        "repeats": [
+          778.4000000022352,
+          682.1000000014901,
+          586.5999999977648,
+          869.8999999985099,
+          715.3999999985099
+        ],
+        "median": 715.4,
+        "max": 869.9,
+        "min": 586.6
+      },
+      "togglePersist": {
+        "repeats": [
+          975.1999999992549,
+          910,
+          827.9000000022352,
+          727.6999999992549,
+          791.6000000014901
+        ],
+        "median": 827.9,
+        "max": 975.2,
+        "min": 727.7
+      },
+      "renderedRowsAfterSearch": [
+        143,
+        143,
+        143,
+        143,
+        143
+      ],
+      "appDbJsonBytes": 208746,
+      "appDbTasks": 1000
+    },
+    "5000": {
+      "reloadToReady": {
+        "repeats": [
+          305.80000000074506,
+          334.30000000074506,
+          359.5999999977648,
+          404.80000000074506,
+          454.70000000298023
+        ],
+        "median": 359.6,
+        "max": 454.7,
+        "min": 305.8
+      },
+      "navigationTiming": {
+        "dcl": 264.20000000298023,
+        "load": 267
+      },
+      "search": {
+        "repeats": [
+          1681.5,
+          1358.8999999985099,
+          1467.0999999977648,
+          1361.5999999977648,
+          1217.5
+        ],
+        "median": 1361.6,
+        "max": 1681.5,
+        "min": 1217.5
+      },
+      "priorityFilter": {
+        "repeats": [
+          2447.7999999970198,
+          2116.2000000029802,
+          2453.199999999255,
+          2275.199999999255,
+          2309.10000000149
+        ],
+        "median": 2309.1,
+        "max": 2453.2,
+        "min": 2116.2
+      },
+      "statusFilter": {
+        "repeats": [
+          1833,
+          2540.800000000745,
+          2531.699999999255,
+          1761.1000000014901,
+          3128.5
+        ],
+        "median": 2531.7,
+        "max": 3128.5,
+        "min": 1761.1
+      },
+      "togglePersist": {
+        "repeats": [
+          5638,
+          2141.60000000149,
+          2047.7000000029802,
+          1900.4000000022352,
+          5217.5
+        ],
+        "median": 2141.6,
+        "max": 5638,
+        "min": 1900.4
+      },
+      "renderedRowsAfterSearch": [
+        715,
+        715,
+        715,
+        715,
+        715
+      ],
+      "appDbJsonBytes": 1050554,
+      "appDbTasks": 5000
+    },
+    "10000": {
+      "reloadToReady": {
+        "repeats": [
+          1018.5,
+          490.80000000074506,
+          435.4000000022352,
+          452.80000000074506,
+          410.5
+        ],
+        "median": 452.8,
+        "max": 1018.5,
+        "min": 410.5
+      },
+      "navigationTiming": {
+        "dcl": 185.40000000223517,
+        "load": 187.10000000149012
+      },
+      "search": {
+        "repeats": [
+          2646.900000002235,
+          2111.599999997765,
+          2847.400000002235,
+          12248.599999997765,
+          2561.699999999255
+        ],
+        "median": 2646.9,
+        "max": 12248.6,
+        "min": 2111.6
+      },
+      "priorityFilter": {
+        "repeats": [
+          4684.79999999702,
+          7297.699999999255,
+          5634,
+          7791.89999999851,
+          4510.29999999702
+        ],
+        "median": 5634,
+        "max": 7791.9,
+        "min": 4510.3
+      },
+      "statusFilter": {
+        "repeats": [
+          3891.900000002235,
+          4702.39999999851,
+          4130.5,
+          4636.89999999851,
+          16182.60000000149
+        ],
+        "median": 4636.9,
+        "max": 16182.6,
+        "min": 3891.9
+      },
+      "togglePersist": {
+        "repeats": [
+          7919.099999997765,
+          6812.800000000745,
+          5794,
+          5560.89999999851,
+          10462.70000000298
+        ],
+        "median": 6812.8,
+        "max": 10462.7,
+        "min": 5560.9
+      },
+      "renderedRowsAfterSearch": [
+        1429,
+        1429,
+        1429,
+        1429,
+        1429
+      ],
+      "appDbJsonBytes": 2102846,
+      "appDbTasks": 10000
+    }
+  },
+  "architecturePrototype": {
+    "1000": {
+      "bulkWrite": 453,
+      "today": 3.5,
+      "open": 38.100000001490116,
+      "byProject": 16.099999997764826,
+      "searchTitle": 33.19999999925494,
+      "countOpen": 11.699999999254942,
+      "singleUpdate": 1.699999999254942,
+      "cursorPage50": 12.100000001490116
+    },
+    "5000": {
+      "bulkWrite": 1630.9000000022352,
+      "today": 3,
+      "open": 98.39999999850988,
+      "byProject": 43.900000002235174,
+      "searchTitle": 78,
+      "countOpen": 35.19999999925494,
+      "singleUpdate": 2.800000000745058,
+      "cursorPage50": 5.400000002235174
+    },
+    "10000": {
+      "bulkWrite": 4432.5,
+      "today": 15.900000002235174,
+      "open": 468.5,
+      "byProject": 114.10000000149012,
+      "searchTitle": 219.89999999850988,
+      "countOpen": 173.80000000074506,
+      "singleUpdate": 2.099999997764826,
+      "cursorPage50": 7.800000000745058
+    }
+  },
+  "consistency": {
+    "scale": 5000,
+    "repeats": 3,
+    "scenarios": {
+      "immediateNavigateWithinDebounce": {
+        "passes": 0,
+        "total": 3,
+        "raw": [
+          false,
+          false,
+          false
+        ]
+      },
+      "afterDebounceWait": {
+        "passes": 2,
+        "total": 3,
+        "raw": [
+          true,
+          false,
+          true
+        ]
+      },
+      "tabSwitch": {
+        "passes": 3,
+        "total": 3,
+        "raw": [
+          true,
+          true,
+          true
+        ]
+      }
+    }
+  },
+  "summary": {
+    "bySize": {
+      "1000": {
+        "jsonKB": 204,
+        "initialWriteMedian": 15.6,
+        "wholeReadMedian": 6,
+        "singleUpdateMedian": 9.1,
+        "reloadMedian": 409.5,
+        "searchMedian": 467.2,
+        "togglePersistMedian": 827.9
+      },
+      "5000": {
+        "jsonKB": 1026,
+        "initialWriteMedian": 43.7,
+        "wholeReadMedian": 18.6,
+        "singleUpdateMedian": 49,
+        "reloadMedian": 359.6,
+        "searchMedian": 1361.6,
+        "togglePersistMedian": 2141.6
+      },
+      "10000": {
+        "jsonKB": 2053,
+        "initialWriteMedian": 54.4,
+        "wholeReadMedian": 31.9,
+        "singleUpdateMedian": 68.6,
+        "reloadMedian": 452.8,
+        "searchMedian": 2646.9,
+        "togglePersistMedian": 6812.8
+      }
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "phase": "4.3-r1-multitab",
+  "generatedAt": "2026-11-15T05:35:58.167Z",
+  "base": "http://127.0.0.1:5173",
+  "browserVersion": "Edg/157.0.4341.60",
+  "casSave10k": {
+    "samples": [
+      116.1,
+      42.8,
+      33.6,
+      46,
+      37
+    ],
+    "median": 42.8,
+    "max": 116.1
+  },
+  "results": [
+    {
+      "name": "两个标签页读取到相同 revision",
+      "pass": true,
+      "detail": "A=2 B=2 mode=broadcast"
+    },
+    {
+      "name": "使用 BroadcastChannel 通知通道",
+      "pass": true,
+      "detail": "broadcast"
+    },
+    {
+      "name": "clean 标签页自动同步 A 的写入",
+      "pass": true,
+      "detail": "3110ms"
+    },
+    {
+      "name": "自动同步后不显示冲突横幅",
+      "pass": true,
+      "detail": "null"
+    },
+    {
+      "name": "同步后两个标签页 revision 一致",
+      "pass": true,
+      "detail": "3/3"
+    },
+    {
+      "name": "旧 revision 写入被拒绝（CAS）",
+      "pass": true,
+      "detail": "{\"ok\":false,\"before\":3,\"after\":3,\"conflict\":3}"
+    },
+    {
+      "name": "dirty 标签页收到并发写入后进入冲突状态",
+      "pass": true,
+      "detail": "banner=conflict"
+    },
+    {
+      "name": "dirty 标签页的本地修改完整保留",
+      "pass": true,
+      "detail": "{\"toggle\":{\"id\":\"t_mwhei1ahk1ki51\",\"wasCompleted\":false},\"bHasToggle\":true,\"bHasGhost\":false}"
+    },
+    {
+      "name": "冲突时暂停自动保存（库版本不再前进）",
+      "pass": true,
+      "detail": "ghostRev=4"
+    },
+    {
+      "name": "冲突时立即写入本地草稿",
+      "pass": true,
+      "detail": "draft=true"
+    },
+    {
+      "name": "重新加载后与库一致（本页修改被放弃）",
+      "pass": true,
+      "detail": "{\"ghost\":true}"
+    },
+    {
+      "name": "重新加载后 revision 与库一致",
+      "pass": true,
+      "detail": "4"
+    },
+    {
+      "name": "清空数据与本地编辑并发时不会被静默覆盖",
+      "pass": true,
+      "detail": "{\"clearOk\":true,\"tasksInB\":11}"
+    },
+    {
+      "name": "重新加载后接受清空结果",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "另一标签页载入示例数据后 clean 标签页自动同步",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "同步过程无冲突提示",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "标签恢复后读取最新权威 revision 且不静默覆盖（按实际覆盖路径标注）",
+      "pass": true,
+      "detail": "mode=freeze 丢弃/懒重载页面→重载恢复（环境限制，非真实休眠恢复） alive=false tabRev=7 dbRev=7 banner=null"
+    },
+    {
+      "name": "刷新后读取最新 revision 与数据",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "关闭前进入冲突并保存草稿",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "重新打开后提示恢复草稿",
+      "pass": true,
+      "detail": "recovering"
+    },
+    {
+      "name": "草稿在恢复前未被删除",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "恢复草稿后写入库并清除草稿",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "name": "以本页覆盖时第三标签页并发写入不被静默丢失（版本单调 + 数据一致）",
+      "pass": true,
+      "detail": "{\"bannerBeforeForce\":true,\"settled\":true,\"revAfterGhost3\":10,\"revFinal\":12,\"finalRevCheck\":12,\"forceClicked\":true,\"ghost4Applied\":true,\"ghost4Ok\":true,\"b2BannerFinal\":null,\"thirdTabConverged\":true,\"noSilentLoss\":true,\"finalHasGhost4\":false,\"outcome\":\"force 先落库，ghost4 CAS 冲突（调用方收到冲突结果，非静默）\"}"
+    },
+    {
+      "name": "10k 数据 CAS 保存 5 次测量完成",
+      "pass": true,
+      "detail": "[116.1,42.8,33.6,46,37]"
+    }
+  ]
+}

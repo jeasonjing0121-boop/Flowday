@@ -1,0 +1,887 @@
+{
+  "rows": [
+    {
+      "scene": "settings",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "glass-sidebar-label",
+      "text": "今日",
+      "fg": [
+        214,
+        214,
+        222
+      ],
+      "bgObserved": [
+        88,
+        91,
+        105
+      ],
+      "px": 14,
+      "ratio": 4.66,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "card-body",
+      "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在",
+      "fg": [
+        107,
+        107,
+        112
+      ],
+      "bgObserved": [
+        251,
+        251,
+        252
+      ],
+      "px": 11,
+      "ratio": 5.13,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "card-muted",
+      "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在",
+      "fg": [
+        107,
+        107,
+        112
+      ],
+      "bgObserved": [
+        251,
+        251,
+        252
+      ],
+      "px": 11,
+      "ratio": 5.13,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "light",
+      "viewport": "mobile",
+      "role": "card-body",
+      "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在",
+      "fg": [
+        107,
+        107,
+        112
+      ],
+      "bgObserved": [
+        251,
+        251,
+        252
+      ],
+      "px": 11,
+      "ratio": 5.13,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "light",
+      "viewport": "mobile",
+      "role": "card-muted",
+      "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在",
+      "fg": [
+        107,
+        107,
+        112
+      ],
+      "bgObserved": [
+        251,
+        251,
+        252
+      ],
+      "px": 11,
+      "ratio": 5.13,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "light",
+      "viewport": "mobile",
+      "role": "card-muted",
+      "text": "今日完成",
+      "fg": [
+        107,
+        107,
+        112
+      ],
+      "bgObserved": [
+        253,
+        253,
+        254
+      ],
+      "px": 12,
+      "ratio": 5.21,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "dark",
+      "viewport": "mobile",
+      "role": "card-muted",
+      "text": "今日完成",
+      "fg": [
+        154,
+        154,
+        160
+      ],
+      "bgObserved": [
+        37,
+        37,
+        40
+      ],
+      "px": 12,
+      "ratio": 5.46,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "glass-sidebar-note",
+      "text": "IndexedDB 本地存储 · 数据只保存在这",
+      "fg": [
+        91,
+        91,
+        98
+      ],
+      "bgObserved": [
+        238,
+        237,
+        245
+      ],
+      "px": 10,
+      "ratio": 5.8,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "glass-sidebar-note",
+      "text": "IndexedDB 本地存储 · 数据只保存在这",
+      "fg": [
+        91,
+        91,
+        98
+      ],
+      "bgObserved": [
+        237,
+        238,
+        241
+      ],
+      "px": 10,
+      "ratio": 5.81,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "card-body",
+      "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在",
+      "fg": [
+        154,
+        154,
+        160
+      ],
+      "bgObserved": [
+        32,
+        32,
+        35
+      ],
+      "px": 11,
+      "ratio": 5.81,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "card-muted",
+      "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在",
+      "fg": [
+        154,
+        154,
+        160
+      ],
+      "bgObserved": [
+        32,
+        32,
+        35
+      ],
+      "px": 11,
+      "ratio": 5.81,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "dark",
+      "viewport": "mobile",
+      "role": "card-body",
+      "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在",
+      "fg": [
+        154,
+        154,
+        160
+      ],
+      "bgObserved": [
+        32,
+        32,
+        35
+      ],
+      "px": 11,
+      "ratio": 5.81,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "dark",
+      "viewport": "mobile",
+      "role": "card-muted",
+      "text": "本阶段为本地账户，尚未接入登录注册；昵称只保存在",
+      "fg": [
+        154,
+        154,
+        160
+      ],
+      "bgObserved": [
+        32,
+        32,
+        35
+      ],
+      "px": 11,
+      "ratio": 5.81,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "glass-header-meta",
+      "text": "11 月 18 日 周三",
+      "fg": [
+        91,
+        91,
+        98
+      ],
+      "bgObserved": [
+        247,
+        246,
+        247
+      ],
+      "px": 11,
+      "ratio": 6.25,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "glass-header-meta",
+      "text": "11 月 18 日 周三",
+      "fg": [
+        91,
+        91,
+        98
+      ],
+      "bgObserved": [
+        247,
+        247,
+        245
+      ],
+      "px": 11,
+      "ratio": 6.28,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "glass-sidebar-note",
+      "text": "IndexedDB 本地存储 · 数据只保存在这",
+      "fg": [
+        204,
+        204,
+        213
+      ],
+      "bgObserved": [
+        65,
+        65,
+        78
+      ],
+      "px": 10,
+      "ratio": 6.3,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "glass-sidebar-note",
+      "text": "IndexedDB 本地存储 · 数据只保存在这",
+      "fg": [
+        204,
+        204,
+        213
+      ],
+      "bgObserved": [
+        63,
+        65,
+        74
+      ],
+      "px": 10,
+      "ratio": 6.37,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "glass-sidebar-label",
+      "text": "今日",
+      "fg": [
+        86,
+        86,
+        93
+      ],
+      "bgObserved": [
+        253,
+        253,
+        253
+      ],
+      "px": 14,
+      "ratio": 7.16,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "glass-sidebar-label",
+      "text": "今日",
+      "fg": [
+        255,
+        255,
+        255
+      ],
+      "bgObserved": [
+        83,
+        83,
+        91
+      ],
+      "px": 14,
+      "ratio": 7.62,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "glass-header-meta",
+      "text": "11 月 18 日 周三",
+      "fg": [
+        204,
+        204,
+        213
+      ],
+      "bgObserved": [
+        45,
+        48,
+        67
+      ],
+      "px": 11,
+      "ratio": 8.15,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "glass-header-meta",
+      "text": "11 月 18 日 周三",
+      "fg": [
+        204,
+        204,
+        213
+      ],
+      "bgObserved": [
+        44,
+        48,
+        65
+      ],
+      "px": 11,
+      "ratio": 8.2,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "dark",
+      "viewport": "mobile",
+      "role": "glass-header-title",
+      "text": "今日",
+      "fg": [
+        245,
+        245,
+        247
+      ],
+      "bgObserved": [
+        45,
+        48,
+        68
+      ],
+      "px": 15,
+      "ratio": 11.92,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "dark",
+      "viewport": "mobile",
+      "role": "glass-header-title",
+      "text": "设置",
+      "fg": [
+        245,
+        245,
+        247
+      ],
+      "bgObserved": [
+        44,
+        48,
+        66
+      ],
+      "px": 15,
+      "ratio": 11.99,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "glass-header-title",
+      "text": "今日",
+      "fg": [
+        245,
+        245,
+        247
+      ],
+      "bgObserved": [
+        44,
+        47,
+        67
+      ],
+      "px": 16,
+      "ratio": 12.09,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "glass-header-title",
+      "text": "设置",
+      "fg": [
+        245,
+        245,
+        247
+      ],
+      "bgObserved": [
+        43,
+        47,
+        65
+      ],
+      "px": 16,
+      "ratio": 12.16,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "card-heading",
+      "text": "今日焦点",
+      "fg": [
+        245,
+        245,
+        247
+      ],
+      "bgObserved": [
+        46,
+        45,
+        51
+      ],
+      "px": 14,
+      "ratio": 12.53,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "dark",
+      "viewport": "mobile",
+      "role": "card-heading",
+      "text": "今日焦点",
+      "fg": [
+        245,
+        245,
+        247
+      ],
+      "bgObserved": [
+        46,
+        45,
+        51
+      ],
+      "px": 14,
+      "ratio": 12.53,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "card-heading",
+      "text": "个人资料",
+      "fg": [
+        245,
+        245,
+        247
+      ],
+      "bgObserved": [
+        38,
+        38,
+        41
+      ],
+      "px": 14,
+      "ratio": 13.86,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "dark",
+      "viewport": "mobile",
+      "role": "card-heading",
+      "text": "个人资料",
+      "fg": [
+        245,
+        245,
+        247
+      ],
+      "bgObserved": [
+        38,
+        38,
+        41
+      ],
+      "px": 14,
+      "ratio": 13.86,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "light",
+      "viewport": "mobile",
+      "role": "card-body",
+      "text": "晚上好，朋友",
+      "fg": [
+        29,
+        29,
+        31
+      ],
+      "bgObserved": [
+        243,
+        239,
+        237
+      ],
+      "px": 26,
+      "ratio": 14.73,
+      "need": 3.0,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "card-body",
+      "text": "晚上好，朋友",
+      "fg": [
+        29,
+        29,
+        31
+      ],
+      "bgObserved": [
+        243,
+        239,
+        238
+      ],
+      "px": 26,
+      "ratio": 14.74,
+      "need": 3.0,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "dark",
+      "viewport": "desktop",
+      "role": "card-body",
+      "text": "晚上好，朋友",
+      "fg": [
+        245,
+        245,
+        247
+      ],
+      "bgObserved": [
+        28,
+        32,
+        46
+      ],
+      "px": 26,
+      "ratio": 14.89,
+      "need": 3.0,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "dark",
+      "viewport": "mobile",
+      "role": "card-body",
+      "text": "晚上好，朋友",
+      "fg": [
+        245,
+        245,
+        247
+      ],
+      "bgObserved": [
+        27,
+        30,
+        42
+      ],
+      "px": 26,
+      "ratio": 15.24,
+      "need": 3.0,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "glass-header-title",
+      "text": "设置",
+      "fg": [
+        29,
+        29,
+        31
+      ],
+      "bgObserved": [
+        248,
+        247,
+        246
+      ],
+      "px": 16,
+      "ratio": 15.73,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "light",
+      "viewport": "mobile",
+      "role": "glass-header-title",
+      "text": "设置",
+      "fg": [
+        29,
+        29,
+        31
+      ],
+      "bgObserved": [
+        248,
+        247,
+        246
+      ],
+      "px": 15,
+      "ratio": 15.73,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "light",
+      "viewport": "mobile",
+      "role": "glass-header-title",
+      "text": "今日",
+      "fg": [
+        29,
+        29,
+        31
+      ],
+      "bgObserved": [
+        248,
+        247,
+        248
+      ],
+      "px": 15,
+      "ratio": 15.75,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "glass-header-title",
+      "text": "今日",
+      "fg": [
+        29,
+        29,
+        31
+      ],
+      "bgObserved": [
+        248,
+        247,
+        249
+      ],
+      "px": 16,
+      "ratio": 15.76,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "card-heading",
+      "text": "今日焦点",
+      "fg": [
+        29,
+        29,
+        31
+      ],
+      "bgObserved": [
+        253,
+        253,
+        254
+      ],
+      "px": 14,
+      "ratio": 16.56,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "card-heading",
+      "text": "个人资料",
+      "fg": [
+        29,
+        29,
+        31
+      ],
+      "bgObserved": [
+        253,
+        253,
+        254
+      ],
+      "px": 14,
+      "ratio": 16.56,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "light",
+      "viewport": "mobile",
+      "role": "card-heading",
+      "text": "今日焦点",
+      "fg": [
+        29,
+        29,
+        31
+      ],
+      "bgObserved": [
+        253,
+        253,
+        254
+      ],
+      "px": 14,
+      "ratio": 16.56,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "settings",
+      "theme": "light",
+      "viewport": "mobile",
+      "role": "card-heading",
+      "text": "个人资料",
+      "fg": [
+        29,
+        29,
+        31
+      ],
+      "bgObserved": [
+        253,
+        253,
+        254
+      ],
+      "px": 14,
+      "ratio": 16.56,
+      "need": 4.5,
+      "pass": true
+    },
+    {
+      "scene": "today",
+      "theme": "light",
+      "viewport": "desktop",
+      "role": "glass-sidebar-label",
+      "text": "今日",
+      "fg": [
+        29,
+        29,
+        31
+      ],
+      "bgObserved": [
+        255,
+        255,
+        255
+      ],
+      "px": 14,
+      "ratio": 16.83,
+      "need": 4.5,
+      "pass": true
+    }
+  ],
+  "failures": []
+}
